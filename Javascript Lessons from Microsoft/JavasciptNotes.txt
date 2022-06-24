@@ -1,0 +1,1263 @@
+Javascript microsoft Notes
+
+
+  JavaScript in the browser (DOM) app UI
+
+        //////////////////////////////////////
+        1. outputing
+                const a = "sami";
+                console.log('abc');
+                console.log(" %s", a);
+                console.log(`${a}`);
+
+
+                //////////////////////////////////////
+
+
+        2. variable Declaration
+                var - function scoped but not used usually / can be used without definintion
+                let - block scoped (used mainly in block code like if and functions)/ used after defined / changeable
+                const - block scoped like let but cannot be changed
+                 
+                - The difference between var and let is that var is declared across the whole program
+                  but let is used to declare in it's own function only
+
+
+                //////////////////////////////////////
+
+
+        3. Data types
+
+                typeof - returns data type
+                instanceof - returns if value matches the data type
+
+
+            //Data type conversion
+
+                parseInt() - String to number
+                parseFloat() - String to floating point 
+                toString() - number to String
+
+
+
+            //////////////////////////////////////
+
+
+        4. Error Handling 
+
+                Exception - interruptions in the intended executions of code 
+                        - throws a message
+                        - try - catch, these will just try a code and output whatever is in catch
+                        - try - catch - finally , same as try catch but finally is added this will run even if there is an error or not (always running code)
+
+
+
+                //////////////////////////////////////
+
+
+        5. Date in Javascript
+
+                Time is an object in JavaScript
+                One central object - Date
+                Date object contains both Date and Time
+
+            // get right now
+                const now = new Date();
+
+            //set specific date and time
+                //month counting starts with zero!
+                // the format goes like --- year month  day hour minute second
+
+                const randomDate = new Date(0, 1, 9, 6, 25, 58);
+                randomDate.setFullYear(2015);
+                console.log(randomDate.getMonth());
+                console.log(randomDate);
+
+                //Monday - 1........till saturday is 6 but sunday is 0
+
+
+                //////////////////////////////////////
+
+
+        6. Boolean Logic
+
+            // != checks for non - equality regardless of data type
+                !== checks for non - equality and data types
+
+            //implicit false values 
+                Strings - Empty strings test as false 
+                Objects - Null or undefined objects test as false
+                Numbers - 0 tests as false 
+
+            //comparisions (x & y, x && y, x | y, x || y)
+                & - checks both values if true 
+                && - first checks if x is true if not it will skip y it's unneccessary
+                | - same 
+                || - same but checks x if false if not it will skip y
+
+            //Switch statements
+                - check equality with a variable
+
+
+                //////////////////////////////////////
+
+
+        7. Arrays
+                - List or collection of values 
+                - Each value has index
+                - Array has length
+
+            //creation of array 
+                let array = []; with out length square brackets
+                let array2 = Array(5); with it's length curved brackets 
+
+            //Array Methods
+                Push - array.push(value) adds one or more value end of array and returns it's new length
+                pop - array.pop() removes value from end of array and returns removed value
+                shift - same as pop but from the front of array
+                unshift - same as push but from the front of array
+                concat - joins two arrays to make a new arrays
+
+
+                //////////////////////////////////////
+
+
+        8. Loops
+
+                while-loop - executes while a condition is fulfilled
+                        - usually used for calling a function which returns false or null when completed
+
+                for-loop - executes horizontal conditions
+                        - (declare, boolean expression, increment or decrement)
+                        - usually used for looping a known number of times
+
+                for-of-loops - creates an iterator of the object or array to be looped
+                            - for(let name of names){console.log(name);}
+                            - usually used for arrays or collections
+
+
+                //////////////////////////////////////
+
+
+        9. Functions 
+                
+            A) Basics - What are functions?
+                - Blocks of codes that execute a routine task using a series of instructions
+                - Readible and concise
+                - Maintainability
+
+            B) Syntax - Define & Invoke functions 
+                - function key word  - to identify as a function
+                - function name - to invoke functions  
+                - parameters - placeholders for input 
+                - return statement - provides exit points or placeholders for output 
+
+                - Definition name{}
+                - Invocation name();
+
+            C) Naming - Conventions & Tips 
+                - Like variable Name conventions
+
+            D) Parameters: Providing inputs 
+                - placeholders for input values
+                - missing values will be set to undefined 
+
+            E) Return: providing outputs, exit points
+                - return statements are optional
+                - clear point where your statements are finished
+
+                // Arrow Functions (Fat arrow function)
+                - changes to the this context 
+                - Support implicit return values 
+                - Must be assigned to a variable, or immediately used 
+                - Reduction in characters typed 
+                - syntax - const variable = (parameters - if any) => the job in the function;
+                - so we treat variable as a function when outputing
+
+                // this context
+                - inherited from parent scoped
+                - cannot be changed 
+                - Maintained when function is passed as reference
+
+                // implicit return 
+                - single line auto return 
+                - multiple lines use {}
+
+
+                //////////////////////////////////////
+
+
+        10. JSON - JavaScript Object Notation
+
+            A) What i JSON?
+                - Lightweight data exchange format
+                - language independent and user readable
+                - Name - value pairs 
+                - Ordered list of values 
+                - if programming language support the above two then it can have json
+
+            B) JSON format
+                -  encloses single objects 
+                - encloses collection 
+
+            C) Stringify: Serialize Object to JSON (conversion)
+                - var json = JSON.Stringify(object); (text - string)
+                    console.log(json);
+                    
+                -  var copies = [ object1, object2]; (objects into an ordered list)
+                    var json = JSON.stringify(copies);
+                    console.log(json);
+
+            D) Parse: Deserialize JSON to Object  (restore original objects)
+                - var jsonObj = somethin....;
+                    var originalObject = JSON.parse(jsonObj);
+                    console.log(originalObjects.title)
+
+
+                - var jsonArray = somethin;..;
+                    var originalObjects = JSON.parse(jsonArray);
+                    console.log(originalObjects[1].title)
+
+                //////////////////////////////////////
+
+
+        11. Java Script Objects
+
+            A) What are Objects 
+                - Real world representations
+                - have datas that describe them - attributes (properties)
+                - have associated actions (methods)
+
+            B) Syntax: Object Definition & Creation : Literals & Constructors
+                -  = { } - object literal
+                -  = [ new Object({"attribue":"value"})];
+                -  = new Object();
+                - constructor - objectname.newProperty = function(){ this.propety = something;}
+
+            C) Properties: Asociated Variables 
+                - Dot notations, objectName.property
+                - bracket notation, objectName["property"]
+                
+            D) Methods: Associated Functions 
+                - are special properties whose values are function definitions
+                - accessed just like properties 
+                - Dot notations, objectName.method()
+                - bracket notation, objectName["method"]()
+
+            E) "this" : Associated Context 
+                - sets runtime content of a function or data 
+                - 2 types - context at runtime 
+                        - global object defaults to window
+
+
+                //////////////////////////////////////
+
+
+        12. Asynchronous programming and promises
+                    - operations can take a while 
+                    - Long running operation block executions 
+                    - it's gonna take a while so do your thing and call me back
+
+                    - function callback(){console.log('Timeout completed');}
+                    setTimeout(callback, 3000); wait 3 seconds
+                    - But the above solution is not ideal, here is where promises come in
+
+                // Promises 
+                    - cleaner version of callbacks
+                    - promise when the code completes it will let it be known
+                    - most recent Javascript have built in promises 
+
+            Syntax: 
+                    
+                    function promiseTimeout(ms){
+
+                        return new Promise((resolve,reject) => {
+                            setTimeout(resolve, ms);
+                        });
+                    }
+                    
+                    promiseTimeout(2000)
+                            .then(() => {
+                                console.log('done');
+                                return Promise.resolve(42);
+                            })
+                            .then((response) => {
+                                console.log(response);
+                            });
+                            .catch(() => {
+                                console.log('cool error handling');
+                            })
+
+            syntax with description working code: 
+
+                        function promiseTimeout(ms) {
+
+                    return new Promise((resolve, reject) => {
+
+                        setTimeout(resolve, ms);
+
+                    });
+                }
+
+                promiseTimeout(2000) // process begins after 2 seconds
+                    .then(() => {
+                        console.log('done'); // prints
+                        return promiseTimeout(1000); // after 1 second
+                    })
+                    .then(() => {
+                        console.log('also done'); // prints
+                        return Promise.resolve(42);
+                    })
+                    .then((result) => {
+
+                        console.log(result); // prints
+                        return promiseTimeout(1000); // after 1 second
+                    })
+                    .then(() => {
+                        console.log('doneruu'); // prints
+                    })
+                    .catch(() => {
+                        console.log('error');
+                    })
+
+
+        13. Async/ Await 
+                    - make asynchronous code look synchronous
+                    - while promises are cleaner than call back, they're not perfect 
+                    - async/ await comes here
+                    - standard in many languages
+                    - syntax close to synchronous code
+
+
+                syntax: 
+
+                    function promiseTimeout(ms){
+
+                        return new Promise((resolve,reject) => {
+                            setTimeout(resolve, ms);
+                        });
+                    }
+
+                    async function simulateLongOperation(){
+
+                        await promiseTimeout(1000);
+                        return 42;
+                    }
+
+                    async function run(){
+                        const answer = await simulateLongOperation();
+                        console.log(answer);
+                    }
+
+                    run();
+
+                    // simpler syntax
+
+                function promiseTimeout(ms) {
+
+                    return new Promise((resolve, reject) => {
+                        setTimeout(resolve, ms);
+                    });
+                }
+
+                async function run() { //can't use await unless inside async
+                    //logic
+                    console.log('start');
+                    await promiseTimeout(2000);
+                    console.log('stop');
+                }
+
+                run();
+
+
+            // Great example for async/await 
+
+                function promiseTimeout(ms) {
+
+                    return new Promise((resolve, reject) => {
+                        setTimeout(resolve, ms);
+                    });
+                }
+
+                async function longRunning() {
+                    //login
+                    return 21;
+                }
+
+                async function run() { //can't use await unless inside async
+                    //logic
+                    console.log('start');
+                    await promiseTimeout(2000);
+                    const resp = await longRunning(); // if we don't add await here and just run longRunnint() then it won't wait till it returns the value
+                    console.log(resp);
+                    await promiseTimeout(1000);
+                    console.log('finish');
+                }
+
+                run();
+
+
+        14. Packages and Package Management
+
+                Packages - reusable bundle of code and / or assets
+                        - Libraries (react, angular, express)
+                        - Tools ( typescript compiler)
+                        - Shared Components 
+                        - Your app 
+                        - Dependancies or modules
+                Packages are found mostly 
+                        - NPM 
+                        - comes with node cli 
+                    
+                Uses of packages 
+                        - efficiency and decreases code size
+                        - they always start with package.json
+
+                Structure of packages 
+                        - Metadata - your project's name, version, description, author, repository, license 
+                        - Dependencies - the list of packages used by your project
+                        - Scripts - commands to automate your development tasks 
+
+                To create a new project with package 
+                    - npm init - you can use the - y option to skip the prompts
+                To install a package
+                    - npm install <package_name>
+                    - npm install --save-dev <package_name>  will be added to devDependencies
+
+                Two types of packages 
+                    - Dependencies - useful
+                    - devDependencies only needed for development
+
+  JavaScript in server (NOde) (node version Manager(nvm))
+
+
+JavaScript Higher order functions 
+
+  1. Filter 
+
+      syntax object(array).filter(function(var, index, array))
+      Note here the filter can take a var, an index and also the array or object itself in it's parameter
+      but we usually use only var.
+        
+      Two formats
+
+        A) simple
+            
+            object(array).filter(function(var){
+
+                return var.attribute == some condition;
+            })
+
+        B) simpler
+
+            object(array).filter(var => var.attribute == some condition);
+    
+
+  2. Map 
+
+      syntax const newArray = object(array).map(function(var){ return var.something})
+      
+        
+      Two formats
+
+        A) simple
+            
+            const newArray = object(array).map(function(var){
+
+                return var.attribute;
+            })
+
+        B) simpler
+
+            const newArray = object(array).map(var => var.attribute);
+    
+  
+  3. For Each 
+
+     syntax array(object).forEach();
+
+    Two format
+
+     A) Simple
+
+       array.forEach(function (var) {
+
+         console.log(var.attribute);
+
+        }); 
+
+     B) Simpler
+
+        array.forEach(var => console.log(var.attribute));
+        
+
+  4. Sort 
+
+     syntax const newArray = array.sort();
+
+    Two forms 
+
+       Note: 1 is like true and -1 is like false
+       Don't use true or false it won't work
+
+       // for single dimensioned arrays
+       const sorted = array.sort((c1, c2) => c1 - c2); ascending
+       const sorted = array.sort((c1, c2) => c2 - c1); descending
+       const sorted = array.sort((c1, c2) => c1 > c2 ? 1 : -1); ascending
+       const sorted = array.sort((c1, c2) => c2 > c1 ? 1 : -1); descending
+
+       //
+
+     A) simple
+
+        const sorted = array.sort(function (c1, c2) {
+
+            if (c1.attribute > c2.attriubte) {
+
+                return 1;
+            }
+            else {
+                return -1;
+            }
+
+        });
+
+
+     B) simpler
+
+        const sorted = array.sort((c1, c2) => (c1.attribute > c2.attribute) ? 1 : -1);
+
+
+  5. Reduce
+
+     syntax   const sum = array.reduce();
+
+     A) simple 
+
+           note: we can set the value of total at position A or position B not both
+            const sum = array.reduce(function (total = A, var) {
+
+            return total + var;
+
+            }, B);
+
+     B) Simpler
+
+           note: we can set the value of total at position A or position B not both
+           
+          const sum = array.reduce((total = A, var) => total + var, B);
+        
+   
+OOP ES5 & ES6
+
+    methods in objects:
+
+        values: we can obtain the values of an object key by
+                console.log(Object.values(objectName));
+
+        keys: we can obtain the keys of an object value by 
+              console.lgo(Object.Keys(objectName));
+
+    Example on Prototyping
+
+        function Book(title, author, page) {
+
+            this.title = title;
+            this.author = author;
+            this.page = page;
+        }
+
+        Book.prototype.getPage = function () {
+
+            return this.page;
+        }
+
+        const Book1 = new Book("samuel", "Arefeaynie", 3);
+
+        console.log(Book1.getPage());
+
+
+DOM (Document object Modeling)
+
+  What is DOM 
+       - Tree of nodes / elements created by the browser 
+       - JavaScript can be used to read/ write/ manipulate to the DOM
+       - Object Oriented Representation 
+
+                               -------------
+                                |  Document |
+                                -------------
+                                      |
+                            ----------------------
+                            | Root Element <html>|
+                            -----------------------
+                                      |
+        -------------------------------------------------------------------
+        |Element <head> |                                |Element: <body>|                    
+        ------------- --                                 -----------------
+              |                                                  |
+              |                                                  |
+        -----------------     -----------------    -------------   ------------
+        |Element:<title>|     |Attribute:"href"|---|Element: <a>|  |Element:<h1>|
+        -----------------     -----------------   --------------   ------------                  
+              |                                        |                |
+        ------------------                     ---------------   ------------------
+        |Text: 'My title'|                     |Text:"my link"|  |Text:"my header"|
+        ------------------                     ---------------   ------------------
+
+
+        To view document console.dir(document);       
+        To access document values : console.log(document.domain);
+                                    console.log(document.URL); 
+        To manipulate values : document.title = 33; changes the title of the html file or document
+        To acess all document values : console.log(document.all); lists all
+                                    console.log(document.all[10]); select with index
+
+
+  Selectors
+
+      A) getElementById
+
+          example
+            console.log(document.getElementById('header-title'));
+            const head = document.getElementById('header-title');
+
+       1) innerText
+
+          console.log(head.innerText);
+          head.innerText = 'huh';
+
+       2) textContent 
+
+          head.textContent = 'sisumbachi';
+
+        The difference between textContent and innerText is that 
+         textContent doesn't care about the styling of the element 
+         even if it's style is to not show on the console it will 
+         keep showing it, but inner Text respects this property and 
+         doesn't show on the console.
+
+       3) innerHTML
+
+          head.innerHTML = '<h3> Hello </h3>';
+
+          inner HTML changes the element but not 
+          physically in the html file
+
+       4) style
+
+         head.style.borderBottom = 'solid 3px black';
+
+      B) getElementByClassName 
+
+           const items = document.getElementsByClassName('list-group-item');
+           console.log(items[0]); if it's an array
+
+            items[0].textContent = 'sami';
+            items[1].style.color = 'red';
+            items.style.color = 'red'; this won't work because it's an array and we need to loop through it
+               
+            for (let i of items) {
+
+             i.style.color = 'red';
+
+            }
+
+      C) getElementByTagName
+
+          same as getElementByClassName 
+
+          const li = document.getElementsByTagName('li');
+          console.log(li);
+         
+      D) QuerySelector
+      
+        - can select any type class, id, tag
+        - id has # infront of it
+        - class has . infront of it
+        - query selector selects the first closest match 
+          to the required element not every element with 
+          that particular element name
+
+          const head = document.querySelector('#main-header')
+          head.style.borderBottom = 'solid 5px red';
+
+          const input = document.querySelector('input');
+          input.value = 'hello';
+
+          const sumbit = document.querySelector('input[type = "submit"]');
+          sumbit.value = 'send';
+
+          var val = document.querySelector('.list-group-item');
+          val.style.color = 'red';
+
+          // to acess the last element
+             var lastitem = document.querySelector('.list-group-item:last-child');
+             lastitem.style.color = 'red';
+
+          // to acess the nth element
+             var nthitem = document.querySelector('.list-group-item:nth-child(2)');
+             nthitem.style.color = 'red';
+
+      E) QuerySelectorAll
+
+         const titles = document.querySelectorAll('.title')
+         console.log(titles[1]);
+         
+         //in the bracet ':' is a css property selector
+         //select even 
+         const odd = document.querySelectorAll('li:nth-child(odd)');
+         console.log(odd);
+
+            for (let i of odd) {
+
+                i.style.backgroundColor = '#f4f4f4';
+            }
+
+  
+  Traversing the DOM : 
+
+        means moving up and down the html and 
+        looking for parent node, child node and
+        siblings
+
+        Parent : contains all child 
+        Child : contained by parent and beside siblings 
+        Sibling: elements in same line 
+
+
+        Example to be used:
+        const itemList = document.querySelector('#items');
+
+      A) Parent 
+
+        1) Parent Nodes
+
+            console.log(itemList.parentNode);
+            itemList.parentNode.style.background = '#f4f4f4';
+
+            // can chain it
+            console.log(itemList.parentNode.parentNode);
+
+        2) Parent Element
+
+            // similar as Node
+            console.log(itemList.parentElement);
+            itemList.parentElement.style.background = '#f4f4f4';
+
+            // can chain it
+            console.log(itemList.parentElement.parentElement);
+
+
+      B) Children
+
+        1) child Node
+
+            console.log(itemList.childNodes);
+            // the text on the out put is the line break
+            // so it's not suggested, suggested is  children
+
+
+        2) children
+           
+            console.log(itemList.children);
+
+            i) Firstchild / lastchild
+
+                console.log(itemList.firstChild); // same for last child
+                // also with text, rather use first element child
+
+            ii) first Element child / last element child
+
+                console.log(itemList.firstElementChild); // same for last element cild
+
+
+      C) Sibling
+
+        1) next sibling 
+
+                // out puts the next sibling
+                console.log(itemList.nextSibling); // outputs text
+
+        2) next element sibling
+
+                console.log(itemList.nextElementSibling);
+
+        3) previous sibling
+
+                // out puts the previous sibling
+                console.log(itemList.previousSibling); // outputs text
+
+        4) previous element sibling
+
+            console.log(itemList.previousElementSibling);
+
+       
+    Create Elements
+
+        const newDiv = document.createElement('div'); // it's not created in the html
+
+        // create class
+         newDiv.className = 'hello';
+
+        // create id
+         newDiv.id = 'hello1';
+
+        // create attribute (attribute, value)
+         newDiv.setAttribute('title', 'hello div');
+
+        // add content in the element or div
+
+         // first create a text node
+            const newDivText = document.createTextNode('Hello World');
+
+         // then append to div
+            newDiv.appendChild(newDivText);
+
+
+        // we are going to add our new div in the html document
+
+         // first select where you want to put it in between,
+         // in our case container class and h1
+
+         //select container class
+            const container = document.querySelector('header .container');
+
+         // select h1
+            const h1 = document.querySelector('header h1');
+
+         //insertBefore takes two parameters (a, b) this means put between a and b
+            container.insertBefore(newDiv, h1);
+            console.log(newDiv);
+
+
+Events - they listen
+
+      Two ways
+
+         example for Click event
+
+         1st long way
+        
+          const button1 = document.getElementById('button').addEventListener('click', function () {
+
+            greeting();
+            document.getElementById('items').firstElementChild.textContent = 'changed';
+
+          });
+
+         2nd short way
+
+           const button2 = document.getElementById('button').addEventListener('click', greeting);
+            console.log(123);
+
+
+            function greeting(e) { // we can use without parameter normally
+
+                e.target to show where the button is fired from
+                console.log(e.target);
+                console.log(e.type); click
+                console.log(e.clientX); //distance clicked from browser
+                console.log(e.offsetY); // distance clicked from button box
+                console.log(e.altKey); // if alt key was held while clicking
+                console.log(e.ctrlKey); // if controlkey was held
+
+            }
+
+
+                const button2 = document.getElementById('button');
+                const box = document.getElementById('box');
+                const output = document.getElementById('output');
+                const select = document.querySelector('select');
+
+
+      A) MOUSE
+
+
+        // //single click
+             button2.addEventListener('click', runEvent);
+
+        // //double click
+             button2.addEventListener('dblclick', runEvent);
+
+        // //mouse down (as soon as mouse goes down on the button)
+             button2.addEventListener('mousedown', runEvent);
+
+        // // mouse up (as soon as mouse is released)
+             button2.addEventListener('mouseup', runEvent);
+
+
+        // //mouse enter or hover the element
+             box.addEventListener('mouseenter', runEvent);
+
+        // //mouse leave or exit the element
+             box.addEventListener('mouseleave', runEvent);
+
+        // //mouseover - same as mouseenter but moseover also works for internal elements
+             box.addEventListener('mouseover', runEvent);
+
+        // //mouseout - same as mouseleave but moseout also works for internal elements
+             box.addEventListener('mouseout', runEvent);
+
+        // //when mouse is moved over the element
+             box.addEventListener('mousemove', runEvent);
+
+
+        function runEvent(e) {
+
+            console.log('Event Type: ' + e.type);
+            output.innerHTML = '<h3>Mouse x:' + e.offsetX + '</h3>';
+            box.style.backgroundColor = "rgb(" + e.offsetX + "," + e.offsetY + "," + e.offsetY + ")";
+        }
+
+
+      B) KeyBoard
+
+
+        const itemInput = document.querySelector('input[type = "text"]');
+        const form = document.querySelector('form');
+
+
+        // //keydown
+            itemInput.addEventListener('keydown', runEvent);
+
+        // //keyup
+            itemInput.addEventListener('keyup', runEvent);
+
+        // //keypress
+            itemInput.addEventListener('keypress', runEvent);
+
+
+        // //Focus and Blur
+
+            // //focus
+                itemInput.addEventListener('focus', runEvent);
+
+            // //blur
+            itemInput.addEventListener('blur', runEvent);
+
+        // // Cut and Paste
+
+            // // cut 
+            itemInput.addEventListener('cut', runEvent);
+
+            // // paste
+            itemInput.addEventListener('paste', runEvent);
+
+
+        // //Input
+           itemInput.addEventListener('input', runEvent); // do anything it will fire
+
+
+
+
+        form.addEventListener('submit', runEvent); // it will blink
+        // select.addEventListener('change', runEvent);
+        // box.addEventListener('mousemove', runEvent);
+
+        function runEvent(e) {
+
+            e.preventDefault(); // to prevent blink of submit event
+            console.log('Event Type: ' + e.type);
+            // console.log(e.target.value); // holds the output
+            // output.innerHTML = e.target.value;
+            // console.log(e.target.value);
+        }
+
+
+ES6_ES2015
+
+   What is ECMA Script?
+      - a scripting language standard and specification
+      e.g JavaScript, Jscript , ActionScript
+
+    What is ES6? 
+
+       - The most tecent version of ECMAScript/ JavaScript
+       - First major update since ES5 (2009)
+       - ES5 should work in ES6 
+       - Modern Syntax 
+       - Better Scaling & Better For Big Applications
+       - New Features In Standard Library
+
+       Compatibility
+
+        - All browsers
+        - Transpilers used to compile ES6 code to ES5 
+
+    What's new in ES6?
+
+       - let and const                  - New Data Structures
+       - Destructuring Assignment       - Iterators 
+       - Classes andInheritance         - Generators
+       - Template Strings               - Promises & Asynchronous Data 
+       - String Features                - Arrow Functions
+       - Math & Number Features 
+
+
+   Clases and Inheritance 
+
+
+        A) Creating a Class 
+
+            - static methods don't need to be created as an object outside of the class 
+              we can simply access them by using the classname.staticMethodName()
+
+            - But normal methods need an object to be initialized to be used 
+              e.g const bob = new classConstructorName(attribute1,attribute2....);
+                            bob.normalMethodName();  
+            
+            We use the Class syntax 
+
+            class user {
+
+                constructor(userName, email, password) {
+
+                    this.userName = userName;
+                    this.email = email;
+                    this.password = password;
+                }
+
+                static countUsers() { //static methods
+
+                    console.log('There are 50 users');
+                }
+
+                register() {
+
+                    console.log(`${this.userName} is now registered`);
+                }
+            }
+        
+
+        B) Inheritance of the above class
+
+            class Member extends user { //member package is added its not syntax it's just a name (it's own attriubte)
+
+                constructor(userName, email, password, memberPackage) {
+
+                    super(userName, email, password);
+                    this.memberPackage = memberPackage;
+
+                }
+
+                getPackage() {
+
+                    console.log(`${this.userName} is subscribed to the ${this.memberPackage} package`);
+                }
+            }
+      
+
+        C) Outputting
+
+            //class       
+                const sami = new user('samuel arefeaynie', 'samuelarefeayni2@gmai.com','1234');
+                sami.register();
+
+            //inherited
+                const mike = new Member('mike', 'email@', '1234', 'standard');
+                mike.getPackage();
+                mike.register();
+
+
+   Template Literals 
+
+         instead of quotations (' ') or (" ") we use (` `)
+         Literals can be used with variables as ${ };
+
+
+   Default Parametors and Spread Operator 
+
+     A) Default Parameters 
+
+        - refers to adding a default value to a function 
+          in case a value is not given.
+
+          function greet(greeter = 'hello'){
+
+              console.log(greeter);
+          }
+
+          greet('hi'); // hi will be outputted
+          greet(); // hello will be outputted
+
+
+     B) Spread operators
+
+          - represented as 3 dots
+          - used to allow an expression to be expanded in
+            places where multiple arguments are expected
+
+            // to put args in the function idk maybe helpful
+
+                const args = [1, 2, 3];
+
+                function test() {
+
+                    console.log(args);
+                }
+
+                test(...args);
+
+
+   Set and Map 
+
+     A) Set 
+
+        Syntax :- const setName = new Set(array);
+        
+        const myArray = [11, 22, 34, 6, 77];
+
+        const mySet = new Set(myArray);
+
+        // doesn't change the original value but keeps adding from a set
+        mySet.add('100');
+        mySet.add({ a: 1, b: 2 });
+
+        console.log(mySet);
+        console.log(mySet.add(100));
+        console.log(mySet.entries());
+        console.log(mySet.delete(22));
+        console.log(mySet.entries());
+        console.log(mySet.size);
+
+        mySet.forEach(function (doo) {
+
+            console.log(doo);
+        });
+
+        => weak Set 
+
+            const carWeakSet = new WeakSet();
+
+            const car = {
+
+                make: 'Honda',
+                model: 'Civic'
+            }
+
+            carWeakSet.add(car); // we need to add it to the weak set
+            console.log(carWeakSet);
+
+
+     B) Map
+
+        syntax :-  Map([[a, value],[b, value]]); 
+                - a and b are keys , value are obviously values, key  - value pairs
+
+        let myMap = new Map([['a1', 'Hello'], ['b2', 'bye']]);
+
+        console.log(myMap);
+        myMap.set('c3', 'Foo'); //we use set instead of add to add  stuff 
+        myMap.delete('a1'); // delete by key
+        console.log(myMap.size);
+
+        => weak Map 
+
+            const carWeakMap = new WeakMap();
+
+            const key1 = {
+
+                id: 1
+            }
+
+            const car1 = {
+
+                make: 'Honda',
+                model: 'Civic'
+            }
+
+            carWeakMap.set(key1, car1);
+            console.log(carWeakMap);
+
+
+   Promises 
+
+     Basic Syntax : 
+
+      //create the time out function
+
+        function timeout(ms) {
+
+            return new Promise((resolve, reject) => {
+
+                setTimeout(resolve, ms);
+
+            })
+
+        }
+      // write the sequence of code you want to run
+      
+        timeout(1000) 
+            // for resolve
+            .then(() => {
+
+                console.log(5);
+                return timeout(1000);
+            })
+            .then(() => {
+
+                console.log(4);
+                return timeout(1000);
+            })
+            .then(() => {
+
+                console.log(3);
+                return timeout(1000);
+            })
+            .then(() => {
+
+                console.log(2);
+                return timeout(1000);
+            })
+            .then(() => {
+
+                console.log(1);
+            })
+
+            .catch(() => { // for reject
+
+                console.log('Boom');
+            });
+
+   
+   Generators 
+      
+       - are functions that can be paused and resumed
+
+       - Syntax: 
+
+         function* g1() { // generator has asterix
+
+            console.log('Hello');
+            yield 'Yield 1 Ran..'; // means pause
+            console.log('World');
+            yield 'Yield 2 Ran..'; // means pause
+            return 'Returned'; // means done
+
+        }
+
+        // g1(); // not going to run unless set to a variable
+
+        const g = g1();
+
+        console.log(g.next()); // paused at Hello , can add next().value
+        console.log(g.next()); // continued to world
+        console.log(g.next()); // done
+
+        // can also use for of loop 
+
+        for (let a of g) {
+
+            console.log(a);
+        }
+
+
+
+
+
+
+
+
+
+

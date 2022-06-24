@@ -1,0 +1,1871 @@
+Stacks
+
+  E.g Stack of books 
+       
+       Top of book LIFO
+
+       push 
+       pop
+
+       functions in stack 
+         
+         - push - adding an element on the stack 
+         - pop - removing top element 
+         - peek - display the top element 
+         - length (size) - determine how many elements are there 
+
+
+       Example - checking a word is a palindrome using stack 
+
+       
+        let letters = []; // created a stack - arrays are stacks
+
+        let word = "racecar";
+
+        let rword = "";
+
+        //putting letters of word in stack 
+
+        for (let i = 0; i < word.length; i++) {
+
+            letters.push(word[i]);
+        }
+        //pop off the stack in reverse order 
+
+
+        for (let i = 0; i < word.length; i++) {
+
+            rword += letters.pop();
+        }
+
+        // check if palindrome
+
+        if (rword === word) {
+
+            console.log(word + " is a palindrome");
+        }
+
+        else {
+
+            console.log(word + " is not a palindrome");
+        }
+
+       Example - creating stack with functions (this. is mandatory )
+
+          let Stack = function () {
+
+
+              let count = 0;
+              let storage = {};
+
+
+              //adding value to the end of a stack 
+
+              this.push = function (value) {
+
+                  storage[count] = value;
+                  count++;
+              }
+
+
+              //Removes and returns value at the end of the stack 
+
+              this.pop = function () {
+
+                  if (count === 0) {
+
+                      return undefined;
+                  }
+
+                  count--;
+                  let poppedResult = storage[count];
+                  delete storage[count];
+                  return poppedResult;
+              }
+
+              this.size = function () {
+
+                  return count;
+              }
+
+              //return the value at the end
+
+              this.peek = function () {
+
+                  if (count === 0) {
+
+                      return undefined;
+                  }
+
+                  else {
+
+                      return storage[count - 1];
+
+
+                  }
+
+              }
+          }
+
+
+
+          let myStack = new Stack();
+
+
+          // myStack.push(3);
+          // myStack.push(2);
+
+
+          console.log(myStack.peek());
+          console.log(myStack.pop());
+          console.log(myStack.size());
+          console.log(myStack.peek());
+
+
+
+Sets  
+
+  - like arrays but no duplicate items 
+        
+        functions in sets 
+
+           add 
+           remove 
+           union 
+           intersection
+           difference 
+           subset 
+
+
+        A great example!!
+
+      Example 
+
+         // create a set
+        
+        function mySet() {
+
+            //this will hold the set 
+
+            let collection = [];
+
+
+            // checks if the element is in the array
+            this.has = function (element) {
+
+                return (collection.indexOf(element) !== -1);
+            }
+
+            //return values of the sets 
+
+            this.values = function () {
+
+                return collection;
+            }
+
+            // add an element 
+
+            this.add = function (element) {
+
+                //first check if the element is not in the list 
+
+                if (!this.has(element)) {
+
+                    collection.push(element);
+                    return true;
+                }
+
+                return false;
+            }
+
+
+            //remove the element 
+
+            this.remove = function (element) {
+
+                if (this.has(element)) {
+
+                    index = collection.indexOf(element);
+
+                    collection.splice(index, 1); // splice means starting from index of 'index' take out '1' element 
+                    return true;
+
+
+                }
+
+                return false;
+
+            }
+
+            // return the size of collection;
+
+            this.size = function () {
+
+                return collection.length;
+            }
+
+            //returns union of two set
+
+            this.union = function (otherSet) {
+
+                let unionSet = new mySet();
+                let firstSet = this.values();
+                let secondSet = otherSet.values();
+
+                for (let e of firstSet) {
+
+                    unionSet.add(e);
+                }
+
+                for (let e of secondSet) {
+
+                    unionSet.add(e);
+                }
+
+                return unionSet;
+
+            }
+
+            //returns the intersection of two sets 
+
+            this.intersection = function (otherSet) {
+
+                let intersectionSet = new mySet();
+                let firstSet = this.values();
+
+                for (let e of firstSet) {
+
+                    if (otherSet.has(e)) {
+
+                        intersectionSet.add(e);
+                    }
+                }
+
+                return intersectionSet;
+            }
+
+            // this will return the difference of two sets 
+
+            this.difference = function (otherSet) {
+
+                let differenceSet = new mySet();
+                let firstSet = this.values();
+
+                for (let e of firstSet) {
+
+                    if (!otherSet.has(e)) {
+
+                        differenceSet.add(e);
+
+                    }
+                }
+
+                return differenceSet;
+            }
+
+            // this method tests if the set is a subset of a different set 
+
+            this.subset = function (otherSet) {
+
+                let firstSet = this.values();
+                return firstSet.every(function (value) { // this every function checks if each value passes the test or is true 
+
+                    return otherSet.has(value);
+                });
+            }
+
+
+        }
+
+
+        let setA = new mySet();
+        let setB = new mySet();
+
+        setA.add("a");
+        setA.add("d");
+        setA.add("a");
+        setB.add("a");
+        setB.add("b");
+        setB.add("c");
+        setB.add("d");
+
+        console.log(setA.values());
+        console.log(setB.values());
+        setB.remove("c");
+        console.log(setB.values());
+        console.log(setB.size());
+        console.log(setA.subset(setB));
+        console.log(setA.intersection(setB).values()); // here we need to add the additional function values to return the value
+        console.log(setA.union(setB).values()); // same here
+        console.log(setB.difference(setA).values()); // different values in b which are not in a
+
+
+      
+Queue
+
+  - similar to stack but this is FIFO
+     
+     example line in Queue
+
+     properties 
+
+      - enqueue
+      - dequeue
+      - front 
+      - size 
+      - isEmpty
+
+
+
+    A) Normal Queue Example 
+
+
+       
+
+            function myQueue() {
+
+                let Q = [];
+
+                this.values = function () {
+
+                    return Q;
+                }
+
+                this.size = function () {
+
+                    return Q.length;
+                }
+
+                this.enqueue = function (element) {
+
+                    Q.push(element);
+                }
+
+                this.dequeue = function () {
+
+                    Q.shift();
+                }
+
+                this.front = function () {
+
+
+                    return Q[0];
+                }
+
+                this.isEmpty = function () {
+
+                    if (Q[0] === undefined) {
+
+                        return true;
+                    }
+
+                    return false;
+                }
+            }
+
+            let line = new myQueue();
+
+            line.enqueue("a");
+            line.enqueue("b");
+            line.enqueue("c");
+            line.dequeue();
+            line.dequeue();
+            line.dequeue();
+            console.log(line.front());
+            console.log(line.isEmpty());
+            console.log(line.size());
+            console.log(line.values());
+
+
+
+    B) Priority Queue Example 
+
+
+        - Same as Normal Queue but the difference is that
+          in queue, the Priority is also passed along with value
+          hence, to prioritize the element that has to be pushed 
+          first. 
+
+
+        Example 
+
+
+            function myQueue() {
+
+                let Q = [];
+
+                this.values = function () {
+
+                    return Q;
+                }
+
+                this.size = function () {
+
+                    return Q.length;
+                }
+
+                this.enqueue = function (element) {
+
+                    if (this.isEmpty()) {
+
+                        Q.push(element);
+                    }
+
+                    else {   // array ([value, priority]) // my own function
+
+                        let b = 0;
+                        Q.push(element);
+
+                        for (let i = 0; i < Q.length; i++) {
+
+                            for (let j = 0; j < Q.length; j++) {
+
+                                if (Q[i][1] < Q[j][1]) {
+
+                                    b = Q[i];
+                                    Q[i] = Q[j];
+                                    Q[j] = b;
+
+                                }
+
+                            }
+
+                        }
+                    }
+
+                }
+
+                this.dequeue = function () {
+
+                    Q.shift();
+                }
+
+                this.front = function () {
+
+
+                    return Q[0];
+
+                }
+
+                this.isEmpty = function () {
+
+                    if (Q[0] === undefined) {
+
+                        return true;
+                    }
+
+                    return false;
+                }
+            }
+
+
+
+            let line = new myQueue();
+
+            line.enqueue(["a", 2]);
+            line.enqueue(["b", 3]);
+            line.enqueue(["c", 1]);
+
+            console.log(line.values());
+
+
+ 
+Binary Search Tree 
+
+    
+     - a node has only 2  branches 
+
+     - are ordered
+          
+          - each left sub-tree is less than or equal to it's parent node
+          - each right sub-tree is greater than or equal to it's parent node 
+
+        A) insert, remove, min, max, find 
+
+         example
+
+          // first we create a node class that has 
+
+            // data 
+            // left
+            // right 
+
+
+
+            class Node {
+
+                constructor(data) {  // create a node class that always contains node left and right
+
+                    this.data = data;
+                    this.left = null;
+                    this.right = null;
+                }
+            }
+
+
+          // then we create another class that is used to manipulate the node
+
+            class BST { // create a binary search tree that functions all the properties
+
+                constructor() {  // initially root is empty unless data is inseted
+
+                    this.root = null;
+                }
+
+                insert(data) { // to insert data first create an instance of the node class object so any data could have itself a right node and a left node
+
+                    let newNode = new Node(data);
+
+                    if (this.root === null) { // if the root node was already empty, then make this new data(object)  the root node
+
+
+                        this.root = newNode;
+                        return this.root;
+
+                    }
+
+
+                    else {
+
+
+                        this.insertNode(this.root, newNode);
+                    }
+
+                }
+
+
+                insertNode(node, newNode) {
+
+
+                    if (newNode.data < node.data) {
+
+
+                        if (node.left === null) {
+
+                            node.left = newNode;
+                            return node;
+
+
+                        }
+
+                        else {
+
+                            this.insertNode(node.left, newNode);
+                        }
+
+
+
+
+                    }
+
+                    else if (newNode.data > node.data) {
+
+
+                        if (node.right === null) {
+
+                            node.right = newNode;
+                            return node;
+
+                        }
+
+                        else {
+
+                            this.insertNode(node.right, newNode);
+
+
+                        }
+
+
+                    }
+
+
+                }
+
+
+                remove(data) { // to delete a data first we check if the current node is empty
+
+                    let node = this.root;
+
+
+                    if (node === null) {
+
+                        return null;
+
+
+                    }
+
+                    else { // if not , we will send the node and the data to be deleted to another function
+
+                        this.removeData(node, data);
+                    }
+
+                }
+
+
+                removeData(node, data) { // here, we will compare node values with data
+
+
+                    if (data < node.data) { // if the data is less than node data, operate with left of node
+
+
+
+                        if (data === node.left.data) {  // if data is equal with left value then delete while left node
+
+                            node.left = null;
+
+                        }
+
+                        else { // if not, then pass the left node with the data recursively
+
+                            this.removeData(node.left, data);
+
+
+                        }
+
+
+
+
+                    }
+
+                    else if (data > node.data) { // similarly, we compare the data with the node data if it's greater 
+
+
+
+
+                        if (data === node.right.data) { // if it's equal with the right node, set the whole right node as null
+
+                            node.right = null;
+
+                        }
+
+                        else { // if not, pass the right node and data recursively
+
+                            this.removeData(node.right, data);
+
+
+                        }
+
+
+
+
+                    }
+
+                    else if (data === node.data) { // if the data is the same as the node data, remove the node compeletely
+
+                        this.root = null;
+                    }
+                }
+
+                values() {
+
+                    let node = this.root;
+
+                    return node;
+                }
+
+
+                findMin() {
+
+                    let node = this.root;
+
+
+                    while (node.left !== null) {
+
+
+                        node = node.left;
+
+                    }
+
+                    return node.data;
+
+
+
+                }
+
+                findMax() {
+
+                    let node = this.root;
+
+                    while (node.right !== null) {
+
+                        node = node.right;
+                    }
+
+                    return node.data;
+                }
+
+                find(value) {
+
+                    let node = this.root;
+
+                    while (value < node.data && node.left !== null) {
+
+                        if (value === node.left.data) {
+
+                            return true;
+
+                        }
+
+                        else {
+
+                            node = node.left;
+                        }
+                    }
+
+                    while (value > node.data && node.right !== null) {
+
+                        if (value === node.right.data) {
+
+                            return true;
+
+                        }
+
+                        else {
+
+                            node = node.right;
+                        }
+                    }
+
+                    return false;
+
+
+
+
+                }
+
+
+
+
+            }
+
+
+
+            const invoke = new BST();
+
+            console.log(invoke.values());
+            invoke.insert(13);
+            invoke.insert(5);
+            invoke.insert(20);
+            invoke.insert(2);
+            invoke.insert(7);
+            invoke.insert(1);
+            invoke.insert(4);
+            invoke.insert(6);
+            invoke.insert(8);
+            invoke.insert(14);
+            invoke.insert(30);
+            invoke.insert(12);
+            invoke.insert(18);
+            invoke.insert(25);
+            invoke.insert(35);
+
+            console.log(invoke.values());
+
+            console.log(invoke.findMin());
+            console.log(invoke.findMax());
+            invoke.remove(35);
+
+            console.log(invoke.find(35));
+
+            console.log(invoke.values());
+
+
+     
+        B) Traversal & Height (find, minNumber, maxValue, minHeight, maxHeight, balanced, inorder, preorder, postorder, levelorder)
+
+
+
+
+            Example
+
+                class Node {
+
+                    constructor(data) {  // create a node class that always contains node left and right
+
+                        this.data = data;
+                        this.left = null;
+                        this.right = null;
+                    }
+                }
+
+
+
+                class BST { // create a binary search tree that functions all the properties
+
+                    constructor() {  // initially root is empty unless data is inseted
+
+                        this.root = null;
+                    }
+
+                    insert(data) { // to insert data first create an instance of the node class object so any data could have itself a right node and a left node
+
+                        let newNode = new Node(data);
+
+                        if (this.root === null) { // if the root node was already empty, then make this new data(object)  the root node
+
+
+                            this.root = newNode;
+                            return this.root;
+
+                        }
+
+
+                        else {
+
+
+                            this.insertNode(this.root, newNode);
+
+
+                        }
+                    }
+
+
+                    insertNode(node, newNode) {
+
+
+
+                        if (newNode.data < node.data) {
+
+
+                            if (node.left === null) {
+
+
+                                node.left = newNode;
+                                return node;
+
+
+                            }
+
+                            else {
+
+                                this.insertNode(node.left, newNode);
+
+                            }
+
+
+
+
+                        }
+
+                        else if (newNode.data > node.data) {
+
+
+
+
+                            if (node.right === null) {
+
+                                node.right = newNode;
+
+                                return node;
+
+                            }
+
+                            else {
+
+                                this.insertNode(node.right, newNode);
+
+
+                            }
+
+
+                        }
+                    }
+
+
+                    remove(data) { // to delete a data first we check if the current node is empty
+
+                        let node = this.root;
+
+
+                        if (node === null) {
+
+                            return null;
+
+
+                        }
+
+                        else { // if not , we will send the node and the data to be deleted to another function
+
+                            this.removeData(node, data);
+                        }
+                    }
+
+
+                    removeData(node, data) { // here, we will compare node values with data
+
+
+                        if (data < node.data) { // if the data is less than node data, operate with left of node
+
+
+
+                            if (data === node.left.data) {  // if data is equal with left value then delete while left node
+
+                                node.left = null;
+
+                            }
+
+                            else { // if not, then pass the left node with the data recursively
+
+                                this.removeData(node.left, data);
+
+
+                            }
+
+
+
+
+                        }
+
+                        else if (data > node.data) { // similarly, we compare the data with the node data if it's greater 
+
+
+
+
+                            if (data === node.right.data) { // if it's equal with the right node, set the whole right node as null
+
+                                node.right = null;
+
+                            }
+
+                            else { // if not, pass the right node and data recursively
+
+                                this.removeData(node.right, data);
+
+
+                            }
+
+
+
+
+                        }
+
+                        else if (data === node.data) { // if the data is the same as the node data, remove the node compeletely
+
+                            this.root = null;
+                        }
+                    }
+
+
+                    values() {
+
+                        let node = this.root;
+
+                        return node;
+                    }
+
+
+                    findMin() {
+
+                        let node = this.root;
+
+
+                        while (node.left !== null) {
+
+
+                            node = node.left;
+
+                        }
+
+                        return node.data;
+                    }
+
+
+                    findMax() {
+
+                        let node = this.root;
+
+                        while (node.right !== null) {
+
+                            node = node.right;
+                        }
+
+                        return node.data;
+                    }
+
+
+                    find(value) {
+
+                        let node = this.root;
+
+                        while (value < node.data && node.left !== null) {
+
+                            if (value === node.left.data) {
+
+                                return true;
+
+                            }
+
+                            else {
+
+                                node = node.left;
+                            }
+                        }
+
+                        while (value > node.data && node.right !== null) {
+
+                            if (value === node.right.data) {
+
+                                return true;
+
+                            }
+
+                            else {
+
+                                node = node.right;
+                            }
+                        }
+
+                        return false;
+                    }
+
+
+                    maxHeight(node = this.root) {
+
+                        if (node === null) {
+
+                            return -1;
+                        };
+
+                        let left = this.maxHeight(node.left);
+                        let right = this.maxHeight(node.right);
+
+                        if (left > right) {
+
+                            return left + 1;
+
+                        }
+
+                        else {
+
+                            return right + 1;
+                        }
+
+                    }
+
+
+                    minHeight(node = this.root) {
+
+                        if (node === null) {
+
+                            return -1;
+                        };
+
+                        let left = this.minHeight(node.left);
+                        let right = this.minHeight(node.right);
+
+                        if (left < right) {
+
+                            return left + 1;
+
+                        }
+
+                        else {
+
+                            return right + 1;
+                        }
+                    }
+
+
+                    balanced() {
+
+                        return (this.minHeight() >= this.maxHeight() - 1);
+                    }
+
+
+                    inorder() {
+
+                        // this was my code
+                        // let small = 0;
+
+                        // for (let i = 0; i < this.order.length; i++) {
+
+                        //     for (let j = 0; j < this.order.length; j++) {
+
+                        //         if (this.order[i] < this.order[j]) {
+
+                        //             small = this.order[i];
+                        //             this.order[i] = this.order[j];
+                        //             this.order[j] = small;
+                        //         }
+
+                        //     }
+                        // }
+
+                        // return this.order;
+
+                        if (this.root === null) {
+
+                            return null;
+                        }
+
+                        else {
+
+                            let order = [];
+                            traverseInorder(this.root);
+
+                            function traverseInorder(node) {
+
+
+                                node.left && traverseInorder(node.left);
+
+                                order.push(node.data);
+                                node.right && traverseInorder(node.right);
+                            }
+
+                            return order;
+
+
+                        }
+                    }
+
+
+                    preOrder(node = this.root) {
+
+                        if (this.root === null) {
+
+                            return null;
+                        }
+
+                        else {
+
+                            let order = [];
+                            traverseInorder(this.root);
+
+                            function traverseInorder(node) {
+
+
+                                order.push(node.data);
+
+                                node.left && traverseInorder(node.left);
+
+                                node.right && traverseInorder(node.right);
+                            }
+
+                            return order;
+
+
+
+
+                        }
+                    }
+
+
+                    postOrder(node = this.root) {
+
+                        if (this.root === null) {
+
+                            return null;
+                        }
+
+                        else {
+
+                            let order = [];
+                            traverseInorder(this.root);
+
+                            function traverseInorder(node) {
+
+
+
+                                node.left && traverseInorder(node.left);
+
+                                node.right && traverseInorder(node.right);
+
+                                order.push(node.data);
+
+                            }
+
+                            return order;
+
+                        }
+                    }
+
+                    levelOrder() {
+
+                        let order = [];
+                        let Q = [];
+
+                        if (this.root === null) {
+
+                            return null;
+                        }
+
+                        else {
+
+                            Q.push(this.root);
+
+                            while (Q.length > 0) {
+
+                                let node = Q.shift();
+
+                                order.push(node.data);
+
+                                if (node.left !== null) {
+
+                                    Q.push(node.left);
+                                }
+
+                                if (node.right !== null) {
+
+                                    Q.push(node.right);
+                                }
+
+                            }
+
+                            return order;
+                        }
+                    }
+                }
+
+
+
+                const invoke = new BST();
+
+                console.log(invoke.values());
+                invoke.insert(13);
+                invoke.insert(5);
+                invoke.insert(20);
+                invoke.insert(2);
+                invoke.insert(7);
+                invoke.insert(1);
+                invoke.insert(4);
+                invoke.insert(6);
+                invoke.insert(8);
+                invoke.insert(15);
+                invoke.insert(30);
+                invoke.insert(14);
+                invoke.insert(18);
+                invoke.insert(25);
+                invoke.insert(35);
+
+                console.log(invoke.values());
+
+                console.log(invoke.maxHeight());
+                console.log(invoke.minHeight());
+                console.log(invoke.balanced());
+                console.log('inorder ' + invoke.inorder());
+                console.log('pre-order ' + invoke.preOrder());
+                console.log('post-order ' + invoke.postOrder());
+                console.log('level - order ' + invoke.levelOrder());
+                // console.log(invoke.findMax());
+                // invoke.remove(35);
+
+                // console.log(invoke.find(35));
+
+                // console.log(invoke.values());
+
+
+
+Hash Tables 
+
+    - used to implement associate arrays 
+    - mapping of key value pairs 
+    - Quick
+    - javaScript already has inbuilt hash function but we
+      are going to create it to understand it better
+
+
+
+    Let us observe using an example 
+
+            // in hash table, you only need 3 things to implement the concept 
+        // Index   ........... [0]         [1][0]        [1][1]             [2] 
+        // hash table = [ undefined, [key1, value1] ,[[key2, value2], [key3 , value3]]];
+        //  the index is calculated by getting the remainder of the passed in key and storage limit which is 4 from the above
+        //  the key value is the unique one that determined the positions of the hash
+
+
+        let hash = (String, max) => {
+
+            let hash = 0;
+            for (let i = 0; i < String.length; i++) {
+
+                hash += String.charCodeAt(i);
+            }
+
+            return hash % max;
+        };
+
+
+        let HashTable = function () {
+
+            let storage = [];
+            const storageLimit = 4;
+
+            this.print = function () {
+
+                return storage;
+            }
+
+            this.add = function (key, value) {
+
+                let index = hash(key, storageLimit);
+
+                if (storage[index] === undefined) {
+                    storage[index] = [[key, value]];
+                }
+
+                else {
+
+                    let inserted = false;
+
+                    for (let i = 0; i < storage[index].length; i++) {
+
+                        if (storage[index][i][0] === key) {
+
+                            storage[index][i][1] = value;
+                            inserted = true;
+                        }
+                    }
+
+                    if (inserted === false) {
+
+                        storage[index].push([key, value]);
+                    }
+                }
+            };
+
+
+            this.remove = function (key) {
+
+                let index = hash(key, storageLimit);
+
+                if (storage[index].length === 1 && storage[index][0][0] === key) {
+
+                    delete storage[index];
+                }
+
+                else {
+
+                    for (let i = 0; i < storage[index].length; i++) {
+
+                        if (storage[index][i][0] === key) {
+
+                            storage[index][i] = null;
+                        }
+                    }
+                }
+
+            };
+
+            this.lookup = function (key) {
+
+                let index = hash(key, storageLimit);
+
+                if (storage[index].length === 1 && storage[index][0][0] === key) {
+
+                    return storage[index][0][1];
+                }
+
+                else {
+
+                    for (let i = 0; i < storage[index].length; i++) {
+
+                        if (storage[index][i][0] === key) {
+
+                            return storage[index][i][1];
+
+                        }
+                    }
+                }
+            }
+        }
+
+
+        let newTable = new HashTable();
+
+
+        console.log(newTable.print());
+        newTable.add("samuel", 0925728110);
+        newTable.add("sssb", 0825728110);
+        console.log(newTable.print());
+        newTable.remove("sssb");
+        console.log(newTable.print());
+        console.log(newTable.lookup("samuel"));
+
+
+
+Linked List 
+
+   - Elements are stored in a node 
+   - stored as element itself and a reference to the next node
+   - last node points to null
+
+   Differences of arrays and linked list 
+
+                Arrays                        Linked list 
+
+        1.   Fixed size                      Dynamic size 
+
+        2. Inefficient Insertions and        Efficient Insertions and 
+            Deletions                          deletions 
+
+        3. Random access i.e. ,              No random access 
+            efficient indexing 
+
+        4. May result in more                No waste of memory 
+            memory waste.
+
+        5. Sequential access is faster       Sequential access is slow 
+            [ because elements in             [ because elements not in contiguous
+                contiguous memory location]       memory locations]
+
+
+   Example 
+
+       - we create an object containing element and a pointer to the next element(next)
+
+     
+        function LinkedList() {
+
+            let length = 0;
+            let head = null;
+
+            let Node = function (element) {
+
+                this.element = element;
+                this.next = null;
+            }
+
+
+            this.size = function () {
+
+                return length;
+            }
+
+
+            this.head = function () {
+
+                return head;
+            }
+
+
+            this.add = function (element) {
+
+                let node = new Node(element);
+
+                if (head === null) {
+
+                    head = node;
+                }
+
+                else {
+
+                    let currentNode = head;
+
+                    while (currentNode.next) {
+
+                        currentNode = currentNode.next;
+
+                    }
+
+                    currentNode.next = node;
+
+
+
+                }
+
+                length++;
+            }
+
+
+            this.remove = function (element) {
+
+
+                let currentNode = head;
+                let previousNode;
+
+                if (currentNode.element === element) {
+
+                    head = currentNode.next; // we point the head node to the next node
+                }
+
+                else {
+
+                    while (currentNode.element !== element) {
+
+                        previousNode = currentNode;
+                        currentNode = currentNode.next;
+
+                    }
+
+                    previousNode.next = currentNode.next;
+                }
+
+                length--;
+            }
+
+
+            this.isEmpty = function () {
+
+                return length === 0;
+            }
+
+
+            this.indexOf = function (element) {
+
+                let currentNode = head;
+                let index = -1;
+
+                while (currentNode) {
+
+                    index++;
+
+                    if (currentNode.element === element) {
+
+                        return index;
+                    }
+
+                    currentNode = currentNode.next;
+                }
+
+                return -1;
+            }
+
+
+            this.elementAt = function (index) {
+
+                let currentNode = head;
+                let count = 0;
+
+                while (count < index) {
+
+                    count++;
+                    currentNode = currentNode.next
+                }
+
+                return currentNode.element;
+            }
+
+
+            this.addAt = function (index, element) {
+
+                let node = new Node(element);
+
+                let currentNode = head;
+                let previousNode;
+                let currentIndex = 0;
+
+                if (index > length) {
+
+                    return false;
+                }
+
+                if (index === 0) {
+
+                    node.next = currentNode;
+                    head = node;
+                }
+
+                else {
+
+                    while (currentIndex < index) {
+
+                        currentIndex++;
+                        previousNode = currentNode;
+                        currentNode = currentNode.next;
+                    }
+
+                    node.next = currentNode;
+                    previousNode.next = node;
+                }
+
+                length++;
+            }
+
+
+            this.removeAt = function (index) {
+
+
+                let currentNode = head;
+                let previousNode;
+                let currentIndex = 0;
+
+                if (index < 0 || index >= length) {
+
+                    return null;
+                }
+
+                if (index === 0) {
+
+                    head = currentNode.next;
+                }
+
+                else {
+
+                    while (currentIndex < index) {
+
+                        currentIndex++;
+                        previousNode = currentNode;
+                        currentNode = currentNode.next;
+                    }
+
+                    previousNode.next = currentNode.next;
+                }
+
+                length--;
+                return currentNode.element;
+            }
+        }
+
+        let mylist = new LinkedList();
+        console.log(mylist.add(5));
+        console.log(mylist.add(6));
+        console.log(mylist.add(7));
+        console.log(mylist.size());
+        console.log(mylist.remove(5));
+        console.log(mylist.removeAt(1));
+        console.log(mylist.indexOf(6));
+        console.log(mylist.elementAt(0));
+
+
+
+Trie 
+
+   - called as prefix tree 
+   - used to store associative data structures 
+   - stores data as steps 
+   - mostly used to form words 
+   
+
+   example 
+      
+      - if we are looking searching for the word "car"
+
+      - it will first look for the letter c in the first nodes 
+      - if it finds a node that begins with c it will continue to that path 
+      - this is fast and efficient
+      
+
+                let Node = function () {
+
+                    this.keys = new Map();
+                    this.end = false;
+                    this.setEnd = function () {
+
+                        this.end = true;
+                    }
+
+                    this.isEnd = function () {
+
+                        return this.end;
+                    }
+                }
+
+                let Trie = function () {
+
+                    this.root = new Node();
+
+                    this.add = function (input, node = this.root) {
+
+                        if (input.length === 0) {
+
+                            node.setEnd();
+                            return;
+                        }
+
+                        else if (!node.keys.has(input[0])) {
+
+                            node.keys.set(input[0], new Node());
+                            return this.add(input.substr(1), node.keys.get(input[0]));
+
+                        }
+
+                        else {
+
+                            return this.add(input.substr(1), node.keys.get(input[0]));
+                        }
+                    }
+
+                    this.isWord = function (word) {
+
+                        let node = this.root;
+
+                        while (word.length > 1) {
+
+                            if (!node.keys.has(word[0])) {
+
+                                return false;
+                            }
+
+                            else {
+
+                                node = node.keys.get(word[0]);
+                                word = word.substr(1);
+                            }
+                        }
+
+                        return (node.keys.has(word) && node.keys.get(word).isEnd()) ? true : false;
+                    }
+
+                    this.print = function () {
+
+                        let words = new Array();
+                        let search = function (node, string) {
+
+                            if (node.keys.size != 0) {
+
+                                for (let letter of node.keys.keys()) {
+
+                                    search(node.keys.get(letter), string.concat(letter));
+                                }
+
+                                if (node.isEnd()) {
+
+                                    words.push(string);
+                                }
+
+
+                            }
+
+                            else {
+
+                                string.length > 0 ? words.push(string) : undefined;
+                                return;
+                            }
+                        }
+
+                        search(this.root, new String());
+                        return words.length > 0 ? words : null;
+                    }
+                }
+
+
+                let myTrie = new Trie();
+
+                myTrie.add("apple");
+                myTrie.add("ball");
+                myTrie.add("bell")
+                myTrie.add("call");
+                myTrie.add("dig");
+
+                console.log(myTrie.print());
+                console.log(myTrie.isWord("bell"));
+
+
+
+Heap (Binary Heap) (** not clear skipped this half way)
+
+   Binary Heap follows the property of Heap 
+
+    first node = i = 1;
+    left child = i * 2;
+    right child = i * 2 + 1;
+    parent  = i / 2,  if decimal is found, then we round down to the nearest number
+    last index is the size of the heap 
+
+    2- types 
+
+
+      A) Min-Heap 
+
+          parent nodes are equal to or greater than child nodes 
+
+      B) Max-Heap 
+
+          child nodes are greter than or equal to parent nodes 
+
+
+
+Graphs  (** not that clear)
+
+   - collection of things 
+   - data in graph are called  vertices (nodes)
+   - the connection between them are edges 
+
+    2- types directed and undirected graphs 
+
+
+    representation of graphs 
+
+      A) adjacency list 
+
+          A----B----C;
+
+      B) adjacency matrix 
+
+          numbers in matrix 
+          0 means no relationship 
+          1 means realationship
+
+          rows - nodes 
+          columns - nodes 
+
+      C) Incidence Matrix 
+
+         2d array 
+
+           rows - nodes 
+           columns - edges 
+
+           for directed graph 
+
+             1 for leaving node 
+             -1 for entering node 
+
+          
+    
+   Breadth- First Search  (using adjacency matrix )
+
+
+   example 
+
+     
+                
+            function bfs(graph, root) {
+
+                let nodesLen = {};
+
+                for (let i = 0; i < graph.length; i++) {
+
+                    nodesLen[i] = Infinity;
+                }
+
+                nodesLen[root] = 0;
+
+                let queue = [root];
+                let current;
+
+                while (queue.length != 0) {
+
+                    current = queue.shift();
+
+                    let curConnected = graph[current];
+                    let neighborIdx = [];
+                    let idx = curConnected.indexOf(1);
+
+                    while (idx != -1) {
+
+                        neighborIdx.push(idx);
+                        idx = curConnected.indexOf(1, idx + 1);
+                    }
+
+                    for (let j = 0; j < neighborIdx.length; j++) {
+
+                        if (nodesLen[neighborIdx[j]] == Infinity) {
+
+                            nodesLen[neighborIdx[j]] = nodesLen[current] + 1;
+                            queue.push(neighborIdx[j]);
+                        }
+                    }
+                }
+
+                return nodesLen;
+            }
+
+
+            let exBFSGraph = [
+
+                [0, 1, 1, 1, 0],
+                [0, 0, 1, 0, 0],
+                [1, 1, 0, 0, 0],
+                [0, 0, 0, 1, 0],
+                [0, 1, 0, 0, 0]
+
+            ];
+
+
+            console.log(bfs(exBFSGraph, 1));
+
+                    
+
+

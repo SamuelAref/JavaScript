@@ -1,0 +1,505 @@
+Javascript from the video javascript crash course
+
+what is Javascript?
+
+- High level, interpreted programming language (doesn't need compiling nor memory management unlike java or c++ or c)
+- Conforms to the ECMAScript specification
+- Multi-paradigm
+- Runs on the client/browser as well as on the server (Node.js)
+
+Uses of javaScript
+- programming language of the browser
+- Build very interactive user interfaces with frameworks
+- Used in building very fast server side and full stack applications
+- Used in mobile dev
+- used in desktop apps
+
+
+//variables
+// var , let and const
+// don't use var
+
+
+//variable declaration
+// var, let, const
+// always use const if you are sure it won't change
+
+let age = 30;
+age = 31;
+console.log(age);
+
+
+// data types
+// String, Numbers, Boolean, null, undefined, Symbol
+
+
+const name = 'Samuel';
+const age = 30;
+const rating = 4.5;
+const isCool = true;
+const x = null;
+const y = undefined;
+let z;
+
+console.log(typeof x); // outputs type of data type
+
+
+
+//concatenation
+
+const name = 'Samuel';
+const age = 30;
+
+//old way 
+console.log('my name is ' + name + ' i am ' + age + 'years old');
+
+//new way
+// Template String
+console.log(`my name is ${name} and i am ${age}`);
+// can also assign it to variable
+const greeting = `my name is ${name} and i am ${age}`;
+console.log(greeting);
+
+
+
+//String properties and methods
+const s = 'Hello, World';
+
+// console.log(s.length);
+// console.log(s.toUpperCase());
+// console.log(s.substring(0, 5).toUpperCase()); //chain
+console.log(s.split(', ')); //splits the 's' variable by , and space and gives it to array
+
+
+//Arrays- variables that hold multiple values
+
+//rarely used, array constructor
+const numbers = new Array('1,2,3,4,5');
+console.log(numbers);
+
+//commonly used
+const fruits = ['apples', 'oranges', 'pears']; //doesn't matter the data type like array lists in java
+console.log(fruits[0]);
+// fruits[0] = 'avocados'
+console.log(fruits);
+fruits.push('avocados'); //add at the end
+fruits.unshift('straw'); // add at the beginning
+fruits.pop(); //removes last one
+console.log(Array.isArray(fruits)); //check if array
+console.log(fruits.indexOf('oranges')); //check index
+
+
+
+//Object literals - key value pairs like dictionaries in python
+
+const person = {
+
+    firstName: 'John',
+    lastName: 'Doe',
+    age: 30,
+    hobbies: ['music', ' movies', 'gaming'],
+    address: {
+
+        street: 'summit',
+        city: 'Addis Ababa',
+        state: 'Central'
+    }
+}
+
+console.log(person.hobbies[0]);
+
+const { firstName, lastName, address: { city } } = person;
+console.log(city);
+
+person.email = 'samuelarefeaynie2@gmail.com';
+console.log(person);
+
+
+
+// organizing data and JSON
+
+const toDos = [
+
+    {
+        id: 1,
+        text: 'Take',
+        isCompleted: true
+    },
+
+    {
+        id: 2,
+        text: ' out ',
+        isCompleted: true
+    },
+
+    {
+        id: 3,
+        text: ' trash',
+        isCompleted: true
+    }
+
+];
+
+// console.log(toDos[0].text);
+//JSON - to send organized data to servers
+const todoJason = JSON.stringify(toDos);
+console.log(todoJason);
+
+
+
+//Loops
+
+//Loops
+
+//For Loops
+for (let i = 0; i < toDos.length; i++) {
+
+    console.log(toDos[i].isCompleted);
+}
+
+// While Loops
+
+let i = 0;
+
+while (i < 3) {
+
+    console.log(toDos[i].text);
+    i++;
+
+}
+
+// for of loop
+for (let doing of toDos) {
+
+    console.log(doing.id);
+}
+
+
+//High order array functions these are very very helpfullllll
+
+const toDos = [
+
+    {
+        id: 1,
+        text: 'Take',
+        isCompleted: true
+    },
+
+    {
+        id: 2,
+        text: ' out ',
+        isCompleted: false
+    },
+
+    {
+        id: 3,
+        text: ' trash',
+        isCompleted: true
+    }
+
+];
+
+
+
+
+//High order array methods
+// for each, map and filter
+
+// for each - just loops through
+
+toDos.forEach(function (doing) {
+
+    console.log(doing.text);
+});
+
+//map - returns an array
+const todoArray = toDos.map(function (doing) {
+
+    return doing.text;
+});
+
+console.log(todoArray); // ante this is very helpful
+
+//filter -  returns array if condition is fulfilled
+
+const todoCompleted = toDos.filter(function (doing) {
+
+    return doing.isCompleted == true; // returns only ones that isCompleted is true
+});
+
+console.log(todoCompleted); // very very helpful
+
+//Combined two high order array methods
+
+const todoCombined = toDos.filter(function (doing) {
+
+    return doing.isCompleted == true; // returns only ones that isCompleted is true
+}).map(function (done) {
+
+    return done.id;
+});
+
+console.log(todoCombined);
+
+
+//conditionals
+
+//Conditionals
+//if   switches
+
+//if
+const x = '0';
+
+if (x == 10) { // double equal only matches the value means works with string and int at the same time
+
+    console.log('hi');
+}
+
+if (x === 10) { // triple equal  matches the value  and data type
+
+    console.log('hi');
+}
+
+else {
+
+    console.log('x is not 10');
+}
+
+//Ternary Operator (Shorthand if statement)
+
+const x = 10;
+
+const color = x > 10 ? 'red' : 'blue';
+
+console.log(color);
+
+// Switches
+
+const x = 9;
+
+const color = x > 10 ? 'red' : 'blue';
+
+switch (color) {
+
+    case 'red': console.log('spidey');
+        break;
+    case 'blue': console.log('eww');
+        break;
+    default: console.log('nope');
+}
+
+//Functions
+
+function addNums(num1, num2) { // we can set these num1 and num2 as values eziw = blen
+
+    console.log(num1 + num2);
+    //or we can return
+}
+
+addNums();
+
+
+//Arrow functions
+
+/* use to be 
+
+const addNums = (num1, num2){
+
+    console.log(num1 + num2)
+}
+now it's this below first one is console log second one is return */
+
+const addNums = (num1, num2) => console.log(num1 + num2);
+const addNums2 = (num1, num2) => (num1 + num2); //returns
+const addNums3 = (num1) => num1 * 2;
+
+
+
+addNums(5, 2);
+console.log(addNums2(3, 2));
+console.log(addNums3(3));
+
+
+
+
+
+
+//OOP
+// two ways constructor functions with prototype or es6 classes
+
+// 1st way constructor
+// without prototyping
+
+function Person(firstName, lastName, doB) {
+
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.doB = new Date(doB);
+    this.getBirthYear = function () {
+
+        return this.doB.getFullYear();
+    }
+    this.getFullName = function () {
+
+        return this.firstName + " " + this.lastName;
+    }
+}
+
+
+// instantiate object
+const date = new Date(1998);
+const sami = new Person('Samuel', 'Arefeaynie', 1889);
+
+console.log(sami.getBirthYear());
+console.log(sami.getFullName());
+
+console.log(sami);
+
+
+
+
+// with prototyping
+
+function Person(firstName, lastName, doB) {
+
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.doB = new Date(doB);
+
+}
+
+
+//prototyping - since our functions within the function 
+// shows up in the output we want to add them to the prototype form 
+
+Person.prototype.getBirthYear = function () {
+
+    return this.doB.getFullYear();
+}
+
+Person.prototype.getFullName = function () {
+
+    return this.firstName + " " + this.lastName;
+}
+
+
+
+// instantiate object
+const sami = new Person('Samuel', 'Arefeaynie', 1889);
+
+console.log(sami.getBirthYear());
+console.log(sami.getFullName());
+
+// console.log(sami);
+
+
+// method 2 es6 classes
+
+//classes more organized
+
+class Person {
+
+    constructor(firstName, lastName, doB) {
+
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.doB = new Date(doB);
+
+    }
+
+    getBirthYear() {
+
+        return this.doB.getFullYear();
+    }
+
+    getFullName() {
+
+        return this.firstName + " " + this.lastName;
+    }
+}
+
+const sami = new Person('samuel', 'Arefeaynie', 3882);
+
+console.log(sami.getFullName());
+
+
+
+//DOM - Document object modeling
+
+// we use Document from window
+
+//Selectors  2 types
+
+// single element selectors
+//we can select a single element from the html
+
+const form = document.getElementById('my-form');
+console.log(form);
+console.log(document.querySelector('.container'));
+
+// Multiple element
+
+console.log(document.querySelectorAll('.item'));
+
+const list = document.querySelectorAll('.item');
+console.log(list[2]);
+
+
+// manipulating DOM
+//Changing values and styles
+const items = document.querySelector('.items');
+
+// items.remove();
+// items.lastElementChild.remove();
+// items.firstElementChild.textContent = 'hi';
+// items.children[1].innerText = 'b';
+// items.lastElementChild.innerHTML = '<h1>Hello</h1>';
+
+const btn = document.querySelector('.btn');
+btn.style.background = 'blue';
+
+
+//Events
+const btn = document.querySelector('.btn');
+
+//for button click - click
+//for mouse hover - mouseover
+//for mouse out of hover - mouseout
+btn.addEventListener('click', (e) => {
+
+    e.preventDefault(); // used so that the result won't be quick
+    // console.log('click');
+    // console.log(e.target.className); //returns the target of the click
+    // document.querySelector('#my-form').style.background = '#ccc';
+    // document.querySelector('body').classList.add('bg-dark');
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

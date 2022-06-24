@@ -1,0 +1,35 @@
+// Weight Converter 
+
+    //first i create the values
+
+    const input = document.getElementById('weight');
+    const output = document.getElementById('output');
+    const button1 = document.getElementById('convertKg');
+    const button2 = document.getElementById('convertLbs');
+
+
+
+    // input.addEventListener('input', outputter);
+    button1.addEventListener('click', LbsToKg);
+    button2.addEventListener('click', KgToLbs);
+
+
+
+    //function
+
+    // pounds to kilograms
+    function LbsToKg(e) {
+        e.preventDefault();
+        output.innerHTML = input.value * 0.453592;
+    }
+
+    // kilograms to pounds
+    function KgToLbs(e) {
+
+        e.preventDefault();
+        output.innerHTML = input.value * 2.204623;
+
+    }
+
+
+
