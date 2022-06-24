@@ -1,0 +1,36 @@
+What is strict mode ?
+
+    - Tightens the rules for certain behaviours
+    - These restrictions keep code safer 
+    - Help js engines optimize
+
+How to use Strict mode 
+
+    2 ways 
+
+        1) apply to entire file 
+
+            add "use strict"; at top of file
+
+        2) or apply to specific entities like inside functions
+
+            function sum(a,b){
+
+                'use strict';
+                return a + b;
+            }
+
+In strict mode 
+
+    - converts mistakes into errors
+
+        - can't delete vars
+
+    - with and eval changes
+
+        - prohibits "with" 
+        - eval values are gonna vary
+
+    - securing javascript;
+
+        - strict mode makes it impossible to secure javascript code 

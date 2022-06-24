@@ -1,0 +1,179 @@
+
+Tutorial #1 : Let 
+
+    Let makes a variable accessible to only the block it was declared
+
+        Example 
+
+            let movie = "the"; 
+
+            function theNotebook(){
+
+                let movie = "the notebook";
+                return movie;
+            }
+
+            console.log(movie);
+            console.log(theNotebook());
+            console.log(movie);
+
+Tutorial #2 : Arrow Functions
+
+        - used to make functions simpler and shorter 
+
+        Example 
+
+            const PI = Math.PI;
+
+            function circleArea1(r){
+
+                return PI * r * r;
+            }
+
+            let circleArea2 = (r) => { return PI * r * r; }
+            let circleArea3 = r =>  PI * r * r; 
+
+            console.log(circleArea1(7));
+            console.log(circleArea2(7));
+            console.log(circleArea3(7));
+
+Tutorial #3 : Template Literals 
+
+        - A useful way to include variables inside an intent
+
+        Example
+
+            let name = "samuel";
+            let age = 24;
+            let occupation = "computer engineer";
+
+
+            console.log(`Hi I am ${name} aged ${age},
+            I love ${occupation}`);
+
+Tutorial #4 : Spread Operator 
+
+
+        Example 
+  
+            function addNumbers(a, b, c){
+
+                return a + b + c;
+            }
+
+            let numbs = [3 , 4 , 5]
+            console.log(addNumbers(...numbs));
+
+            let food = ['apples', 'kiwi', 'rice'];
+            let meats = ['bacon', 'ham',...food];
+
+            console.log(meats);
+
+Tutorial #5 : Classes 
+
+    Example 
+
+        class Person{
+
+            constructor(name, age, weight){
+
+                this.name = name;
+                this.age = age;
+                this.weight = weight;
+            }
+        }
+
+        let bucky = new Person("bucky", 26, 150);
+        console.log(bucky);
+
+Tutorial #6 : Inheritance
+
+        Examples 
+
+            
+            class Person{
+
+                constructor(name, age, weight){
+
+                    this.name = name;
+                    this.age = age;
+                    this.weight = weight;
+                }
+
+                displayWeight(){
+
+                    console.log(this.weight);
+                }
+            }
+
+
+            class Programmer extends Person{
+
+                constructor(name, age, weight, language){
+
+                    super(name,age,weight);
+
+                    this.language = language;
+                }
+            }
+
+            let bucky = new Person("bucky", 26, 150);
+            let sam = new Programmer("sami",24,73,"javascript");
+            bucky.displayWeight();
+            sam.displayWeight();
+            console.log(sam.language);
+
+Tutorial #7 : Generators
+
+    Generator - is a function with checkpoints
+
+        //yield is the key here, it means stop 
+
+        Example 
+
+            //noted by star
+
+            function* sampleGenerator(){
+
+                yield 'apples';
+                yield 'bacon';
+                console.log('ok, this is the line after bacon ...');
+                yield 'corn';
+
+            }
+
+            let sample = sampleGenerator();
+
+            console.log(sample.next().value);
+            console.log(sample.next().value);
+            console.log(sample.next().value);
+
+            console.log('-----------------------');
+
+            function* getNextId(){
+
+                let id = 0;
+
+                while(id < 3){
+
+                    yield id++;
+
+                }
+
+                id = 0;
+            }
+
+            let creatUser = getNextId();
+
+            console.log(creatUser.next().value);
+            console.log(creatUser.next().value);
+            console.log(creatUser.next().value);
+            console.log(creatUser.next().value);
+
+
+
+
+
+
+
+

@@ -1,0 +1,166 @@
+JSON
+
+    - Objects
+
+        let myCat = {
+
+        "name": "Meowsalot",
+        "species": "cat",
+        "favFood": "tuna:"
+        }
+
+        console.log(myCat.name);
+
+    - Arrays
+
+        let favColors = [ "blue", "red", "green"];
+
+    JSON = Array + Objects
+
+        let combo = [
+
+            { 
+                "name": "Meowsalot",
+                "species": "cat",
+                "favFood": "tuna:"
+            },
+
+            {
+                "name": "Barky",
+                "species": "dog",
+                "favFood": "carrots"
+            }
+        ];
+
+        console.log(combo[0].name);
+
+
+Fetching JSON data
+
+    steps
+     - first we create an http request
+
+        let ourRequest = new XMLHttpRequest();
+
+     - then we specify we want to get the data, from a specified source
+
+        ourRequest.open('GET', './petData.json');
+
+     - then we want to do something when it finishes loading the data 
+
+          ourRequest.onload = function(){
+
+            console.log(ourRequest.responseText);
+        }
+
+     - lastly we actually have to send our request 
+
+        ourRequest.send();
+
+     - steps all together
+        let ourRequest = new XMLHttpRequest();
+        ourRequest.open('GET', './petData.json');
+        ourRequest.onload = function(){
+
+            console.log(ourRequest.responseText);
+        }
+
+        ourRequest.send();
+
+
+AJAX
+
+    let ourRequest = new XMLHttpRequest();
+    ourRequest.open('GET', './petData.json');
+    ourRequest.onload = function(){
+
+        //handling internal errors 
+
+        // >=200 and < 400 is status is good
+
+        if(ourRequest.status >= 200 && ourRequest.status < 400){
+
+            let ourData = JSON.parse(ourRequest.responseText);
+            console.log(ourData[0]);
+
+        }
+
+        else{
+
+            console.log("We connected to the server but it returned an error");
+        }
+
+    
+    }
+
+        ourRequest.send();
+
+        //to handle connection errors/fetching errors
+
+        ourRequest.onerror = function(){
+
+            console.log("connection error");
+        }
+
+    posting - but returns an error
+
+            let sendRequest = new XMLHttpRequest();
+        sendRequest.open("POST", '/data/petData.json');
+        sendRequest.setRequestHeader("Content-Type", "application/json");
+        sendRequest.send(JSON.stringify({
+            "name":"Purrpaws",
+            "species":"cat",
+            }));
+
+
+Alternative Way (Fetch)
+
+    //fetching
+        fetch("./data/petData.json")
+            .then(response =>{
+
+                if(!response.ok){
+
+                    throw new Error(`request failed with status ${response.status}`)
+                }
+
+                return response.json()
+            })
+
+            .then(data =>{
+
+                console.log(data);
+            })
+
+            .catch(error => console.log(error))
+
+    //posting
+
+        async function postData(){
+
+            let newer =   {
+                "name":"Purrpaws",
+                "species":"cat",
+
+            }
+
+            let response = await fetch("/data/petData",{
+
+                method: "POST",
+                body: JSON.stringify(newer),
+                headers:{"Content-Type": "application/json"}
+            })
+
+            if(!response.ok){
+
+                throw new Error (`Request failed with status ${response.status}`)
+            }
+
+            console.log("request successful");
+            console.log("hi");
+        }
+
+
+
+        postData();
+

@@ -1,0 +1,548 @@
+
+Number POV problem 
+        - this problem refers to the point of view of a number on it's elments limited to 3 
+
+            solution 
+
+                function POV(num){
+
+                    let toArray = [...String(num)];
+                    let sumHolder = [];
+                    const limit = 3;
+                
+
+
+
+                    for(let i = 0; i < toArray.length; i++){
+
+                        let leftCounter = i - 1;
+                        let rightCounter = i + 1;
+                        let leftValue = 0;
+                        let rightValue = 0;
+                        let leftLimit = 0;
+                        let rightLimit = 0;
+
+                        for(let j = 0; j < 3; j++){
+
+                            while(toArray[leftCounter] && leftLimit < limit){
+
+
+                                leftValue += Number(toArray[leftCounter]);
+                                leftCounter--;
+                                leftLimit++;
+
+                            }
+
+                            while( toArray[rightCounter] && rightLimit < limit){
+
+                                rightValue += Number(toArray[rightCounter]);
+                                rightCounter++;
+                                rightLimit++;
+
+                            }
+                            
+                        }
+
+                        sumHolder.push(leftValue + rightValue)
+
+                    }
+
+                    return(Math.min(...sumHolder))
+
+
+                }
+
+
+
+                console.log(POV(123456));
+
+From https://www.w3resource.com/javascript-exercises/javascript-basic-exercises.php
+
+    1) Write a JavaScript program to display the current day and time in the following format.
+        Today is : Tuesday.
+        Current time is : 10 PM : 30 : 38
+
+        Solution 
+
+                    
+            let date = new Date();
+
+            //assignments 
+
+                let day = days(date.getDay());
+                let minute = date.getMinutes();
+                let hour = hours(12);
+
+                function days(dayOfWeek) { 
+
+                    switch(dayOfWeek){
+
+                        case 0 : return "Sunday";
+                                break;
+
+                        case 1 : return "Monday";
+                                break;
+
+                        case 2 : return "Tuesday";
+                                break;
+
+                        case 3 : return "Wednesday";
+                                break;
+
+                        case 4 : return "Thursday";
+                                break;
+
+                        case 5 : return "Friday";
+                                break;
+
+                        case 6 : return "Saturday";
+                                break;
+
+                        default : return "unknown";
+                                break;
+                    }
+                }
+
+                function hours(hourAmPm) {
+
+                    return hourAmPm < 12 ?  `${hourAmPm} AM` : `${hourAmPm} PM`;
+
+                }  
+
+                console.log(`Today is : ${day}`);
+                console.log(`Current Time : ${hour} : ${minute} : ${date.getSeconds()}`);
+
+    2) Leap Year 
+
+        function leap(year) {  return !(year % 4) ? true : false; }
+        console.log(leap(2020));
+
+    3) Write a JavaScript program to find 1st January is being a Sunday between 2014 and 2050
+
+        
+        let yearRange = [];
+        let yearHolder = [];
+
+        for(let i = 2014; i < 2051; i++){
+
+            yearRange.push(i);
+
+        }
+
+        function finder (day, month, dayOfWeek ) {
+
+
+            for(let i = 0; i < yearRange.length; i++){
+
+                let date = new Date(yearRange[i], month, day);
+
+                if(date.getDay() === dayOfWeek){
+
+                    yearHolder.push(yearRange[i]);
+                }
+            }
+
+            return yearHolder;
+
+        }
+
+
+        // insert day first, then month - january is 0, and dayof week - sunday is 0
+        console.log(finder(1, 0, 0));
+
+    4) Write a JavaScript program to create a new string from a given string changing the position of first and last characters. The string length must be greater than or equal to 1.
+
+        function wordCreator(takeString){
+
+            return takeString.length < 2 ? "string too small" : revert(takeString);
+
+            function revert(param) {
+
+                let arrayWord = [...param];
+
+                if(arrayWord.length == 2){
+
+                    arrayWord.reverse();
+
+                }
+
+                else {
+
+                    let firstLetter = arrayWord.splice(0, 1);
+                    let lastLetter = arrayWord.splice(arrayWord.length - 1, 1);
+                    arrayWord.push(firstLetter[0]);
+                    arrayWord.unshift(lastLetter[0]);
+
+
+                }
+
+
+                return String(arrayWord).replace(/,/g, '');
+
+            }
+        }
+
+        console.log(wordCreator("samuel"));
+
+    5) Write a JavaScript to replace each character of a given string by the next one in the English alphabet
+
+            let alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+
+            function replacer(word){
+
+                let arrayWord = [...word];
+
+                for(let i = 0; i < arrayWord.length; i++){
+
+                        let indexHolder = alphabet.indexOf(arrayWord[i]);
+                        arrayWord[i] = alphabet[indexHolder + 1] ? alphabet[indexHolder + 1] : alphabet[0];
+                }
+
+                return String(arrayWord).replace(/,/g, '');
+            }
+
+            console.log(replacer("yami"));
+
+    6) Write a JavaScript program to find the kth greatest element of a given array of integers
+
+        //kth largest number 
+
+            let numbers = [1,99,3,4,5];
+
+            function kthLargest(param) { return ((numbers.sort().reverse())[param -1]); }
+
+            console.log(kthLargest(3));
+
+    7) Write a JavaScript program to find the maximal difference among all possible pairs of a given array of integers.
+
+        
+            let num = [1,2,3,4,5,21];
+            let maxHolder = 0;
+
+
+            function maxDiff (numbers) {
+
+                for(let i = 0; i < numbers.length; i++){
+
+                    for(let j = 0; j < numbers.length; j++){
+                
+                        if(Math.abs(numbers[i] - numbers[j]) > maxHolder){
+                
+                            maxHolder = numbers[i] - numbers[j];
+                        }
+                
+                    }
+                }
+
+                return maxHolder;
+                
+            }
+
+            console.log(maxDiff(num)); 
+
+    8) Write a JavaScript program to check whether it is possible to rearrange characters of a given string in such way that it will become equal to another given string.
+
+
+            function checker (stringOne, stringTwo) {
+
+
+                let arrayOne = [...stringOne];
+                let arrayTwo = [...stringTwo];
+                let trialHolder = [];
+                let checker = '';
+                let verdict = false;
+
+            
+                for(let i = 0; i < arrayOne.length; i++){
+
+                    for(let j = 0; j < arrayOne.length; j++){
+
+
+                        checker = arrayTwo[i];
+                        arrayTwo[i] = arrayTwo[j];
+                        arrayTwo[j] = checker;
+
+                        trialHolder.push(String(arrayTwo).replace(/,/g, ''));
+
+                    }
+
+                }
+
+                trialHolder.forEach( element => {
+
+                    if (element === stringOne){
+
+                        verdict = true;
+                    }
+                })
+
+            
+                return verdict;
+            }
+
+            console.log( checker("rome", "omer"));
+
+    9) Write a JavaScript function that reverse a number.
+
+            function reverseNumber(num){
+
+                let holder = [];
+                let rem = 0;
+
+                while (num !== 0){
+
+                    rem = num % 10;
+                    num = Math.floor(num /= 10);
+                    holder.push(rem);
+
+                }
+
+                return Number(String(holder).replace(/,/g, ''));
+
+                
+            }
+            console.log(reverseNumber(32243));
+
+    10) Binary Search 
+
+        //binary search 
+        // 1 2 3 4 5 6 7
+
+        function binarySearch(searchedArray,searchedValue) {
+
+            let middleIndex = Math.floor((searchedArray.length - 1) / 2);
+            let middleValue = searchedArray[middleIndex];
+            let minRange = 0;
+            let maxRange = searchedArray[searchedArray.length - 1];
+
+                for(let i = 0; i < Math.ceil(searchedArray.length / 2); i++){
+
+                    if(middleValue === searchedValue){
+
+                        return ( `found at index ${searchedArray.indexOf(middleValue)}`);
+                    }
+
+                    else if(searchedValue < middleValue){
+
+                        maxRange = searchedArray.indexOf(middleValue);
+                        middleValue = searchedArray[Math.floor((maxRange + minRange) / 2)];
+
+                    }
+
+                    else {
+
+                        minRange = searchedArray.indexOf(middleValue);
+                        middleValue = searchedArray[Math.floor((maxRange + minRange) / 2)];
+                    }
+                }
+
+                return `not found`;
+
+                
+            }
+
+
+        console.log(binarySearch([1,2,3,4,5], 6));
+
+    11) 
+
+Freecode camp certification problems js
+
+        Palindrome checker (Special)
+                function palindrome(str) {
+                    //checks palindrome
+                    let palChecker = (arr) => {
+
+                        let verd = true;
+
+                        for(let i = 0; i < arr.length; i++){
+
+                            if(arr[i] !== arr.reverse()[i]){
+
+                                verd = false;
+                                break;
+                            }
+
+                        }
+
+                        return verd;
+
+
+                    }
+
+                    //converts string to array
+                    let strArray = [...str.toLowerCase().split(/[`\s!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/).join("")];
+                    return palChecker(strArray);
+
+
+                    }
+
+                    palindrome("eye");
+                    console.log(palindrome("0_0 (: /-\ :) 0-0"));
+
+        Roman 
+
+                //roman converter 
+
+                let roman = {
+
+                    1 : "I",
+                    4 : "IV",
+                    5 :  "V" ,
+                    9 :  "IX",
+                    10: "X",
+                    40 : "XL",
+                    50 : "L",
+                    90 : "XC",
+                    100 : "C",
+                    400 :  "CD",
+                    500 : "D" ,
+                    900 : "CM",
+                    1000 : "M" 
+                }
+
+                let romanArray = [1,4,5,9,10,40,50,90,100,400,500,900,1000];
+
+                //return the nearest roman value
+
+                let romeChecker = (num) =>{
+
+                    for(let i = 0; i < romanArray.length; i++){
+
+
+                            if(num < romanArray[i]){
+
+                                num = romanArray[i - 1];
+                                break;
+                            }
+
+                            else if(num > romanArray[i] && i === (romanArray.length - 1)){
+
+                                return romanArray[i];
+                            }
+
+
+
+                    
+                    }
+
+                    return num;
+                }
+
+                function romanConverter(num){ 
+
+                    if(roman[num]){
+
+                        return roman[num];
+                    }
+
+                    else{
+
+                        let difference = 0;
+                        let verdict = '';
+
+                        while(num !== 0){
+
+                            difference = num - romeChecker(num);
+                            verdict = verdict + roman[romeChecker(num)];
+                            num = difference;
+
+
+                        }
+
+                        return verdict;
+
+                    }
+
+                
+                }
+
+                console.log(romanConverter(1004));
+
+        Us Phone number checker 
+
+            regex
+            (1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})
+
+        cash register 
+
+                function checkCashRegister(price, cash, cid) {
+                let difference = cash - price;
+                const originalDiff = difference;
+                var objectReturn = {
+                status: '',
+                change: []
+                }
+            
+            let arrCurrency = [
+                ["ONE HUNDRED", 100], 
+                ["TWENTY", 20], 
+                ["TEN", 10], 
+                ["FIVE", 5], 
+                ["ONE", 1], 
+                ["QUARTER", 0.25],
+                ["DIME", 0.1],
+                ["NICKEL", 0.05],
+                ["PENNY", 0.01]
+                ]
+            
+            cid.reverse();
+            
+                var cidSum = 0;
+                for(let i = 0; i<cid.length; i++){
+                cidSum += cid[i][1];
+                }
+            
+                var result = [...arrCurrency];
+            
+                for(let i = 0; i<arrCurrency.length; i++){
+                let returnMoney = 0; 
+                let bill = cid[i][1]/arrCurrency[i][1]
+                    bill.toFixed(2);
+                    while(difference.toFixed(2)>=arrCurrency[i][1] && bill>=1){
+                    difference -= arrCurrency[i][1];
+                    returnMoney += arrCurrency[i][1];
+                    bill--;
+            
+                    }
+                    if(returnMoney>0){
+                        if(returnMoney - Math.floor(returnMoney) !== 0){result[i][1]= returnMoney.toFixed(2)
+                        result[i][1] = parseFloat(result[i][1])}else{
+                        result[i][1]= returnMoney;
+                        }
+            
+                    }else{
+                        result[i][1]= returnMoney;
+                    }
+                }
+            
+                let sumResult = 0;
+            
+                for(let i = 0; i<cid.length; i++){
+                sumResult += result[i][1];
+                }
+                sumResult = sumResult.toFixed(2);
+            
+                if(cidSum < originalDiff || sumResult < originalDiff){
+                objectReturn.status = 'INSUFFICIENT_FUNDS';
+                }else if(cidSum == originalDiff){
+                    objectReturn.status = 'CLOSED';
+                    objectReturn.change = cid.reverse()
+                }else{
+                    let resultFiltered =[];
+                    for(let a = 0; a<result.length; a++){
+                    if(result[a][1]!==0){
+                        resultFiltered.push(result[a]);  
+                    } 
+                    }
+                objectReturn.status = 'OPEN';
+                objectReturn.change = resultFiltered;
+                }    
+                return objectReturn;
+            }
+  
+
+ 
+
+
+

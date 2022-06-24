@@ -1,0 +1,347 @@
+
+Tutorial #1 : "Everything in JS, is an Object"
+
+    - Objects in JS are quite like objects in real life
+    - They have properties and things they can do(methods)
+
+Tutorial #2 : "Object Literals"
+
+        var userOne = {
+
+        email : "sami@gmail.com",
+        name : "sami",
+
+        login(){
+
+            console.log(`${this.email} has logged in`);
+        },
+
+        logout(){
+
+            console.log(`${this.email} has logged out`);
+        }
+
+
+        };
+
+    console.log(userOne.name);
+    userOne.login();
+    userOne.logout();
+
+Tutorial #3 : "Updating Properties"
+
+
+            var userOne = {
+
+                    email : "sami@gmail.com",
+                    name : "sami",
+
+                    login(){
+
+                        console.log(`${this.email} has logged in`);
+                    },
+                    
+                    logout(){
+
+                        console.log(`${this.email} has logged out`);
+                    }
+
+
+             };
+
+            //update properties
+            userOne.name = "hi";
+            console.log(userOne);
+
+            //add methods
+            userOne.age = 23;
+            console.log(userOne);
+
+Tutorial #4 : "Classes"
+
+    - Classes are like blueprints
+        Example - car class - red car 
+                            - blue car
+                            - green car 
+
+        Class Car {
+
+        }
+
+Tutorial #5 : "Class Constructors"
+
+        Constructor function - is the function that constructs our class 
+
+        class User{
+
+            constructor(email, name){
+
+                this.email = email;
+                this.name = name;
+
+
+            }
+        }
+
+        var userOne = new User('sami@gmail.com', "sami");
+        var userTwo = new User('sisum@gmail.com', "sisum");
+
+        console.log(userOne);
+        console.log(userTwo);
+
+        // the "new" key word 
+        // - creates a new empty object {}
+        // - sets the value of 'this' to be the new empty object
+        // - calls the constructor method 
+
+Tutorial #6 : "Class Methods"
+
+        class User{
+
+            constructor(email, name){
+
+                this.email = email;
+                this.name = name;
+
+            }
+
+            login(){
+
+                console.log(`${this.email} has logged in`);
+            }
+
+            logout(){
+
+                console.log(`${this.email} has logged out`);
+            }
+        }
+
+        var userOne = new User('sami@gmail.com', "sami");
+        var userTwo = new User('sisum@gmail.com', "sisum");
+
+        userOne.login();
+        userTwo.logout();
+
+Tutorial #7 : "Method Chaining" 
+
+
+        - is the process of chaining methods within a created Object
+        - the secret here is to return the "this" keyword in the method we want to chain in the class 
+
+            class User{
+
+                constructor(email, name){
+
+                    this.email = email;
+                    this.name = name;
+                    this.score = 0;
+
+                }
+
+                login(){
+
+                    console.log(`${this.email} has logged in`);
+                    return this;
+                }
+
+                logout(){
+
+                    console.log(`${this.email} has logged out`);
+                    return this;
+                }
+
+                updateScore(){
+
+                    this.score++;
+                    console.log(`${this.email} score is now ${this.score} `);
+                    return this; 
+                }
+
+
+                }
+
+            var userOne = new User('sami@gmail.com', "sami");
+            var userTwo = new User('sisum@gmail.com', "sisum");
+
+            userOne.updateScore().updateScore().login().logout();
+
+Tutorial #8 : "Class inheritance"
+
+        class User{
+
+                constructor(email, name){
+
+                    this.email = email;
+                    this.name = name;
+                    this.score = 0;
+
+                }
+
+                login(){
+
+                    console.log(`${this.email} has logged in`);
+                    return this;
+                }
+
+                logout(){
+
+                    console.log(`${this.email} has logged out`);
+                    return this;
+                }
+
+                updateScore(){
+
+                    this.score++;
+                    console.log(`${this.email} score is now ${this.score} `);
+                    return this; 
+                }
+
+        }
+
+
+            class Admin extends User{
+
+                constructor(email, name, userName){
+
+                    super(email, name);
+
+                    this.userName = userName;
+                }
+
+            }
+
+            var userOne = new User('sami@gmail.com', "sami");
+            var userTwo = new User('sisum@gmail.com', "sisum");
+            var adminOne = new Admin("admin@gmail.com","admin", "userAdmin");
+
+            adminOne.logout();
+
+Tutorial #9 : "Constructors (under the hood)
+
+        Constructors are basically functions under the hood 
+
+        function User(email, name){
+
+            this.email = email;
+            this.name = name;
+            this.online = false;
+            this.login = function(){
+
+                console.log(this.email , 'has logged in');
+            }
+        }
+
+        var userOne = new User("sami@gmail.com", "sami");
+        console.log(userOne);
+
+Tutorial #10 : "Prototype"
+
+    Prototype - is like a map for that object type 
+              - define the methods inside this and they will be accessible for others 
+              - all this happens in the background if we were using class instead of function 
+
+        function User(email, name){
+
+            this.email = email;
+            this.name = name;
+            this.online = false;
+
+        }
+
+        User.prototype.login = function(){
+
+            this.online = true;
+            console.log(this.email , 'has logged in');
+            
+        }
+
+        User.prototype.logout = function(){
+
+            this.online = false;
+            console.log(this.email , 'has logged out');
+            
+        }
+
+        var userOne = new User("sami@gmail.com", "sami");
+
+        console.log(userOne);
+        userOne.login();
+
+Tutorial #11 : "Prototype Inheritence"
+
+
+        function User(email, name){
+
+            this.email = email;
+            this.name = name;
+            this.online = false;
+
+        }
+
+        User.prototype.login = function(){
+
+            this.online = true;
+            console.log(this.email , 'has logged in');
+            
+        }
+
+        User.prototype.logout = function(){
+
+            this.online = false;
+            console.log(this.email , 'has logged out');
+            
+        }
+
+
+        function Admin(...args){
+
+            //this is refering to the new object admin 
+            //User.apply(this, [email, name]);  this means create a new object and pass the arguments 
+            User.apply(this, args);
+            this.role = "super admin"; //create your own attribute for admin 
+
+        }
+
+        //inherit the prototype from user
+        Admin.prototype = Object.create(User.prototype)
+
+        //create your own prototype
+        Admin.prototype.deleteUser = function(u){
+
+            users = users.filter(user =>{
+
+                return user.email != u.email;
+
+            })
+
+
+
+        }
+
+        var userOne = new User("sami@gmail.com", "sami");
+        var admin = new Admin("sami@gmal.com", "sami");
+
+        var users = [userOne, admin];
+
+        console.log(admin);
+        admin.login();
+        console.log(users);
+        admin.deleteUser(userOne);
+        console.log(users);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,26 @@
+[
+
+    {
+        "firstName" : "samuel",
+        "lastName" : "arefeaynie",
+        "email" : "samuelarefeaynie2gmail.com",
+        "age" : 24
+
+    },
+
+    {
+        "firstName" : "franco",
+        "lastName" : "deluta",
+        "email" : "franco2@gmail.com",
+        "age" : 21
+
+    },
+
+    {
+        "firstName" : "cracken",
+        "lastName" : "the",
+        "email" : "cracken2@gmail.com",
+        "age" : 34
+
+    }
+]

@@ -1,0 +1,633 @@
+Tutorial #1 - Introduction
+
+    - What you need to know 
+        - Html
+        - JavaScript
+        - CSS
+
+    - What we will cover (Ninja bus not silabus lol)
+        - What jQuery is and how we use it
+        - jQuery & the DOM using CSS selectors
+        - Adding, removing and changing HTML 
+        - jQuery event handling
+        - Animating your page with jQuery 
+        - Examples & plugins
+
+Tutorial #2 - What is jQuery 
+
+        - is
+            - MASSIVE 
+            - FREE 
+            - OPEN SOURCE
+            - JAVASCRIPT LIBRARY
+
+        - is not 
+            - A PROGRAMMING LANGUGAGE BUT A JS LIBRARY
+
+        - Benefits of jquery
+
+            - Makes working with the DOM easier
+            - Makes animations easier
+            - Makes event handling easier
+            - Makes AJAX really simple 
+            - Plus loads more 
+
+        - has a cool feature called 
+
+            - Chaining
+
+                - applying different methods to an element in one line 
+                - code is less verbose
+                - things get written quicker
+
+        - has Plugins Galore
+
+            - has lots of plugins like 
+                - image slider plugins
+                - Form enhancement plugins 
+                - plus tonnes more..
+
+Tutorial #3 - How to use jQuery
+
+        - first download jquery from jquery.com/download 
+        - 2 versions 
+            - the uncompressed is for development 
+            - the compressed is for live production, meaning for a website put live
+        - when adding script of jquery in our html, make sure to put the jquery file script first in the script tag then other js scripts 
+        - to check if the jquery has loaded 
+
+                - in our other js file 
+
+                    $(document).ready(function(){
+
+                        alert("jquery loaded");
+                    })
+
+                - note, if you see $ it's most probably jquery code 
+
+Tutorial #4 - jQuery Statements & the '$' sign
+
+
+        - jQuery Statements 
+            - pretty much every jQuery statement starts start with a $ sign (or the jQuery keyword)
+
+            Example 
+
+                - in normal vanilla js 
+                        document.getElementById("main-heading");
+
+                - in jquery 
+                        $("#main-heading");
+
+        - so to use jquery to select an element we use 
+
+            $("#someID"); // this will put the element or wrap the element as an object, that way we have access to different functionality 
+
+        - we can put it to a variable 
+
+            var selected = $("#someID");
+
+            console.log(selected); // [ <some-tag id = "someID"> </some-tag>]
+            selected.we have lots of access here
+
+        - we can unwrap it by selecting the index 
+
+            selected[0];
+
+Tutorial #5 - jQuery Selectors 
+
+            - jQuery selectors select by using the method of css selectors 
+
+                //element selectors 
+
+                    $("h3").css({border: "3px solid blue"});
+
+                //class selectors
+
+                    $(".wrapper").css({border : "3px solid red"});
+
+                // id selectors 
+
+                    $("#clients").css({border : "3px solid yellow"});
+
+Tutorial #6 - jQuery Filters 
+
+    - Filters always start with colons :, just like pseudo-classes in css 
+
+        // first and last 
+
+                $("header nav li:first").css({border : "2px solid red"});
+                $("header nav li:last").css({border : "2px solid red"});
+
+        // first-child and last-child // this means a ul that is the first child of the contact tag
+
+                $("#contact ul:first-child").css({border: "2px solid red"});
+                $("#contact ul:last-child").css({border: "2px solid red"});
+
+        //even and odd
+                $("header nav li:even").css({border: "2px solid blue"});
+                $("header nav li:odd").css({border: "2px solid blue"});
+
+        // not 
+                $("section:not('#contact')").css({border : "2px solid green"});
+
+        //less than and greated than
+                $("#social-nav li:lt(3)").css({border: "2px solid blue"});
+                $("#social-nav li:gt(2)").css({border: "2px solid blue"});
+
+        //attribute filters
+                $("div[class]").css({border: "2px solid pink"}); //select all divs with class
+               //this can be any attribute and element like img[alt]
+
+        // attribute with specific value 
+
+                $("img[alt =quote").css({border : "2px solid purple"});
+                // this means select all image tags with an alt attribute equal to "quote"
+
+Tutorial #7 - Traversing the DOM with jQuery
+
+    The DOM in JS
+        - The Document object model is a way to describe the relationship between elements 
+          on a page, and gives us a way to traverse them.
+
+         
+        //next, selects the element directly after this element
+            $("#contact-methods").next().css({border:"3px solid red"});
+
+        //prev, selects the element directly before this element
+            $("#social-nav").prev().css({border:"3px solid red"});
+
+        //parent, means select the parent, and if it's plural, parents then it will select all the parents of an element(ancestors)
+            $(".banner-title").parent().css({border:"3px solid pink"});
+
+        //children, means selecting all the children of the element 
+            $("#social-nav").children().css({border:"3px solid green"});
+
+        //find, finds an element with an attribute inside the find(), in our case a class of facebook, and find method is faster than others
+            $("#contact").find(".facebook").css({border:"3px solid purple"});
+
+        //closest, means goes up the dom and gets the closest item from this element with the class of specified inside closest(), it checks the parents of the elements
+            $("#social-nav").closest(".wrapper").css({border:"3px solid orange"});
+
+Tutorial #8 - jQuery Chaining
+
+    Chaining - speeds up production
+             - ability to chain together multiple functions or methods in one line
+             - make it readable by endlining each different section 
+
+    Example 
+            
+        //not readable 
+            $("#contact-methods").css({border: "2px solid red"}).next().css({border:"2px solid green"}).closest("section").css({border:"2px solid blue"});
+
+        //readable
+            $("#contact-methods").css({border: "2px solid red"})
+            .next().css({border:"2px solid green"})
+            .closest("section").css({border:"2px solid blue"});
+
+Tutorial #9 - Adding Content using jQuery 
+
+        Let's see this concept with example 
+            var tweet = "<div style = 'margin:20px 0; padding:10px;background:#eee'> The big fight live: Ham vs Cheese!</div>"
+
+                //Adding and Changing content 
+
+                    //.append() adds content to bottom of the element 
+                        $("#tweets div").append(tweet);
+
+                    //.prepend() adds content to top of element
+                        $("#tweets div").prepend(tweet);
+
+                    //.before() adds content before element
+                        $("#tweets div p").before(tweet);
+
+                    //.after() adds content after element
+                        $("#tweets div p").after(tweet);
+
+                    //.html() changes the whole html of the element
+                        $("#tweets div").html(tweet);
+
+                    //.text() changes the text of an element
+                        $("#tweets div p").text(tweet);
+
+Tutorial #10 - Wrap and Unwrap Elements 
+
+    Wrapped - refers to it is surrounded by a parent element 
+
+    Why would we want to do that? 
+
+        - there could be cases we need 
+        - like if we want a button to be disabled until a certain condition is fulfilled 
+
+        Examples 
+
+            //wrap() - wraps all matched elements individually, we specify what tag inside the () but don't forget it is only an opening tag
+                $("section").wrap("<div>");
+
+            //unwrap() - unwraps all matched elements, we don't need to specify what tag inside the bracket
+                $("section").unwrap();
+
+            // wrapAll() - elements combined with 1 single element on the whole
+                $("section").wrapAll("<div>");
+
+            var wrapper = "<div class = 'wrapper'>";
+            var button = $(".button"); //remember to unwrap
+            var wrapped = true;
+
+            button[0].onclick = function () {
+
+                if(wrapped){
+
+                    $("section").unwrap();
+                    wrapped = false;
+                    // button[0].innerText = "Wrap";// vanilla js
+                    button.text = "Wrap"; //jQuery
+
+                }
+
+                else{
+
+                    $("section").wrapAll(wrapper);
+                    wrapped = true;
+                    // button[0].innerText = "Unwrap";//vanilla js
+                    button.text = "Unwrap"; //jQuery
+
+                }
+
+            };
+
+Tutorial #11 - Removing Content 
+
+    //.empty() - empties the innerHTML of an element
+        $(".button").empty();
+
+    //.remove() - removes the element completely
+        $(".button").remove();
+
+Tutorial #12 - Changing Attributes
+
+        - various uses including to view different image sources in an image carousel
+
+        Examples
+
+            //.removeAttr() - removes an attribute completely
+                $("img[alt = map]").removeAttr("alt");
+
+            //.attr() - can read or set any attribute, takes two values the attribute name and the value
+                $("img[alt = map]").attr("alt", "location");//setting the value
+                console.log($("img[alt = map]").attr("alt"));//returning the value
+
+Tutorial #13 - Controlling CSS
+
+        //check css value of an element 
+            console.log($("#social-nav").css("position")); 
+
+        //change css value of an element
+            $("#social-nav").css("top", "-200px").css("left", "100px"); 
+
+        //more readable in an object form
+
+            $("#social-nav").css({
+            
+                "top":"-200px",
+                "left": "100px",
+                "opacity" : "0.5"
+
+            }); 
+
+Tutorial #14 - Adding & Removing Classes 
+
+        // removeClass() - removes a class from the mathced elmenent(s)
+            $("header .wrapper").removeClass("wrapper");
+
+        // addClass() - adds a class to the matched element(s)
+            $("header div:first").addClass("wrapper");
+            $("header > div").addClass("wrapper"); // > means direct descendant
+
+        // toggleClass - toggles the class on and off on their matched element(s)
+            var button = $("#lead-banner a");
+            button[0].onclick = function () { 
+
+                $("#points-of-sale").toggleClass("open");
+                return false;
+            }
+
+Tutorial #15 - Binding & Unbinding Events
+
+        
+        // on() - binds an event to matched element (s)
+
+        // off() - unbinds event from matched element (s)
+
+        var myLis = $("#points-of-sale li");
+
+        myLis.on("click", function () {
+
+            $(this).css({"background" : "pink"});
+            myLis.off("click");//specify what event to bind
+
+        });
+
+Tutorial #16 - Event Helpers 
+
+    Event helpers are syntaxes that make our life easier, by using the event name instead of off 
+
+    //instead of .on("click", function), we used .click(function) - these help very much 
+    $("#lead-banner").click(function(){
+
+        alert("you clicked me");
+        $("#lead-banner").off("click"); //unbind
+
+    })
+
+Tutorial #17 - Document Ready vs Window Load 
+
+            Document Ready 
+
+             - refers to waiting until the DOM is loaded then applying functions or event bindings
+
+                //means when the DOM is ready or has loaded, fire anything
+                    $(document).on("ready", function () { 
+
+                    })
+
+                // simpler 
+                    $(document).ready(function () { 
+
+                    })
+
+                //simplest 
+                    $(function () {
+
+                    })
+                
+            Window Load 
+
+             - refers to waiting until the whole website is loaded (DOM, css, images....)
+
+                // this means when the whole website has loaded, DOM, images, css 
+                    $(window).on("load", function(){
+
+
+                    })
+
+                //simpler 
+                    $(window).load(function(){
+
+
+                    })
+
+Tutorial #18 - The Event Object in jQuery
+
+        $(document).ready(function () {
+
+            $("*").on("click", function(event) {
+
+                console.log(event.target);
+                console.log(event.type);
+                console.log(event.pageX);
+                console.log(event.pageY);
+                console.log(event.offsetX);
+                event.stopPropagation();// to stop event bubbling
+
+
+            });
+        });
+
+Tutorial #19 - Animations in jQuery 
+
+            when it is css 
+
+                $(document).ready(function () {
+
+                    $("section > h2").on("click", function(){
+
+                        $(this).css({"width": "500px", "height": "100px"});
+
+                    })
+                })
+
+            when it is animate - we just change the css into animate 
+
+                $(document).ready(function () {
+
+                    function completed () {
+
+                        alert("Animation complete")
+                    }
+
+                    $("section > h2").on("click", function(){
+
+                        //anything with a numerical value, we can animate
+                        //first parameter of animate is for properties, the next is duration, next is the animation style (swing or linear), the fourth parameter is a function after animation completion 
+                        $(this).animate({"width": "500px", "height": "100px"}, 1000, "linear", completed);
+
+                    })
+                })
+
+Tutorial #20 - Fading Elements in & out
+   
+        //fade in 
+            $(document).ready(function () {
+
+                $("section > h2").on("click", function(){
+
+                    $(this).fadeIn();
+
+                })
+            })
+
+        // fade out - fades the whole content out(makes it transparent), it removes the element so that other elements can shift up
+            $(document).ready(function () {
+
+                $("section > h2").on("click", function(){
+
+                    $(this).fadeOut();
+
+                })
+            })
+
+        //chaining fadein and fade out
+            $(document).ready(function () {
+
+                $("section > h2").on("click", function(){
+
+                    //can specify the speed
+                    $(this).fadeOut(2000).fadeIn(500);
+
+                })
+            })
+
+        //fade to 
+            $(document).ready(function () {
+
+                $("section > h2").on("click", function(){
+
+                    //specify the time and the amount of opacity
+                    $(this).fadeTo(1000, 0.2);
+
+                })
+            })
+
+Tutorial #21 - Show, Hide & Toggle 
+
+        
+        //hide() and show()
+
+            $(document).ready(function () {
+
+                $("section > h2").on("click", function(){
+
+                    
+                    //can specify the length
+                    $(this).hide(2000).show(2000);
+
+                })
+            })
+
+        //toggle()
+
+            $(document).ready(function () {
+
+                $("img[alt=map").on("click", function(){
+
+                    
+                    //can specify the length
+                    // if it was hidden it brings it else it hides it
+                    $("section > h2").toggle(2000);
+
+                })
+            })
+
+Tutorial #22 - Sliding Elements 
+
+        // slide up
+            $(document).ready(function () {
+
+                $(".slide-button-up").on("click", function(){
+
+                    //can pass speed or duration
+                    $("#lead-banner").slideUp();
+
+
+                })
+            })
+
+        //slide down
+            $(document).ready(function () {
+
+                $(".slide-button-down").on("click", function(){
+
+                    $("#lead-banner").slideDown();
+
+
+                })
+            })
+
+        //slide toggle
+
+            $(document).ready(function () {
+
+                $(".slide-button-down").on("click", function(){
+
+                    $("#lead-banner").slideToggle();
+
+
+                })
+            })
+
+Tutorial #23 - Fading Animation Example 
+
+    remember that animations can take call back functions
+    $(document).ready(function () {
+
+
+        var blockQuotes = $("blockquote");
+        var currentQuote = 0;
+
+
+        function changeQUote () {
+
+            $(blockQuotes[currentQuote]).fadeOut(1000,awaitingFade );
+
+
+            function awaitingFade() {
+
+                if(currentQuote == blockQuotes.length - 1){
+
+                    currentQuote = 0;
+                }
+                else{
+        
+                    currentQuote++;
+                }
+
+             $(blockQuotes[currentQuote]).fadeIn(1000);
+            }
+
+        }
+
+      var quoteTimer = setInterval(changeQUote, 5000);
+    })
+
+Tutorial #24 - Animation Example 2 : Click to Expand 
+
+            $(document).ready(function () {
+
+                $("#points-of-sale li").on("click", function () {
+
+                    $(this).find("p").slideToggle(500);
+
+                })
+            })
+
+Tutorial #25 - Using Plugins
+
+    - most plugin websites have step by step guides 
+    - to use a plugin we download the file
+    - then put the .min.js file inside our code folder
+    - then we add it in our html file after the jquery but before our js file 
+    - then we add the following code to our js file
+
+        $(document).ready(function () {
+
+            $(".rslides").responsiveSlides();
+
+        }) 
+
+Tutorial #26 - What Next?
+
+        jQUery UI 
+
+         - Helps us to easily make improvements to user interactions, great for desktop and mobile apps and websites
+
+            - Datepickers
+            - Draggable elements 
+            - Sortable elements 
+            - Loads more 
+
+        jQuery Projects 
+
+            - Experiment with jQuery to create ne cool interactivity on your web page .
+
+                - sliders 
+                - tooltips
+                - expandable lists 
+                - image galleries
+
+        jQuery with AJAX ( Asynchronous Javascript and XML)
+
+            - communicate ith a server and load data into a page without refreshing 
+
+              Example
+                - google maps 
+                - traffic updates 
+
+        jQuery Plugins 
+
+            - Other great plugins available 
+            - Ho to create your own plugins for jQuery 
+
+
+
+

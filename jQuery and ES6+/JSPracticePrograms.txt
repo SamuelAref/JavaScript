@@ -1,0 +1,435 @@
+Stop watch
+
+
+    let timer = document.getElementById("timeDisplay");
+    let start = document.getElementById("start");
+    let pause = document.getElementById("pause");
+    let reset = document.getElementById("reset");
+
+    let hour = 0;
+    let minute = 0;
+    let second = 0;
+
+    start.addEventListener("click", beginTimer);
+
+    function beginTimer(){
+
+        let timerSet = setInterval(counter, 0.0001);
+
+        function counter(){
+
+            //display 2 0's
+            if(hour < 10 && minute < 10 && second < 10){
+
+                timer.textContent = `0${hour}:0${minute}:0${second}`;
+                second++;
+
+            }
+
+            else if (hour < 10 && minute < 10 ){
+
+                timer.textContent = `0${hour}:0${minute}:${second}`;
+                second++;
+
+            }
+
+            else if (hour < 10){
+
+                timer.textContent = `0${hour}:${minute}:${second}`;
+                second++;
+            }
+
+            else{
+
+                timer.textContent = `${hour}:${minute}:${second}`;
+                second++;
+
+            }
+
+            //check counting up to minute or hour
+            if(second == 60){
+
+                minute++;
+                second = 0;
+            }
+
+            if(minute == 60){
+
+                hour++;
+                minute = 0;
+            }
+
+            
+        }
+
+    reset.addEventListener("click", resetTimer);
+
+        function resetTimer(){
+
+            clearInterval(timerSet);
+            hour = 0;
+            minute = 0;
+            second = 0;
+            timer.textContent = `0${hour}:0${minute}:0${second}`;
+        }
+
+    pause.addEventListener("click", pauseTimer);
+
+        function pauseTimer(){
+
+            clearInterval(timerSet);
+
+        }
+
+    }
+
+Rock paper scissor
+
+    let player = document.getElementById("player");
+    let computer = document.getElementById("computer");
+    let output = document.getElementById("output");
+    let rockButton = document.getElementById("rock");
+    let paperButton = document.getElementById("paper");
+    let scissorsButton = document.getElementById("scissors");
+
+    let arrayRockPaperScissors = ["rock", "paper", "scissors"];
+
+    rockButton.addEventListener("click", rockHandler);
+    paperButton.addEventListener("click", paperHandler);
+    scissorsButton.addEventListener("click", scissorsHandler);
+
+    function rockHandler(){
+
+            let randomNum = Math.floor(Math.random() * 3);
+
+            player.textContent = `player : ${rockButton.id}`;
+            computer.textContent = `computer: ${arrayRockPaperScissors[randomNum]}`;
+
+            if(arrayRockPaperScissors[randomNum] == rockButton.id){
+
+                // console.log('hi');
+                output.textContent = "Tie";
+            }
+
+            else if (arrayRockPaperScissors[randomNum] == paperButton.id){
+
+                output.textContent = "You lose"
+            }
+
+            else{
+
+                output.textContent = "you win";
+            }
+
+    }
+
+    function paperHandler(){
+
+        let randomNum = Math.floor(Math.random() * 3);
+
+        player.textContent = `player : ${paperButton.id}`;
+        computer.textContent = `computer: ${arrayRockPaperScissors[randomNum]}`;
+
+        if(arrayRockPaperScissors[randomNum] == paperButton.id){
+
+            // console.log('hi');
+            output.textContent = "Tie";
+        }
+
+        else if (arrayRockPaperScissors[randomNum] == scissorsButton.id){
+
+            output.textContent = "You lose"
+        }
+
+        else{
+
+            output.textContent = "you win";
+        }
+
+    }
+
+    function scissorsHandler(){
+
+        let randomNum = Math.floor(Math.random() * 3);
+
+        player.textContent = `player : ${scissorsButton.id}`;
+        computer.textContent = `computer: ${arrayRockPaperScissors[randomNum]}`;
+
+        if(arrayRockPaperScissors[randomNum] == scissorsButton.id){
+
+            // console.log('hi');
+            output.textContent = "Tie";
+        }
+
+        else if (arrayRockPaperScissors[randomNum] == rockButton.id){
+
+            output.textContent = "You lose"
+        }
+
+        else{
+
+            output.textContent = "you win";
+        }
+
+    }
+
+Tic Tac Toe
+
+     
+    let boardContainer = document.getElementById("boardContainer");
+    let box = document.getElementsByClassName("box");
+    let player = document.getElementById("playerTurn");
+    let output = document.getElementById("output");
+    let restartButton = document.getElementById("restartButton");
+
+
+    let player1 = window.prompt("player One choose X or O");
+    let player2 = " ";
+    let boxArray = [];
+    let turnCounter = 1;
+
+    //x or o checker
+    if(player1.toUpperCase() == "X"){
+
+        console.log(player1);
+        player2 = "O";
+        window.alert("player Two you are " + player2);
+    }
+
+    else{
+
+        console.log(player1);
+        player2 = "X";
+        window.alert("player Two you are " + player2);
+
+    }
+
+    //give to array
+    for(let i = 0; i < box.length; i++){
+
+        boxArray.push(box[i]);
+        box[i].addEventListener("click", handleClick);
+    }
+
+
+
+    //clicked
+    function handleClick(){
+
+        if(turnCounter == 1){
+
+            this.textContent = player1.toUpperCase();
+            player.textContent = "Player : 2";
+            checkWin(boxArray, turnCounter);
+            turnCounter++;
+
+        }
+
+        else{
+
+            this.textContent = player2.toUpperCase();
+            player.textContent = "Player : 1";
+            checkWin(boxArray, turnCounter);
+            turnCounter--;
+
+        }
+
+
+    }
+
+
+    //win check
+    function checkWin(givenArray, turn){
+
+        if(givenArray[0].textContent == givenArray[1].textContent && givenArray[1].textContent == givenArray[2].textContent ){
+
+            output.textContent = `player ${turn} wins`;
+        }
+
+        else if(givenArray[3].textContent == givenArray[4].textContent && givenArray[4].textContent == givenArray[5].textContent){
+
+            output.textContent = `player ${turn} wins`;
+
+        }
+
+        else if(givenArray[6].textContent == givenArray[7].textContent && givenArray[7].textContent == givenArray[8].textContent){
+
+            output.textContent = `player ${turn} wins`;
+
+        }
+
+        else if(givenArray[0].textContent == givenArray[3].textContent && givenArray[3].textContent == givenArray[6].textContent){
+
+            output.textContent = `player ${turn} wins`;
+
+        }
+
+        else if(givenArray[1].textContent == givenArray[4].textContent && givenArray[4].textContent == givenArray[7].textContent){
+
+            output.textContent = `player ${turn} wins`;
+
+        }
+
+        else if(givenArray[2].textContent == givenArray[5].textContent && givenArray[5].textContent == givenArray[8].textContent){
+
+            output.textContent = `player ${turn} wins`;
+
+        }
+
+        else if(givenArray[0].textContent == givenArray[4].textContent && givenArray[4].textContent == givenArray[8].textContent){
+
+            output.textContent = `player ${turn} wins`;
+
+        }
+
+        else if(givenArray[2].textContent == givenArray[4].textContent && givenArray[4].textContent == givenArray[6].textContent){
+
+            output.textContent = `player ${turn} wins`;
+
+        }
+
+    }
+
+
+    //restartButton 
+    restartButton.addEventListener("click", handleRestart);
+
+    function handleRestart(){
+
+        window.location.reload();
+    }
+
+Snake Game
+
+Carousel 
+
+    html file
+
+            <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="style.css">
+            <title>Js Tutorial</title>
+        </head>
+        <body>
+
+
+            <div class="carouselContainer">
+
+                <div style="width: 50px; background: url(./image1.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;"  class="card"></div>
+                <div style="width: 50px; background: url(./image2.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;"  class="card"></div>
+                <div style="width : 1100px; background: url(./image3.jpg);background-position: center;background-repeat: no-repeat; background-size: cover;" class="card"></div>
+                <div style = "width: 50px; background: url(./image4.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;" class="card"></div>
+            
+            </div>
+
+            <button id = "leftButton">Left</button>
+            <button id = "rightButton">Right</button>
+
+            <script src="index.js"></script>
+        </body>
+        </html>
+
+    css file 
+
+        body{
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: #f6f6f6;
+            /* width: 90%; */
+        }
+        .carouselContainer{
+
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            /* border: 1px solid; */
+            height: 600px;
+            width: 1300px;
+        }
+
+        .card{
+
+            display:flex;
+            justify-content: center;
+            align-content: center;
+            width: 300px;
+            height: 80%;
+            /* border: 1px solid; */
+            position: relative;
+            transition: all 0.5s linear;
+        
+        }
+
+    js file
+
+        //carouselContainer
+        //.card
+        //.cardOne
+        //.cardTwo
+        //.cardThree
+
+        let container = document.getElementsByClassName("carouselContainer");
+        let card = document.getElementsByClassName("card");
+        let leftButton = document.getElementById("leftButton");
+        let rightButton = document.getElementById("rightButton");
+
+        leftButton.addEventListener("click", handleLeft);
+        rightButton.addEventListener("click", handleRight);
+
+        function checkFront(){
+
+            for(let i = 0; i <  card.length; i++){
+
+                if(card[i].style.width == `1100px` ){
+
+                    return card[i];
+                }
+            }
+        }
+
+        function handleLeft(){
+
+            checkFront().nextElementSibling.style.width = "1100px";
+            checkFront().style.width = "50px";
+
+        }
+
+        function handleRight(){
+
+            console.log(checkFront().previousElementSibling);
+            checkFront().previousElementSibling.style.width = "1100px";
+            checkFront().nextElementSibling.style.width = "50px";
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

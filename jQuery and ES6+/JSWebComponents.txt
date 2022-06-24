@@ -1,0 +1,258 @@
+What are Web Components
+
+    - Set of web platform API's that allow us to create custom, reusable and 
+      encapsulated html tags to use in web pages and web apps 
+
+    - Web components do not require any special 3rd party libraries or frameworks
+      but can certainly be used with them.
+
+Building Blocks of web components 
+
+    - there are 3 main building blocks 
+
+        - custom elements
+        - shadow DOM
+        - HTML Templates
+
+    A) Custom Elements
+
+        - Create custom HTML tags
+
+        - Create custom class
+
+            - syntax 
+
+                class AppDraer extends HTMLElement {...}
+                window.customElements.define('app-drawer', AppDrawer);
+
+                <app-drawer></app-drawer> // created our own tag 
+
+        - Lifecycle methods available
+
+                - constructor(): called when an instance of the element is created or upgraded 
+                - connectedCallback(): called everytime when the element is inserted into the DOM
+                - disconnectedCallback(): called everytime the element is removed from the DOM
+                - attributeChanged Callback(attributeName, oldValue, newValue): called when an attribute is added, removed , updated, or replaced.
+
+    B) What is Shadow DOM ?
+
+            - Used for self-contained components
+            - Encapsulate styles and markup
+            - Create ith element.attachShadow({mode : open})
+            - Creates a "shadowRoot" that we can reference and interact with 
+
+    C) HTML Templates 
+
+                - Define the encapsulated markup of our web component 
+                - Template tag stores markup on page 
+                - Include both HTML and CSS in templates 
+                - Use slots to add Custom text
+
+Creating custom element 
+
+    html file 
+
+     Example 1
+
+      <user-card></user-card>
+
+     Example 2
+
+      <user-card name = "sami" ></user-card>
+      
+    js file 
+
+        Example 1
+
+            class UserCard extends HTMLElement{
+
+                constructor(){
+
+                    super();
+
+                    this.innerHTML = `John Doe`;
+                }
+            }
+
+            window.customElements.define('user-card', UserCard);
+
+        Example 2
+
+            class UserCard extends HTMLElement{
+
+                constructor(){
+
+                    super();
+
+                    this.innerHTML = `${this.getAttribute('name')}`;
+                }
+            }
+
+            window.customElements.define('user-card', UserCard);
+
+Creating Shadow DOM for the created element 
+
+    html file 
+
+            <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="style.css">
+            <title>Js Tutorial</title>
+
+            <style>
+
+                h3{
+                    color: blue;
+                }
+
+            </style>
+        </head>
+        <body>
+
+
+            <user-card name = "sami" avatar = "https://randomuser.me/api/portraits/men/1.jpg">
+                
+                <div slot="email">johndoe@gmail.com</div>
+                <div slot="phone">+251938341891</div>
+
+            </user-card>
+            <user-card name = "wami" avatar = "https://randomuser.me/api/portraits/women/1.jpg">
+
+                
+                <div slot="email">janedoe@gmail.com</div>
+                <div slot="phone">+251925728110</div>
+
+            </user-card>
+        
+
+            <script src="index.js"></script>
+        </body>
+        </html>
+
+    js file 
+
+                const template = document.createElement('template');
+                template.innerHTML = `
+
+                    <style>
+
+                    .user-card {
+
+                        font-family : 'Arial', sans-serif;
+                        background: #f4f4f4;
+                        width: 500px;
+                        display : grid;
+                        grid-template-columns : 1fr 2fr;
+                        grid-gap: 10px
+                        margin-bottom: 15px;
+                        border-bottom: darkorchid 5px solid;
+                    }
+
+                    .user-card img{
+
+                        width: 100%;
+                    }
+
+                    .user-card button{
+
+                        cursor: pointer;
+                        background: darkorchid;
+                        color: #fff;
+                        border : 0;
+                        border-radius: 5px;
+                        padding : 5px 10px;
+                    }
+
+
+                    </style>
+
+                    <div class = "user-card">
+
+                        <img/>
+                        <div>
+
+                        <h3> </h3>
+
+                        <div class = "info">
+                            
+                            <p> <slot name = "email"/> </p>
+                            <p> <slot name = "phone" /> </p>
+
+                        </div>
+                        <button id = "toggle-info"> Hide info </button>
+
+                        </div>
+
+                    </div>
+
+                `
+                //use slot if you want to add a single thing in the inner html
+
+                class UserCard extends HTMLElement{
+
+                    constructor(){
+
+                        super();
+
+
+                        this.attachShadow({mode : 'open'});
+                        this.shadowRoot.appendChild(template.content.cloneNode(true));
+                        this.shadowRoot.querySelector('h3').innerText = this.getAttribute('name');
+                        this.shadowRoot.querySelector('img').src = this.getAttribute('avatar');
+
+                        this.showInfo = true;
+                    }
+
+                    toggleInfo(){
+
+                        this.showInfo = !this.showInfo;
+
+                        const info = this.shadowRoot.querySelector('.info');
+                        const toggleBtn = this.shadowRoot.querySelector('#toggle-info');
+
+
+                        if(this.showInfo){
+
+                            info.style.display = "block";
+                            toggleBtn.innerText = 'Hide Info';
+                            
+                        }
+
+                        else{
+
+                            info.style.display = "none";
+                            toggleBtn.innerText = 'Show Info';
+
+
+                        }
+                    }
+
+                    connectedCallback(){
+
+                        this.shadowRoot.querySelector('#toggle-info').addEventListener('click', () => this.toggleInfo());
+                    }
+
+                    disconnectedCallback(){
+
+                        this.shadowRoot.querySelector('#toggle-info').removeEventListener('click', () => this.toggleInfo());
+                    }
+                }
+
+                window.customElements.define('user-card', UserCard);
+
+
+
+
+
+
+
+
+
+
+
+
+

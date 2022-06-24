@@ -1,0 +1,2227 @@
+What is JavaScript?
+
+    - A web-based programming language
+    - used to 
+        - add interactive behaviour to webpages
+        - build web and mobile applications
+        - create command line tools
+        - develop games
+
+
+How to deploy and use JavaScript
+
+    - We need browser
+        - since js is a scripting language, we need a web browser, preferably chrome
+
+    - We need an editor
+        - Vscode
+
+    - We create html and css files
+        - These will assist in viewing our changes in the page 
+
+
+JavaScript Lessons  
+
+    1) Outputs and Comments
+
+        - Output 
+            - to output anything on the console
+            syntax - console.log('');
+                   - console.log("");
+                   - window.alert('');
+
+        - Comments
+            - to add your ideas that won't be run on the program 
+            syntax - // for single line Comments
+                   - /* for multiple line comments */
+
+    2) Variables 
+
+        - Stores data 
+        - Representation of data 
+        - Two steps to create variables 
+            1) Declaration (var,let, const)
+            2) Assignment (= assignment operator)
+
+        examples 
+            - Strings
+                let firstName = "Samuel";
+                
+            - numbers
+                let age = 21;
+
+            - booleans
+                let isStudent = true;
+
+    3) Arithmetic Expressions
+        - Are combination of operands and operators 
+
+            operands - values, variables 
+            operators - +,-,/,*,%
+
+        - Augmented assignment operator 
+
+            variable += 1;
+
+        - Operator Precedence 
+
+            Order of solving equations are :
+                1) parenthesis ()
+                2) exponents
+                3) multiplication and division
+                4) addition  and subtraction 
+
+        examples
+
+            let students = 29;
+
+            students = students + 1;
+            students = students - 1;
+            students = students * 1;
+            students = students / 1;
+            students = students % 1;
+
+            console.log(students);
+
+    4) Accepting User input
+
+        A) Easy way with a window prompt 
+
+            let username = window.prompt("What is your name");
+            console.log(username);
+
+        B) Difficult way with an HTML textbox
+
+            - so what we did here, is create an input in html and output that to the console
+
+                let username;
+                document.getElementById("myButton").onclick = function(){
+
+                username = document.getElementById("myText").value;
+                console.log(username);
+
+
+                }
+
+    5) Type conversion 
+
+        - convert data type from one data to another 
+
+            // to know that type of data type 
+
+                let a = 5;
+                console.log(typeof(a));
+
+
+            //convert something to number 
+
+                let b = "3.15";
+                let c = Number(b);
+                console.log(c);
+
+
+            // convert something to string
+
+                let d = 3.2;
+                let e = String(d);
+                console.log(e);
+
+
+            //convert something to boolean
+
+                let f = 3;
+                let g = 0;
+                let h = "hi";
+                let i = "";
+
+                let j = Boolean(i);
+                console.log(j);
+
+    6) Constants
+
+        - A variable that can't be changed
+
+        Example 
+
+            const PI = 3.14159;
+            let radius;
+            let circumference;
+
+            radius = window.prompt("Enter the radius of a circle");
+            radius = Number(radius);
+
+            circumference = 2 * PI * radius;
+
+            console.log(circumference);
+
+    7) Math
+
+        - These are some helpful math functions 
+
+            let x = 3.14;
+            let y = 5;
+            let z = 9;
+
+            let maximum;
+            let minimum;
+
+            x = Math.round(x);
+            x = Math.floor(x);
+            x = Math.ceil(x);
+            x = Math.pow(x, 2);
+            x = Math.sqrt(x);
+            x = Math.abs(x);
+            x = Math.PI;
+
+            let x = Math.floor(Math.random() * 5)+1; // between 1 and 5
+            console.log(x);
+
+            maximum = Math.max(x,y,z);
+            minimum = Math.min(x,y,z);
+
+            console.log(x);
+            console.log(maximum);
+            console.log(minimum);
+
+    8) String Properties and Methods
+
+        Basics
+
+            let userName = "Samuel Arefeaynie";
+
+            let nameLength = userName.length;
+            let firstLetter = userName.charAt(0);
+            let firstOccurence = userName.indexOf('A');
+            let lastOccurence = userName.lastIndexOf('e');
+            let trimmedSpaceAroundText = userName.trim();
+            let uppercaseName = userName.toUpperCase();
+            let lowercaseName = userName.toLocaleLowerCase();
+            let replaceName = userName.replaceAll(" ", "/");
+
+            console.log(nameLength);
+            console.log(firstLetter);
+            console.log(firstOccurence);
+            console.log(lastOccurence);
+            console.log(trimmedSpaceAroundText);
+            console.log(uppercaseName);
+            console.log(lowercaseName);
+            console.log(replaceName);
+
+        Advanced
+
+            slice() - extracts a section of a string and returns
+                      it as a new string without modifying the original string
+
+                Example 
+
+                    let fullName = "Samuel Arefeyanie";
+
+                    let firstName;
+                    let lastName;
+
+
+                    lastName = fullName.slice(7); // or slice(7, 17)
+                    firstName = fullName.slice(0,6);
+
+                    firstName = fullName.slice(0, fullName.indexOf(" "));
+                    lastName = fullName.slice(fullName.indexOf("A"));
+
+                    console.log(lastName);
+                    console.log(firstName);
+
+            Method Chaining - calling one method after another in one continuous line of code 
+
+                        Example
+
+                            let userName = "samuel";
+
+                            let letter = userName.charAt(0);
+                            letter = letter.toUpperCase();
+
+                            console.log(letter);
+
+                            letter = userName.charAt(0).toUpperCase();
+                            console.log(letter);
+
+    9) Conditionals 
+
+        A) If statements
+
+            
+            let age = window.prompt('Enter your age?');
+
+            if(age >= 18 ){
+
+                console.log('you are an adult');
+                }
+
+            else{
+
+                console.log('you are a kid');
+                }
+
+            Example using Checked property
+
+                document.getElementById('myButton').onclick = function(){
+
+                    let checked = document.getElementById("checkingBox").checked;
+                    let radioOne = document.getElementById('radio1');
+                    let radioTwo = document.getElementById('radio2');
+                    let radioThree = document.getElementById('radio3');
+
+
+                    if(checked){
+
+                        console.log("you are subscribed");
+                    }
+
+                    else{
+
+                        console.log("You ain't subscribed");
+                    }
+
+                    if(radioOne.checked){
+
+                        console.log('visa');
+                    }
+
+                    else if(radioTwo.checked){
+
+                        console.log('mastercard');
+                    }
+
+                    else if (radioThree.checked){
+
+                        console.log('paypal');
+                    }
+
+                    else{
+
+                        console.log('non selected');
+                    }
+                }
+
+        B) Switch statements
+
+            statement that examines a single value for a match
+
+
+            Example 1 - with chars/ strings
+
+                    let grade = "D";
+
+                        switch(grade){
+
+                            case "A" : console.log('you got A');
+                                    break;
+
+                            case "B" : console.log('you got B');
+                                    break;
+
+                            case "C" : console.log('you got C');
+                                    break;
+
+                            default : console.log('Neutral');
+
+                        }
+
+            Example 2 - with numbers 
+
+             let grade = 98;
+
+                switch(true){
+
+                    case grade > 100 : console.log('you got A');
+                            break;
+
+                    case grade < 50 : console.log('you got B');
+                            break;
+
+                    case grade < 99 : console.log('you got C');
+                            break;
+
+                    default : console.log('Neutral');
+
+                }
+
+        C) And Or Not operators
+
+            Gives the ability to check more than 1 condition concurrently 
+
+            Example 
+
+                let temp = 15;
+                let verdict = false;
+
+                if (temp > 0 && temp < 30 && !verdict){
+
+                    console.log('first case');
+                }
+
+                else if (temp > 30 && temp < 45){
+
+                    console.log('second case');
+                } 
+
+                else if (temp > 100 || temp < 0){
+
+                    console.log('third case');
+                }
+
+        D) While loop
+
+                like an if statement, but repeats some code While
+                some condition is true
+
+                Example 
+
+                    let userName = "";
+
+                    while(userName == ""){
+
+                        userName = window.prompt('Enter your name');
+
+                    }
+
+                    console.log(userName);
+
+        E) Do while loop 
+
+            do something, then check the condition repeat if condition is true
+            it runs at least once  
+
+            Example 
+                
+                let userName = "";
+
+                do {
+
+                    userName = window.prompt("enter name");
+                }
+                while(userName == "")
+
+                console.log(userName);
+
+        F) For loop
+
+                repeats a code a certain amount of time 
+                if the number of loop is known 
+
+                Example 
+
+                    for(let counter = 1; counter < 20; counter++ ){
+
+                        console.log(counter);
+                    }               
+
+        G) Break and Continue 
+
+                Break - breaks out of a loop 
+                Continue - skip an iteration of a loop 
+
+                Example 
+
+                    
+                    for(let i = 1; i <= 20; i++){
+
+                        if(i == 13){
+
+                            continue;
+
+                        }
+
+                        else if (i == 15){
+
+                            break;
+
+                        }
+
+                        console.log(i);
+                    }
+
+        H) Nested loop 
+
+            Loop within a loop 
+
+            Example 
+
+                for (let i = 0; i < 20; i++){
+
+                    for(let j = 0; j < 2; j++){
+
+                        console.log(i);
+                        console.log(j);
+                    }
+                 }
+
+    10) Functions
+
+            - Define code once, and use it many times.
+            - call the function name 
+
+            basic with parameter
+
+                Example 
+
+                    start();
+                    function start(){
+
+                        let userName = "samuel";
+                        birthdaySong(userName);
+
+                    }
+
+                    function birthdaySong(namess){
+
+                        console.log('Happy birthday to you', namess);
+                        console.log('Happy birthday to you');
+                        console.log('Happy birthday to you');
+                        console.log('Happy birthday to you');
+
+                    }
+
+
+            return statement
+
+                Example 
+
+                    function returningA(a){
+
+                        return a * 2;
+                    }
+
+                    console.log(returningA(5));
+
+    11) Ternary Operator 
+
+            - Shortcut for an if/else statement
+            - Takes 3 operands 
+                    - a condition with ?
+                    - epression if True : 
+                    - expression if False
+
+                Example 
+
+                    let a = 2;
+                    let b = 3;
+
+
+                    let c = a < b? true:false;
+
+
+                    console.log(c);
+
+    12) Variable Scope 
+
+            scope refers t where a variable is accessible 
+
+            A) let - variables are limited to a block scope{}
+            B) var - variables are limited to a function(){}
+
+
+                //let
+
+                    for (let i = 1 ; i <= 3; i++){
+
+                        console.log(i);
+                    }
+
+                //var
+
+                    function dodo(){
+
+                        for (var i = 1 ; i <= 3; i++){
+
+                            console.log(i);
+                        }
+                        
+
+                    }
+
+
+                //global variable
+
+                    let name = "sami"
+
+                    var name = "sami" // this one actually changes the window property so don't use this
+
+                console.log(i);
+
+    13) Template Literals
+
+            Denoted with (`)
+            allows embedded variables and expressions
+
+                Example 
+
+                    let firstName = "samuel"
+                    let a = 24;
+
+                    console.log(`${firstName} is ${a} years old`);
+
+    14) To locale string 
+
+            returns a string with a language sensetive representation of this number 
+
+            syntax number.toLocaleString(locale, {options});
+
+            locale - specify that language(undefined = default)
+            options - object with formatting options like currency , percent etc
+
+
+            Examples 
+
+                let myNum = 0.33
+
+                myNum = myNum.toLocaleString("en-US"); // US English
+                myNum = myNum.toLocaleString("hi-IN"); // Hindi
+
+
+                //currency 
+
+                myNum = myNum.toLocaleString("en-US", {style : "currency", currency: "USD"}); // US English
+
+                //percent
+                myNum = myNum.toLocaleString(undefined, {style:"percent"}); // US English
+
+
+                //unit
+                myNum = myNum.toLocaleString(undefined,{style : "unit", unit:"celsius"}); // US English
+
+
+                console.log(myNum);
+
+    15) Arrays
+
+        - a variable that can store multiple values 
+
+        Basics 
+             
+            let fruits = ["apple", "pears", "orange"];
+
+            fruits.push("lemon");
+            fruits.pop();
+            fruits.unshift("mango");
+            fruits.shift("mango");
+
+            let fruitLength = fruits.length;
+            let indexoffirst = fruits.indexOf("pears");
+
+            console.log(fruits);
+            console.log(fruits[0]);
+
+            fruits[0] = "banana";
+            console.log(fruits);
+            console.log(fruitLength);
+            console.log(indexoffirst);
+
+        Looping through an Array
+
+            let prices = [ 5, 3, 6, 22, 53];
+
+            for(let i = 0; i < prices.length; i++){
+
+                console.log(prices[i]);
+            }
+
+            for (let i  of prices){
+
+                console.log(i);
+
+            }
+
+        Sorting Array        
+
+            let fruits = ["banana", "apple", "orange", "mango"];
+
+            fruits = fruits.sort();
+            fruits = fruits.sort().reverse();
+
+            for(let fruit of fruits){
+
+                console.log(fruit);
+            }
+
+        2D Array
+
+            - Are arrays of array
+
+                let fruits = [ "apple", "banana", "oranges"];
+
+                let vegetables = ["carrots", "onions", "potatos"];
+
+                let meats = ["eggs", "chicken", "fish"];
+
+                let groceryList = [fruits, vegetables, meats];
+
+
+                console.log(groceryList);
+                groceryList[0][1] = "kiwi";
+
+
+                for(let list of groceryList ){
+
+                    for ( let items of list){
+
+                        console.log(items);
+                    }
+                }
+
+    16) Spread Operator
+
+        - allows an iterable such as an array or string to be
+          expanded in places where zero or more arguments are expected (unpacks the elements)
+
+            Example 
+
+                let numbers = [1,2,3,4,5,6,7,8,9];
+                let userName = "Samuel Arefeaynie"
+
+                console.log(...numbers);
+                console.log(...userName);
+
+
+                let maximum =  Math.max(...numbers);
+                console.log(maximum);
+
+                let class1 = ["name1", "name2", "name3"];
+                let class2 = ["name4", "name5", "name6"];
+
+                class1.push(...class2);
+                console.log(class1);
+
+    17) Rest parameters
+
+        - represents an indefinite number of parameters
+          (packs arguments into an array)
+
+          Examples 
+
+            let a = 5;
+            let b = 4;
+            let c = 3;
+            let d = 2;
+            let e = 5;
+
+
+            console.log(sum(a, b, c));
+
+
+            function sum(...numbers){ // (a, b, ...numbers)
+
+                let sum = 0;
+
+                for (let number of numbers){
+
+                    sum = sum + number;
+                }
+
+                return sum;
+            }
+
+    18) Call back functions 
+
+        - a function passed as an argument to another function.
+        - Uses 
+            - Ensures that a function is not going to run before a task is completed.
+            - Helps us develop asynchronous code.(hen one function has to wait for another function)
+            - Helps us avoid errors and potential problems
+            - Ex. Wait for a file to load
+
+        Example
+
+            sum(2,3, displayDOM);
+
+            function sum(a, b, callBack){
+
+                let result = a + b;
+
+                callBack(result);
+            }
+
+
+            function displayConsole(output){
+
+
+                console.log(output);
+            }
+
+            function displayDOM(output){
+
+                document.getElementById("labell").innerText = output;
+            }
+
+    19) ForEach Method
+
+            executes a provided callback function once for each array element 
+
+            Example 
+
+                let students = [ "sami", "feven", "hewan", "fikir", "huny"];
+                students.forEach(capitalizer);
+                students.forEach(printer);
+
+                function capitalizer(element, index, array){
+
+
+                    array[index] = element[0].toUpperCase() + element.substring(1);
+
+
+                }
+
+
+                function printer(element){
+
+                    console.log(element);
+
+
+                }
+
+                console.log(students[0]);
+                console.log(students[1]);
+
+    20) Map Method
+
+            - Executes a provided callback function once for each array 
+              element and creates a new array 
+
+              Example 
+
+                let numbers = [1,2,3,4,4,5];
+
+                let squaredNumbers = numbers.map(squared);
+
+                function squared(element){
+
+                    return Math.pow(element, 2);
+                }
+
+                console.log(squaredNumbers);
+
+    21) Filter Method
+
+            - creates a new array with all elements that 
+              pass the test provided by a function 
+
+              Example 
+
+                let numbers = [1,2,3,4,5,6,7];
+
+                let newArray = numbers.filter(lessThanFour);
+
+                function lessThanFour(element){
+
+                    return element < 4;
+                }
+
+
+                console.log(newArray);
+
+    22) Reduce Method
+
+            - reduces an array to a single value
+
+            Example 
+
+                let prices = [4,5,6,2,4,6];
+
+                let totalSum = prices.reduce(checkOut);
+
+                function checkOut(total, element){
+
+                    return total + element;
+                }
+
+                console.log(totalSum);
+
+    23) Sort Method
+
+        - sorts in ascending or descending with call back
+        - Helpful for sorting objects string 
+            namedObject = [...namedObject].sort((a, b) => a.name.localeCompare(b.name));
+        
+        - remember that the spread operator creates a ne copy that doesn't affect the original array
+
+
+        Example 
+
+            let numbers = [1,6,2,8,4,3,2,7,9];
+
+            numbers = numbers.sort(descending);
+
+            function ascending(x, y){
+
+                return x - y;
+            }
+
+            function descending(x, y){
+
+                return y - x;
+            }
+
+            console.log(numbers);
+
+    24) Function Expressions
+
+            - is a function without a name (anonymous function)
+            - avoid pollutin the global scope 
+            - write it then forget it
+
+            Example 
+
+                const greeting = function (){
+
+                console.log('hi');
+                 }
+
+                greeting();
+
+    25) Arrow Function 
+
+            - compact alternative to a traditional function
+
+            Example
+
+                const greeting = (userName) => console.log(`hello ${userName}`);
+
+                greeting("samuel");
+
+                const percent = (x,y) => (x / y) * 100;
+
+                console.log(percent(20, 30));
+
+    26) Nested Functions 
+
+
+        - Functions inside other functions 
+        - Outer functions have access to inner Functions
+        - inner functions are "hidden" from outside  the outer function 
+        - used in closures
+
+        - so here, we can't access the functions inside the other function while outside 
+
+        Example 
+
+            let userName = "samuel";
+            let userInbox = 0;
+
+            login();
+
+            function login(){
+
+                displayName();
+                displayInbox();
+
+                function displayName(){
+
+                    console.log(`${userName}`);
+
+                }
+
+                function displayInbox(){
+
+                    console.log(`${userInbox}`);
+                
+                }
+
+
+            }
+
+    27) Map Object 
+
+            - Object that holds key value pairs of any data type
+
+            Example
+
+                const store = new Map([
+
+                    ["t-shirt", 20],
+                    ["jeans", 22],
+                    ["socks", 2]
+
+                ]);
+
+                let totalPricing = 0;
+
+                totalPricing+= store.get("socks");
+                totalPricing+= store.get("jeans");
+                store.set("hat", 200);
+                store.delete("hat");
+                console.log(store.has("hat"));
+                console.log(store.size);
+
+                console.log(totalPricing);
+
+                store.forEach((value, key) => console.log(`${key} is ${value} dollars`));
+
+    28) Object
+
+            - is a group of properties and methods
+            - properties - what an object has
+            - methods - what an object can do 
+            - use . to access properties/methods
+
+
+            Example 
+
+                const car = {
+
+                    model : "Mustang",
+                    color : "red",
+                    year : 2021,
+
+                    drive : function (){
+
+                        console.log('driving');
+                    },
+
+                    brake : function(){
+
+                        console.log('you stopped');
+                    }
+                }
+
+                console.log(car.model);
+                console.log(car.year);
+                car.drive();
+
+    29) This key word
+
+            - reference to a particular object
+            - the object depends on the immediate context
+            - it is like saying "within this context(class, object, group)
+
+            Example 
+
+                const car = {
+
+                    model : "Mustang",
+                    color : "red",
+                    year : 2021,
+
+                    drive : function (){
+
+                        console.log(this.model);
+                    },
+
+                    brake : function(){
+
+                        console.log('you stopped');
+                    }
+                }
+
+                console.log(car.model);
+                console.log(car.year);
+                car.drive();
+
+    30) Class 
+
+            - a blueprint for creating objects 
+            - define that properties and methods they have 
+            - use a constructor for unique properties
+
+            Example
+
+                class Player{
+
+                    score = 0;
+
+                    pause(){
+
+                        console.log("you paused the game");
+                    }
+
+                    exit(){
+
+                        console.log("you exited the game");
+                    }
+                }
+
+                const player1 = new Player();
+
+                console.log(player1.score);
+                player1.pause();
+                player1.exit();
+
+    31) Constructor 
+
+            - a special method in a class 
+            - accepts arguments and assigns properties
+
+            Example 
+
+                class Student {
+
+                    constructor(name, age, gpa){
+
+                        this.name = name;
+                        this.age = age;
+                        this.gpa = gpa;
+
+                    }
+
+                    study(){
+
+                        console.log(`${this.name} is studying`);
+                    }
+                }
+
+                const student1 = new Student("samuel", 24, 3.24);
+
+                console.log(student1.gpa);
+                student1.study();
+
+    32) Static
+
+            - belongs to the clas, not the objects
+            - properties : useful for caches, fixed-configuration
+            - methods : useful for utility
+
+            - so here if we don't add "static" to the properties or methods, then each object when it is created will have their own copy of the property/method 
+            - so after adding it we can access the general property/method of the class. 
+            - This is very useful for counting number of objects created too.
+
+
+            Example 
+
+                class Car{
+
+                static numberOfCars = 0;
+
+                    constructor(model){
+
+                        this.model = model;
+                        Car.numberOfCars +=1;
+                    }
+
+                    static startRace(){
+
+                        console.log("3..2..1..Go!");
+                    }
+                }
+
+                const car1 = new Car("mustang");
+                const car2 = new Car("Corvette");
+                const car3 = new Car("BMW");
+
+                console.log(Car.numberOfCars);
+                Car.startRace();
+
+    33) Inheritance
+
+            - a child class can inherit all the methods and properties from another class 
+
+            Example
+
+                class Animal{
+
+                    alive = true;
+
+                    eat(){
+
+                        console.log(`This ${this.name} is eating`);
+                    }
+
+                    sleep(){
+
+                        console.log(`This ${this.name} is sleeping`);
+                    }
+                }
+
+                class Rabbit extends Animal{
+
+                    name = "rabbit"
+
+                    run(){
+
+                        console.log(`This ${this.name} is running`);
+                    }
+                }
+
+                class Fish extends Animal{
+
+                    name = "Fish"
+
+                    swim(){
+
+                        console.log(`This ${this.name} is swimming`);
+                    }
+                }
+
+                class Hawk extends Animal{
+
+                    alive = true;
+
+                    fly(){
+
+                        console.log(`This ${this.name} is flying`);
+                    }
+                }
+
+                const rabbit = new Rabbit();
+                const fish = new Fish();
+                const hawk = new Hawk();
+
+                console.log(rabbit.alive);
+                rabbit.eat();
+                fish.swim();
+
+    34) Super key word 
+
+            - Refers to the parent class 
+            - commonly used to invoke constructor of a parent class 
+
+            - so here we put the inherited properties in the unique constructors and also add them to the super key word
+            - the unique properties of the inheriter can then be declared
+
+
+            Example 
+
+                class Animal{
+
+                    constructor(name, age){
+
+                        this.name = name;
+                        this.age = age;
+                    }
+                }
+
+
+                class Rabbit extends Animal{
+
+                    constructor(name, age, runSpeed){
+
+                    super(name, age);
+                        this.runSpeed = runSpeed;
+                    }
+                }
+
+                class Fish extends Animal{
+
+                    constructor(name, age,swimSpeed){
+
+                        super(name, age);
+                        this.swimSpeed = swimSpeed;
+                    }
+                }
+
+                class Hawk extends Animal{
+
+                    
+                    constructor(name, age, flySpeed){
+
+                        super(name, age);
+                        this.flySpeed = flySpeed;
+                    }
+
+                }
+
+                const rabbit = new Rabbit("bunny" ,2, 40);
+                const fish = new Fish("nemo", 5, 30);
+                const hawk = new Hawk("eye", 9, 12);
+
+                console.log(rabbit.name);
+                console.log(rabbit.age);
+                console.log(rabbit.runSpeed);
+
+    35) Getters and Setters
+
+            Getters - Binds an object property to a function when that 
+             property is accessed 
+
+            Setters - Binds an object property to a function when that 
+             property is assigneds
+
+
+            Example
+
+                class Car {
+
+                    constructor(power){ //_power refers to a unique protected value
+                                        // this is because, the variable and the get name can't be the same
+
+                        this._gas = 20;
+                        this._power = power;
+                    }
+
+
+                    get power(){ //getters
+
+                        return `${this._power}hp`;
+                    }
+
+                    get gas(){ //getters
+
+                        return `${this._gas}`;
+
+                    }
+
+                    set gas(value){
+
+                        if(value > 50){
+
+                            value = 50;
+                        }
+
+                        else if (value < 0){
+
+                            value = 0;
+                        }
+
+                        this._gas = value;
+                    }
+
+                }
+
+                let car = new Car(400);
+
+                car.gas = -40;
+                console.log(car.power);
+                console.log(car.gas);
+
+    36) Passing Objects to a function 
+
+
+            Example
+
+                class Car{
+
+                    constructor(model, year, color){
+
+                        this.model = model;
+                        this.year = year;
+                        this.color = color;
+                    }
+                }
+
+                const car1 = new Car("mustang", 2021, "red");
+                const car2 = new Car("corvette", 2020, "green");
+                const car3 = new Car("lambo", 2019, "blue");
+
+                displayInfo(car1);
+
+                function displayInfo(car){
+
+                    console.log(car.model);
+                    console.log(car.year);
+                    console.log(car.color);
+
+                }
+
+                changeColor(car3, "green");
+                console.log(car3);
+
+                function changeColor(car, color){
+
+                    car.color = color
+
+                }
+
+    37) Creating array of objects 
+
+            Example 
+
+                class Car{
+
+                    constructor(model, year, color){
+
+                        this.model = model;
+                        this.year = year;
+                        this.color = color;
+                    }
+
+                    drive(){
+
+                        console.log(`you drive a ${this.model}`);
+                    }
+                }
+
+                const car1 = new Car("mustang", 2021, "red");
+                const car2 = new Car("corvette", 2020, "green");
+                const car3 = new Car("lambo", 2019, "blue");
+
+
+                let carArray = [car1, car2, car3];
+
+                // console.log(carArray[0].color);
+
+                loopingArray(carArray);
+
+                function loopingArray(cararray){
+
+
+                    cararray.forEach((element) => element.drive());
+                }
+
+    38) Anonymous Objects 
+
+                - objects without a name 
+                - not directly referenced 
+                - less syntax, No need for unique names 
+
+
+                Example 
+
+                    class Card{
+
+                        constructor(value, suit){
+
+                            this.value = value;
+                            this.suit = suit;
+                        }
+                    }
+
+                    let cardsArray = [ new Card("A", "spades"), new Card("A", "diamonds")];
+                    console.log(cardsArray[0].value + cardsArray[0].suit);
+
+    39) Errors
+
+            - Objects with a description of something went wrong
+
+            happens when : 
+
+                - Can't open a file 
+                - Lose connection
+                - User types incorrect input 
+                - TypeError
+
+            throw = executes a user-defined error
+
+
+            Example 
+
+                try{
+
+                    let x = window.prompt("Enter a #");
+                    x = Number(x);
+
+                    if(isNaN(x)) throw "That isn't a number";
+
+                    if(x == "") throw "You haven't entered number"
+                    
+                    console.log('it is a number');
+                } 
+
+                catch(error){
+
+                    console.log(error);
+                }
+
+
+                finally{
+
+                    //finally useful if we want it to always run
+                    console.log('hurray');
+                }
+
+    40) Set Timeout 
+
+            - invokes a function after a number of milliseconds
+            - asynchronous function (doesn't pause execution )
+
+            if we want to clear time out we use clearTimeout();
+
+            Example
+
+                let timer1 = setTimeout(annoy1, 3000);
+                let timer2 = setTimeout(annoy2, 6000);
+                let timer3 = setTimeout(annoy3, 9000);
+
+                //to clear , we use clearTimeout(timer1);
+
+                function annoy1(){
+
+                    window.alert('bang');
+                }
+
+                function annoy2(){
+
+                    window.alert('I shot you');
+                }
+
+                function annoy3(){
+
+                    window.alert('down');
+                }
+
+    41) Set Interval
+
+            - invokes a function repeatedly after a number of milliseconds
+            - asynchronous function (doesn't pause execution)
+
+
+            Examples 
+
+                //we can use clearInterval to stop the interval
+                let count = 0;
+
+                const timing = setInterval(counting, 1000); // we can add an argument as a third parameter here if we want
+
+                function counting(){
+
+                    count++;
+                    console.log(count);
+
+                    if(count == 10){
+
+                        clearInterval(timing);
+                    }
+                }
+
+    42) Date Object 
+
+            - Used to work with dates & times 
+
+            Examples 
+
+                let date = new Date();
+                // let date = new Date(0); //adds to the default date which is 1/1/1997
+                // let date = new Date(2023, 0, 1, 2,3,5,6);4
+                // let date = new Date("January 1, 2023 00:00:00");
+                // let year = date.getFullYear();
+                // let day = date.getDate(); //sunday is 0
+                // let month = date.getMonth(); //january is 0
+                // let hour = date.getHours(); // in military  time 0 - 23
+                // let minutes = date.getMinutes();
+                // let seconds = date.getSeconds();
+                // let ms = date.getMilliseconds();
+
+
+                // date.setFullYear(2024);
+                // date.setMonth(11);
+                // date.setDate(20);
+                // date.setHours(10);
+                // date.setMinutes(2);
+
+
+                // date = date.toLocaleString();
+                // console.log(date);
+                // console.log(year);
+                // console.log(day);
+                // console.log(month);
+                // console.log(hour);
+
+                //  document.getElementById("myLabel").innerHTML = formatDate(date);
+                document.getElementById("myLabel").innerHTML = formatTime(date);
+
+                function formatDate(date){
+
+                    let year = date.getFullYear();
+                    let month = date.getMonth() + 1;
+                    let day = date.getDate();
+
+                    return `${day}/ ${month}/${year}`;
+                }
+
+                function formatTime(date){
+
+                    let hours = date.getHours();
+                    let minutes = date.getMinutes();
+                    let seconds = date.getSeconds();
+                    let amOrPm = hours >= 12 ? "pm" : "am";
+
+                    hours = hours > 12 ? hours - 12 : hours ;
+                    // or  hours = (hours % 12) || 12;
+
+                    return `${hours}:${minutes}:${seconds} ${amOrPm}`;
+                }
+
+    43) Synchronous and Asynchronous code
+
+                Synchronous - In an ordered sequence 
+                            - step by step linear instructions 
+                            - (start now, finish now)
+
+
+                asynchronous - out of sequence
+                             - Ex. Access a database 
+                             - fetch a file 
+                             - tasks that take time 
+                             (start now, finish sometime later)
+
+    44) Console Time method 
+
+
+            - Starts a timer you can use to track how long an 
+              operation takes 
+            - Give each timer a unique name.
+            - use to measure mostly asynchronous code 
+
+            Example 
+
+                //so here the terms in the console.log must be the same
+                console.time("hi");
+
+                 console.alert("click button)); // asynchronous
+                 setTimeout(() => console.log("hello"), 3000) // synchronous
+
+                console.timeEnd("hi"); 
+
+    45) Promises 
+
+            - Object that encapsulate the result of an asynchronous operation 
+              let asynchronous methods return values like synchronour methods 
+              " I promise to return something in the future"
+
+            - The State is 'pending' then : "fulfilled" or 'rejected'
+                the  RESULT is what can be returned 
+                 1 parts producing and consuming 
+
+
+            Example one - without parameter 
+
+                //within the promise we can use a callback, a normal function or arrow function 
+                const promise = new Promise((resolve, reject) => {
+
+                let fileLoaded = false;
+
+                if(fileLoaded){
+
+                    resolve("file has been loaded");
+                }
+
+                else{
+
+                    reject("file not found");
+                }
+
+
+                });
+
+                //within the then, we can use a callback, a normal function or arrow function 
+                promise.then(value => { console.log(value)})
+                    .catch(error => console.log("Error")); // to catch an exeption if you want enji it still works without catch
+
+            Example two - with parameter 
+               
+                //to send a parameter to the promise we add an arrow function before declaring it
+                // and also, there doesn't have to always be reject, we can just use resolve
+                const wait = timeValue => new Promise(resolve => {
+
+                    setTimeout(resolve, timeValue);
+                });
+
+
+                wait(2000).then(() => console.log("That's right I am killing this js"));
+
+    46) Async
+
+            - Makes a function return a Promise
+
+            Example 1 - without async 
+
+                //without async (normal function )
+                function fileLoaded (){
+
+                    let loadFile = true;
+
+                    if(loadFile){
+
+                        return Promise.resolve("file loaded");
+                    }
+
+                    else{
+
+                        return Promise.resolve("file not loaded");
+                    }
+                }
+
+                fileLoaded().then(value => console.log(value))
+                        .catch(error => console.log(error));
+
+            Example 2 - with async 
+
+                //with async
+                async function fileLoaded(){
+
+                    let loadFile = false;
+
+                    if(loadFile){
+
+                        return "file loaded";
+                    }
+
+                    else{
+
+                        throw "file not loaded";
+                    }
+                }
+
+                fileLoaded().then(value => console.log(value))
+                        .catch(error => console.log(error));
+
+    47) Await
+
+            - Makes an async function wait for a Promise
+
+            Example 
+
+                async function fileLoaded(){
+
+                    let loadFile = false;
+
+                    if(loadFile){
+
+                        return "file loaded";
+                    }
+
+                    else{
+
+                        throw "file not loaded";
+                    }
+                }
+
+                async function startProcess(){
+
+                    try{
+
+                        let message = await fileLoaded(); //there may be a lot of async functions
+                        console.log(message);
+
+                    }
+                
+                    catch(error){
+
+                        console.log(error);
+
+                    }
+
+                }
+
+                startProcess();
+
+    48) ES6 Module 
+
+        - is a file of resusable code 
+        - we can import sections of pre-written code to use whenever
+        - Great for any general utility values and functions
+        - Helps to make your code more reusable and maintanable
+        - Think of modules as separate chapters of a book
+
+
+        - first we make the imported file js in the html type to module
+        - then we can create another js file and export anythin in there 
+        - then we import the file and the components we want 
+
+
+        Example
+
+            in the html file   
+                //we add a type module 
+                <script type="module" src="index.js"></script>
+
+            in the new created js file (math.util.js) 
+
+                export const PI = 3.14159;
+
+                export function getCircumference(radius){
+
+                    return 2 * PI * radius;
+                }
+
+                export function getArea(radius){
+
+                    return PI * radius * radius;
+                }
+
+            in our index.js file we import in 2 ways 
+
+                //way 1 - import {PI, getCircumference, getArea} from "./math_util.js"
+
+                                console.log(PI);
+                                console.log(getArea(5));
+
+                //way 2 - import * as MathUtil from "./math_util.js"
+
+                            console.log(MathUtil.PI);
+                            console.log(MathUtil.getArea(5));
+
+    49) DOM - Document Object Model ( technically an API)
+
+            An interface for changing the content of a page
+
+            console.log(document);
+            console.log(document.title);
+            console.log(document.URL);
+        
+    50) Selecting Elements In DOM
+
+            // selector types
+                // document.getElementsByTagName
+                // document.getElementById
+                // document.getElementsByClassName
+                // document.getElementsByName
+                // document.querySelector
+                // document.querySelectorAll
+
+    51) DOM Traversing
+
+            //.firstElementChild
+            //.lastElementChild
+            //.parentElement
+            //.nextElementSibling
+            //.previousElementSibling
+            //.children[]
+            //Array.from(.children)
+
+    52) Adding/changing Html Elements 
+
+            //.innerHtml (vulnerable to XSS attacs)
+            //.textContent (more secure)
+                let h1 = document.createElement("h1");
+                h1.textContent = window.prompt("enter your name");
+                document.body.append(h1);
+
+            //inserting
+
+                const myList = document.querySelector("#fruit");
+                const listItem = document.createElement("li");
+
+                listItem.textContent = "pear";
+
+                myList.append(listItem);
+                myList.prepend(listItem);
+                myList.insertBefore(listItem, myList.getElementsByTagName("li")[2]);
+
+    53) Changing CSS Properties
+
+            const title = document.getElementById("myTitle");
+
+            title.style.backgroundColor = "red";
+            title.style.color = "yellow";
+            title.style.fontFamily = "consolas";
+            title.style.textAlign = "center";
+            title.style.border = "3px solid";
+            title.style.display = "block"
+
+    54) Events
+
+            - Some action that the user or browser does
+
+            Example 
+
+                const element = document.getElementById("myButton");
+                element.onclick = doSomething;
+
+                const element2 = document.body;
+                element2.onload = doSomething;
+
+                const element3 = document.getElementById("myText");
+                element3.onchange = doSomething;
+
+                const element4 = document.getElementById("myDiv");
+                element4.onmouseover = doSomething;
+                element4.onmouseout = doSomethingElse;
+
+                function doSomething(){
+
+                    // alert("you did something");
+                    element4.style.backgroundColor = "red";
+                }
+
+                function doSomethingElse(){
+
+                    // alert("you did something");
+                    element4.style.backgroundColor = "lightgreen";
+                }
+
+    55) Event Handlers
+
+            - .addEventListener(event, function, useCapture)
+            - You can add many event handlers to one element.
+            - Even the same event that invokes different functions
+
+            - here, the third argument "useCaptuer" will differentiate which element has to come 
+              first or be affected first in the outcome of an event , it take an argument of true 
+
+              Example 
+
+                const innerDiv = document.getElementById("innerDiv");
+                const outerDiv = document.getElementById("outerDiv");
+
+                innerDiv.addEventListener("click", changeRed);
+                outerDiv.addEventListener("click", changeRed,true);
+
+
+
+                function changeRed(){
+
+                    alert(`you selected ${this.id}`);
+                    this.style.backgroundColor = "lightblue";
+                }
+
+    56) Show/Hide Html Elements 
+
+                - we can use display none (doesn't reserve a space)
+                - or we can use visibility hidden (reserves a space)
+
+                Example 
+                    
+                    const myImage = document.getElementById("myImage");
+                    const myButton = document.getElementById("myButton");
+
+                    myButton.addEventListener("click", preview);
+
+                    function preview(){
+
+                        if(myImage.style.display == "none"){
+                            
+                            myImage.style.display = "block";
+
+                        }
+
+                        else{
+
+                            myImage.style.display = "none";
+
+                        }
+
+                    }
+
+    57) Key Press
+
+        Remember you can use top right bottom left 
+
+        Example
+
+            const myDiv = document.getElementById("myDiv");
+
+            let x = 0;
+            let y = 0;
+
+            window.addEventListener("keydown",move);
+
+            function move(event){
+
+
+                switch(event.key){
+
+                    case "ArrowDown": y += 5;
+                                    myDiv.style.top = `${y}px`;
+                                    break;
+
+                    case "ArrowUp": y -= 5;
+                                    myDiv.style.top = `${y}px`;
+                                    break;
+
+                    case "ArrowLeft": x -= 5;
+                                    myDiv.style.left = `${x}px`;
+                                    break;
+
+                    case "ArrowRight": x += 5;
+                                    myDiv.style.left = `${x}px`;
+                                    break;
+
+                    default: break;
+
+                }
+            }
+
+    58) Animation Using JS
+
+            Example 
+
+                const myButton = document.getElementById("myButton");
+                const myAnimation = document.getElementById("myDiv");
+
+                myButton.addEventListener("click", begin);
+
+                function begin(){
+
+                    let timerId = null;
+                    let degrees = 0;
+
+                    timerId = setInterval(frame, 5);
+
+                    function frame(){
+
+                        if(degrees >= 360){
+
+                            clearInterval(timerId);
+
+                        }
+
+                        else{
+
+                            degrees+=1;
+
+                            myAnimation.style.transform = `rotateZ(${degrees}deg)`;
+
+                        }
+                    }
+                }
+
+    58) Canvas API
+
+            - Means for drawing graphics
+            - used for animation,games and data visualization
+
+            in our html file 
+
+                <canvas id = "myCanvas" width="500px" height="500px"></canvas>
+
+            Example 
+
+                let canvas = document.getElementById("myCanvas");
+                let context = canvas.getContext("2d");
+
+                // context.lineWidth = 10;
+                // context.strokeStyle = "red";
+                // context.beginPath(); //to start drawing
+                // context.moveTo(0,0); //to set a starting point
+                // context.lineTo(250,250);
+                // context.lineTo(250,500);
+                // context.moveTo(500,0);
+                // context.lineTo(250,250);
+                // context.stroke(); // to draw
+
+
+                // //triangle
+                // context.fillStyle = "blue";
+                // context.beginPath();
+                // context.moveTo(250, 100);
+                // context.lineTo(200, 300);
+                // context.lineTo(300,300);
+                // context.lineTo(250,100);
+                // // context.stroke();
+                // context.fill();
+
+                //rectangle 
+                // context.strokeStyle = "red"
+                // context.beginPath();
+                // context.moveTo(100, 100);
+                // context.lineTo(200,100);
+                // context.lineTo(200, 200);
+                // context.lineTo(100, 200);
+                // context.lineTo(100, 100);
+                // context.stroke();
+
+                //or Stroke Rect methods
+                // context.strokeRect(0, 0, 250, 250);
+
+                //Draw a circle
+                //(x, y, r, sAngle, eAngle, counterclockwise);
+
+                // context.beginPath();
+                // context.arc(200, 200, 100, 0, 2 * Math.PI);
+                // context.stroke();
+
+
+                //Draw Text 
+                // context.font = "50px MV Boli"
+                // context.fillText("You Win!", 100, 100); 
+
+    59) Window 
+
+            - Interface used to talk to the web browser
+            - the DOM is a property of the window 
+
+
+            Examples 
+
+                const myButton = document.querySelector("#myButton");
+
+                // console.dir(window);
+                // console.log(window.innerWidth);
+                // console.log(window.innerHeight);
+                // console.log(window.outerWidth);
+                // console.log(window.innerWidth);
+                // console.log(window.scrollX);
+                // console.log(window.scrollY);
+                // console.log(window.location.href);
+                // console.log(window.location.hostname);
+                // console.log(window.location.pathname);
+
+
+                // myButton.addEventListener("click", () => {window.open("https://google.com")});
+                // myButton.addEventListener("click", () => {window.close()});
+                // myButton.addEventListener("click", () => window.print());
+                // window.alert("hello");
+                // window.confirm("press ok");
+                // let age = window.prompt("enter age");
+
+    60) Cookies 
+
+            - is a small text file stored on your computer
+            - used to remember information about the user
+            - saved in name = value pairs 
+
+
+            examples
+
+                // console.log(navigator.cookieEnabled);
+
+                // document.cookie = "firstName=Samuel; expires =Sun, 1 January 2003 12:00:00 UTC; path =/";
+                // document.cookie = "lastName=Arefeaynie; expires =Sun, 1 January 2000 12:00:00 UTC; path =/"; // if we set a date earlier than current date, then the current cookie will be deleted 
+                // console.log(document.cookie); 
+
+                function setCookie(name, value, daysToLive){
+
+                    const date = new Date();
+                    date.setTime(date.getTime() + daysToLive * 24 * 60 * 60 * 1000)
+                    let expires = "expires = " + date.toUTCString();
+                    document.cookie = `${name} = ${value}; ${expires}; path=/`
+
+                }
+
+                function deleteCookie(name){
+
+                    setCookie(name, null, null);
+                }
+
+                function getCookie(name){
+
+                    const cDecoded = decodeURIComponent(document.cookie);
+                    console.log(cDecoded);
+                }
+
+                // setCookie("email", "samuelarefeaynie2@gmail.com", 365);
+                // // deleteCookie("email");
+                // getCookie("email");
+
+                console.log(document.cookie);
+
+    61) Hoisting
+
+        - is the process of hoisting or clinging a variable or a function to the top of the declaration tree 
+          in a code;
+        - the disadvantage of hoisting is that it may slow down code if a lot of hoisting occurs 
+
+        examples 
+
+            //variable hoisting 
+                var a = "First";
+                var b = "Second";
+                var c = "Third";
+
+                //a , b, and c are hoisted 
+                // d is hoisted
+
+                d = "hi";
+                console.log(d);
+                var d;
+
+            //function hoisting
+                //named function are hoisted 
+                console.log(example());
+
+                function example(){
+                    
+                    var a = 10;
+                    return a;
+                }
+
+            //how to avoid hoisting
+
+                //use anonymous function instead of named function  
+
+                var exam = () =>{
+
+                    var b = 2
+                    return b;
+                }
+
+                console.log(exam());
+
+                // and for variables use the variables inside the function we want to use it
+                   that way we can avoid variable hoisting and (if the function is anonymous) function hoisting.
+
+    62) Event Bubbling
+
+            - refers to an event listener bubbling up to it's parents and so on 
+            - to solve this make the event listener on the parent and specify a condition that the specific button is pressed as check by a className if you like.
+
+    63) Prototyping
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
