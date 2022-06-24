@@ -1,0 +1,141 @@
+body{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.head{
+
+    font-size: 50px;
+}
+
+.all{
+
+    /* border: 1px black solid; */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:center;
+    width: 650px;
+    height: 300px;
+    margin: 10px;
+
+
+}
+
+.board-container{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px #707070 solid;
+    width: 280px;
+    height: 280px;
+    border-radius: 20px;
+    background-color: #1E9140;
+}
+
+
+
+#container{
+
+    border: 1px none solid;
+    width: 252px;
+    height: 252px;
+    background-color: rgb(192, 192, 192);
+    border-radius: 10px;
+}
+
+#circle1{
+
+    border: 0.5px gray solid;
+    width: 27.3px;
+    height: 27.3px;
+    float: left;
+    border-radius: 50%;
+    margin: 1px;
+}
+
+#circle1:hover{
+
+    cursor: pointer;
+}
+
+
+.info{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 1px #707070 solid;
+    height: 93.5%;
+    width: 25%;
+    margin-left: 10px;
+    border-radius: 20px;
+    background-color: #1E9140;
+}
+
+.turn{
+
+    /* border: 1px black solid; */
+}
+
+#player-counter{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px black solid;
+    width: 90px;
+    height: 20px;
+    font-size: 18px;
+    border-radius: 18px;
+    /* margin-left: -36px; */
+    background-color: white;
+
+}
+
+#win{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px black solid;
+    width: 130px;
+    height: 20px;
+    margin-top: -65px;
+    border-radius: 18px;
+    font-size: 18px;
+    background-color: white;
+
+
+}
+
+.description-container{
+
+    border: 1px black solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px black solid;
+    height: 160px;
+    margin: -70px 0 -13px 0;
+    width: 130px;
+    border-radius: 18px;
+    flex-direction: column;
+    background-color: white;
+
+}
+
+.description{
+
+    /* border: 1px black solid; */
+    margin: -10px 5px 0 10px;
+    /* width: 50px; */
+}
+

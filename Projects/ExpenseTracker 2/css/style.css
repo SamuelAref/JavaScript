@@ -1,0 +1,155 @@
+body{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.head{
+
+    border: 1.2px rgba(112, 112, 112,0.5) solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    height: 70px;
+    /* margin: 10px; */
+    border-radius: 20px;
+    font-size: 30px;
+    background-color:#F4E6C1 ;
+    color: #E99557;
+
+
+}
+
+.head h1{
+
+    color: green;
+}
+
+.component-container{
+
+    /* border: 1px black solid; */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    width: 800px;
+    height: auto;
+    margin: 10px;
+}
+
+.form{
+
+    border: 1.2px rgba(112, 112, 112,0.5) solid;
+    margin: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width:30%;
+    height: 300px;
+    border-radius: 20px;
+    font-size: 12px;
+    color:#E99557;
+}
+
+.input{
+
+    margin: -20px 0 0 20px;
+    border-radius: 10px;
+    height: 20px;
+    border: 1.2px rgba(112, 112, 112,0.5) solid;
+
+}
+
+.form h2{
+
+    margin: 0 0 0 10px;
+}
+
+.form .submit{
+
+    margin-left: 50px;
+    width: 120px;
+    border-radius: 20px;
+    height: 30px;
+    border: none;
+    border: 1.2px rgba(112, 112, 112,0.5) solid;
+
+}
+
+.submit:hover{
+
+    cursor: pointer;
+    color: #E99557;
+    background-color: #F4E6C1;
+
+
+}
+
+.table {
+
+    border: 1.2px rgba(112, 112, 112,0.5) solid;
+    margin: 2px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width:70%;
+    height: auto;
+    border-radius: 20px;
+
+
+}
+
+.title{
+
+    border-bottom: 1.2px rgba(112, 112, 112,0.5) solid;
+    margin: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    width:470px;
+    height: 30px;
+    color: #E99557;
+    
+
+
+}
+
+.output-style{
+
+
+    border-bottom: 1.2px rgba(112, 112, 112,0.5) solid;
+
+    padding-bottom: 5px;
+    margin: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    width:470px;
+    height: auto;
+    /* color: #E99557; */
+    font-size: small;
+
+
+}
+
+
+.pos{
+
+    /* border: 1px black solid; */
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+    margin: 0 0 10px 20px;
+    word-break:break-all;
+    height: auto;
+}
+

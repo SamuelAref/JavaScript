@@ -1,0 +1,32 @@
+body{
+
+    display:grid; 
+    place-items:center;
+
+}
+
+#container{
+
+    /* border: 5px lightblue solid; */
+    height: 800px;
+    width: 500px;
+    margin: auto;
+
+}
+
+#member{
+
+    /* border: 3px blue solid; */
+    margin: 5px 5px 5px 6px;
+    width: 46.5%;
+    height: 23%;
+    float: left;
+    /* text-align:left; */
+    background-color: blue;
+    color: white;
+    padding: 3px;
+    border-radius: 10px;
+
+
+}
+

@@ -1,0 +1,45 @@
+
+body{
+
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+}
+
+
+#full-container{
+
+    /* border: 5px red solid; */
+    margin: 100px 100px 50px 350px;
+    width: 500px;
+    object-fit: cover;
+
+}
+
+#amount{
+
+    /* margin-left: 50px; */
+    text-align: inherit;
+    object-fit: cover;
+}
+
+
+#output{
+
+    /* border: 5px blue solid; */
+    width: 500px;
+    height: auto;
+    margin: 10px 100px 50px 350px;
+    
+}
+
+#table{
+
+    border: 5px green;
+    width: 200px;
+    margin-left: 5px;
+    height: auto;
+
+
+}

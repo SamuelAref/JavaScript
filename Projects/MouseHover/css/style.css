@@ -1,0 +1,37 @@
+body{
+
+    /* border: 3px red solid; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+
+
+}
+
+
+#circle{
+
+    border: 3px blue solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 200px;
+    background-color: blueviolet;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    color:antiquewhite;
+    cursor:pointer;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 3s;
+
+
+}
+
+.hover{
+
+    transform: scale(1.5);
+}
+

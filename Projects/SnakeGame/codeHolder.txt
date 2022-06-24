@@ -1,0 +1,1445 @@
+//first draft
+//grab elements 
+
+            const board = document.getElementById('board');
+            const box = document.getElementById('box');
+
+            //create array to hold boxes
+
+            const boxArray = [];
+            let j = 0;
+
+
+            //give elements to array
+            for (let i of board.children) {
+
+                boxArray[j] = i;
+                j++;
+            }
+
+
+            //starter of game
+
+            for (let i = 58; i < 59; i++) {
+
+                boxArray[i].style.backgroundColor = "blue";
+            }
+            // boxArray[70].style.backgroundColor = "blue";
+
+
+            //holder of current position
+            const currentPosition = [];
+            let c = 0;
+            for (let i = 0; i < boxArray.length; i++) {
+
+                if (boxArray[i].style.backgroundColor === "blue") {
+
+                    currentPosition[c] = i;
+                    // console.log(i);
+                    c++;
+                }
+            }
+
+
+            //not go left while right or vice versa
+            let pressLeft = 0;
+            let pressRight = 0;
+            //event listener
+            document.addEventListener('keydown', move);
+            let chk = 0;
+
+            function move(e) {
+
+                let c = 0;
+                for (let i = 0; i < boxArray.length; i++) {
+
+                    if (boxArray[i].style.backgroundColor === "blue") {
+
+                        currentPosition[c] = i;
+                        // console.log(i);
+                        c++;
+                    }
+                }
+
+
+                if (e.key === "ArrowLeft" && pressRight === 0) {
+
+
+
+                    console.log(e.key);
+                    boxArray[currentPosition[currentPosition.length - 1]].style.backgroundColor = "white";
+
+                    if (currentPosition.length === 1) {
+
+
+                        if (currentPosition[0] === 0 || currentPosition[0] === 12 || currentPosition[0] === 24 || currentPosition[0] === 36 || currentPosition[0] === 48 || currentPosition[0] === 60 || currentPosition[0] === 72 || currentPosition[0] === 84 || currentPosition[0] === 96 || currentPosition[0] === 108 || currentPosition[0] === 120 || currentPosition[0] === 132) {
+
+                            boxArray[currentPosition[0] + 11].style.backgroundColor = "blue";
+
+
+                            let c = 0;
+                            for (let i = 0; i < boxArray.length; i++) {
+
+                                if (boxArray[i].style.backgroundColor === "blue") {
+
+                                    currentPosition[c] = i;
+                                    // console.log(i);
+                                    c++;
+                                }
+                            }
+
+                        }
+
+                        else {
+
+                            boxArray[currentPosition[0] - 1].style.backgroundColor = "blue";
+
+                            let c = 0;
+                            for (let i = 0; i < boxArray.length; i++) {
+
+                                if (boxArray[i].style.backgroundColor === "blue") {
+
+                                    currentPosition[c] = i;
+                                    // console.log(i);
+                                    c++;
+                                }
+                            }
+
+                        }
+
+
+
+
+                    }
+
+                    //problem heeree
+
+                    else {
+                        let u = null;
+
+                        for (let i = 0; i < currentPosition.length; i++) {
+
+                            if (currentPosition[i] === 0 || currentPosition[i] === 12 || currentPosition[i] === 24 || currentPosition[i] === 36 || currentPosition[i] === 48 || currentPosition[i] === 60 || currentPosition[i] === 72 || currentPosition[i] === 84 || currentPosition[i] === 96 || currentPosition[i] === 108 || currentPosition[i] === 120 || currentPosition[i] === 132) {
+
+                                u = i;
+                                console.log(u);
+
+                            }
+
+
+                        }
+
+
+
+                        if (u !== null) {
+
+                            boxArray[currentPosition[u] + 11].style.backgroundColor = "blue";
+
+                            let c = 0;
+                            for (let i = 0; i < boxArray.length; i++) {
+
+                                if (boxArray[i].style.backgroundColor === "blue") {
+
+                                    currentPosition[c] = i;
+                                    // console.log(i);
+                                    c++;
+                                }
+                            }
+
+                            u = null;
+                        }
+
+                        else {
+
+
+                            boxArray[currentPosition[0] - 1].style.backgroundColor = "blue";
+
+                            let c = 0;
+                            for (let i = 0; i < boxArray.length; i++) {
+
+                                if (boxArray[i].style.backgroundColor === "blue") {
+
+                                    currentPosition[c] = i;
+                                    // console.log(i);
+                                    c++;
+                                }
+                            }
+
+
+
+                        }
+
+
+
+
+
+
+
+
+
+                    }
+
+
+
+                    pressLeft++;
+
+
+                }
+
+                else if (e.key === "ArrowRight" && pressLeft === 0) {
+
+                    console.log(e.key);
+                    boxArray[currentPosition[currentPosition.length - 1]].style.backgroundColor = "white";
+
+                    if (currentPosition[0] === 11 || currentPosition[0] === 23 || currentPosition[0] === 35 || currentPosition[0] === 47 || currentPosition[0] === 59 || currentPosition[0] === 71 || currentPosition[0] === 83 || currentPosition[0] === 95 || currentPosition[0] === 107 || currentPosition[0] === 119 || currentPosition[0] === 131 || currentPosition[0] === 143) {
+
+                        boxArray[currentPosition[0] - 11].style.backgroundColor = "blue";
+
+                        let c = 0;
+                        for (let i = 0; i < boxArray.length; i++) {
+
+                            if (boxArray[i].style.backgroundColor === "blue") {
+
+                                currentPosition[c] = i;
+                                c++;
+                            }
+                        }
+
+                    }
+
+                    else {
+
+                        boxArray[currentPosition[0] + 1].style.backgroundColor = "blue";
+
+                        let c = 0;
+                        for (let i = 0; i < boxArray.length; i++) {
+
+                            if (boxArray[i].style.backgroundColor === "blue") {
+
+                                currentPosition[c] = i;
+                                // console.log(i);
+                                c++;
+                            }
+                        }
+
+                    }
+
+                    pressRight++;
+
+
+                }
+
+                else if (e.key === "ArrowUp") {
+
+                    console.log(e.key);
+
+                    boxArray[currentPosition[currentPosition.length - 1]].style.backgroundColor = "white";
+
+                    if (currentPosition[0] === 0 || currentPosition[0] === 1 || currentPosition[0] === 2 || currentPosition[0] === 3 || currentPosition[0] === 4 || currentPosition[0] === 5 || currentPosition[0] === 6 || currentPosition[0] === 7 || currentPosition[0] === 8 || currentPosition[0] === 9 || currentPosition[0] === 10 || currentPosition[0] === 11) {
+
+                        boxArray[currentPosition[0] + 132].style.backgroundColor = "blue";
+
+                        let c = 0;
+                        for (let i = 0; i < boxArray.length; i++) {
+
+                            if (boxArray[i].style.backgroundColor === "blue") {
+
+                                currentPosition[c] = i;
+                                c++;
+                            }
+                        }
+
+                    }
+
+                    else {
+
+                        boxArray[currentPosition[0] - 12].style.backgroundColor = "blue";
+
+                        let c = 0;
+                        for (let i = 0; i < boxArray.length; i++) {
+
+                            if (boxArray[i].style.backgroundColor === "blue") {
+
+                                currentPosition[c] = i;
+                                // console.log(i);
+                                c++;
+                            }
+                        }
+
+                    }
+
+                    pressLeft = 0;
+                    pressRight = 0;
+
+                }
+
+                else if (e.key === "ArrowDown") {
+
+                    console.log(e.key);
+
+                    boxArray[currentPosition[currentPosition.length - 1]].style.backgroundColor = "white";
+
+                    if (currentPosition[0] === 132 || currentPosition[0] === 133 || currentPosition[0] === 134 || currentPosition[0] === 135 || currentPosition[0] === 136 || currentPosition[0] === 137 || currentPosition[0] === 138 || currentPosition[0] === 139 || currentPosition[0] === 140 || currentPosition[0] === 141 || currentPosition[0] === 142 || currentPosition[0] === 143) {
+
+                        boxArray[currentPosition[0] - 132].style.backgroundColor = "blue";
+
+                        let c = 0;
+                        for (let i = 0; i < boxArray.length; i++) {
+
+                            if (boxArray[i].style.backgroundColor === "blue") {
+
+                                currentPosition[c] = i;
+                                c++;
+                            }
+                        }
+
+                    }
+
+                    else {
+
+                        boxArray[currentPosition[0] + 12].style.backgroundColor = "blue";
+
+                        let c = 0;
+                        for (let i = 0; i < boxArray.length; i++) {
+
+                            if (boxArray[i].style.backgroundColor === "blue") {
+
+                                currentPosition[c] = i;
+                                // console.log(i);
+                                c++;
+                            }
+                        }
+
+                    }
+
+                    pressLeft = 0;
+                    pressRight = 0;
+
+                }
+
+
+            }
+
+
+
+// second draft
+  //grab elements 
+
+    const board = document.getElementById('board');
+    const box = document.getElementById('box');
+
+    //create array to hold boxes
+
+    const boxArray = [];
+    let j = 0;
+
+
+    //give elements to array
+    for (let i of board.children) {
+
+        boxArray[j] = i;
+        j++;
+    }
+
+
+    //starter of game
+    let size = 0;
+    for (let i = 36; i < 39; i++) {
+
+        boxArray[i].style.backgroundColor = "blue";
+        size++;
+    }
+
+
+
+    //holder of current position
+    const currentPosition = [];
+    let c = 0;
+    for (let i = 0; i < boxArray.length; i++) {
+
+        if (boxArray[i].style.backgroundColor === "blue") {
+
+            currentPosition[c] = i;
+            // console.log(i);
+            c++;
+        }
+    }
+
+
+    //not go left while right or vice versa
+    let pressLeft = 0;
+    let pressRight = 0;
+    //event listener
+    document.addEventListener('keydown', move);
+    let chk = 0;
+    let chh = 1;
+    let rightCheck = 0;
+    let twelve = 0;
+
+    function move(e) {
+
+
+
+        //update current position
+        let c = 0;
+        for (let i = 0; i < boxArray.length; i++) {
+
+            if (boxArray[i].style.backgroundColor === "blue") {
+
+                currentPosition[c] = i;
+                // console.log(i);
+                c++;
+            }
+        }
+
+
+
+
+        if (e.key === "ArrowLeft") {
+
+            pressLeft = 1;
+            pressRight = 0;
+            // rightCheck = 0;
+
+
+
+            console.log(e.key);
+
+            if (currentPosition[0] === 0 || currentPosition[0] === 12 || currentPosition[0] === 24 || currentPosition[0] === 36 || currentPosition[0] === 48 || currentPosition[0] === 60 || currentPosition[0] === 72 || currentPosition[0] === 84 || currentPosition[0] === 96 || currentPosition[0] === 108 || currentPosition[0] === 120 || currentPosition[0] === 132) {
+
+                boxArray[currentPosition[currentPosition.length - chh]].style.backgroundColor = "white";
+                boxArray[currentPosition[0] + 11 - chk].style.backgroundColor = "blue";
+                // console.log(boxArray[currentPosition[0] + 11 - chk]);
+                // console.log(chk);
+
+                if (chh === currentPosition.length && chk === currentPosition.length - 1) {
+
+                    chh = 1;
+                    chk = 0;
+                }
+
+                else {
+
+                    chh++;
+                    chk++;
+
+
+                }
+            }
+
+            else {
+
+                boxArray[currentPosition[currentPosition.length - 1]].style.backgroundColor = "white";
+
+                boxArray[currentPosition[0] - 1].style.backgroundColor = "blue";
+
+                console.log(currentPosition);
+
+
+            }
+
+        }
+
+
+        else if (e.key === "ArrowRight") {
+
+            pressRight = 1;
+            pressLeft = 0;
+            // rightCheck = 0;
+
+            if (rightCheck > 0) {
+
+
+
+
+                boxArray[currentPosition[chh]].style.backgroundColor = "white";
+
+                boxArray[currentPosition[chk] + 1].style.backgroundColor = "blue";
+                console.log(currentPosition);
+
+                if (chh === currentPosition.length - 1) {
+
+                    chh = 1;
+                    chk = 0;
+                    rightCheck = 0;
+
+                }
+
+                else {
+
+                    chh++;
+                    chk++;
+                }
+
+
+            }
+
+            else {
+
+
+                if (currentPosition[currentPosition.length - 1] === 11 || currentPosition[currentPosition.length - 1] === 23 || currentPosition[currentPosition.length - 1] === 35 || currentPosition[currentPosition.length - 1] === 47 || currentPosition[currentPosition.length - 1] === 59 || currentPosition[currentPosition.length - 1] === 71 || currentPosition[currentPosition.length - 1] === 83 || currentPosition[currentPosition.length - 1] === 95 || currentPosition[currentPosition.length - 1] === 107 || currentPosition[currentPosition.length - 1] === 119 || currentPosition[currentPosition.length - 1] === 131 || currentPosition[currentPosition.length - 1] === 143) {
+
+                    boxArray[currentPosition[chk]].style.backgroundColor = "white";
+                    boxArray[currentPosition[currentPosition.length - 1] - 12 + chh].style.backgroundColor = "blue";
+
+
+
+
+                    if (chk === currentPosition.length - 1) {
+
+                        chh = 1;
+                        chk = 0;
+                    }
+
+                    else {
+
+                        chh++;
+                        chk++;
+
+
+                    }
+                }
+
+                else {
+
+                    // boxArray[currentPosition[0]].style.backgroundColor = "white";
+
+                    // boxArray[currentPosition[0] + size].style.backgroundColor = "blue";
+
+                    boxArray[currentPosition[0]].style.backgroundColor = "white";
+
+                    boxArray[currentPosition[currentPosition.length - 1] + 1].style.backgroundColor = "blue";
+                    console.log(currentPosition);
+                }
+
+
+
+            }
+
+
+            console.log(e.key);
+
+
+
+
+            // console.log(currentPosition);
+
+
+
+
+        }
+
+
+
+        else if (e.key === "ArrowUp") {
+
+
+
+            console.log(e.key);
+
+
+            if (pressRight === 1 && currentPosition[0] === 0 || currentPosition[0] === 1 || currentPosition[0] === 2 || currentPosition[0] === 3 || currentPosition[0] === 4 || currentPosition[0] === 5 || currentPosition[0] === 6 || currentPosition[0] === 7 || currentPosition[0] === 8 || currentPosition[0] === 9 || currentPosition[0] === 10 || currentPosition[0] === 11) {
+
+
+                boxArray[currentPosition[(currentPosition.length - 1) - chk]].style.backgroundColor = "white";
+
+                boxArray[currentPosition[0] + 132 - twelve].style.backgroundColor = "blue";
+
+                if (chk - (currentPosition.length - 1) === 0 && twelve === (currentPosition.length - 1) * 12) {
+
+                    chk = 0;
+                    twelve = 0;
+                    rightCheck = 0;
+                }
+
+                else {
+
+                    chk++;
+                    twelve += 12;
+                }
+
+
+
+            }
+
+            else if (pressRight === 1) {
+
+
+                boxArray[currentPosition[rightCheck]].style.backgroundColor = "white";
+
+                if (rightCheck === 0) {
+
+                    boxArray[currentPosition[currentPosition.length - 1] - 12].style.backgroundColor = "blue";
+
+                }
+
+                else {
+
+                    boxArray[currentPosition[0] - 12].style.backgroundColor = "blue";
+
+                }
+
+                rightCheck++;
+                console.log(currentPosition);
+                console.log(boxArray[currentPosition[currentPosition.length - 1] - 12]);
+
+
+            }
+
+            else if (pressLeft === 1) {
+
+                boxArray[currentPosition[currentPosition.length - 1]].style.backgroundColor = "white";
+
+                boxArray[currentPosition[0] - 12].style.backgroundColor = "blue";
+
+
+                console.log(currentPosition);
+                console.log(boxArray[currentPosition[0] - 12]);
+
+
+            }
+
+
+
+
+
+            // }
+
+
+            // console.log(currentPosition);
+
+
+
+
+        }
+
+
+
+    }
+
+
+
+// third draft
+
+        //grab elements 
+
+        const board = document.getElementById('board');
+        const box = document.getElementById('box');
+
+        //create array to hold boxes
+
+        const boxArray = [];
+        const boxArrayLeft = [];
+        const boxArrayRight = []
+        let j = 0;
+
+
+        //give elements to array
+        for (let i of board.children) {
+
+            boxArray[j] = i;
+            j++;
+        }
+
+
+        //starter of game
+        let size = 0;
+        // for (let i = 132; i < 135; i++) {
+
+        boxArray[134].style.backgroundColor = "blue";
+        boxArray[122].style.backgroundColor = "blue";
+        boxArray[110].style.backgroundColor = "blue";
+
+        // size++;
+        // }
+
+
+
+        //holder of current position
+        const currentPosition = [];
+        let c = 0;
+        for (let i = 0; i < boxArray.length; i++) {
+
+            if (boxArray[i].style.backgroundColor === "blue") {
+
+                currentPosition[c] = i;
+                // console.log(i);
+                c++;
+            }
+        }
+
+
+        //not go left while right or vice versa
+        let pressLeft = 0;
+        let pressRight = 0;
+        let pressUp = 0;
+        let pressDown = 0;
+        //event listener
+        document.addEventListener('keydown', move);
+        let chk = 0;
+        let chh = 1;
+        let rightCheck = 0;
+        let twelve = 0;
+        let numberTwelve = 12;
+
+        function move(e) {
+
+
+
+            //update current position
+
+
+
+
+            if (e.key === "ArrowLeft") {
+
+                pressLeft = 1;
+                pressRight = 0;
+
+                //update position
+                let c = 0;
+                for (let i = 0; i < boxArray.length; i++) {
+
+                    if (boxArray[i].style.backgroundColor === "blue") {
+
+                        currentPosition[c] = i;
+                        // console.log(i);
+                        c++;
+                    }
+                }
+
+                //give elements to array
+                let j = 0;
+                for (let i of board.children) {
+
+                    boxArrayLeft[j] = i;
+                    j++;
+                }
+
+
+
+                console.log(e.key);
+
+                if (currentPosition[0] === 0 || currentPosition[0] === 12 || currentPosition[0] === 24 || currentPosition[0] === 36 || currentPosition[0] === 48 || currentPosition[0] === 60 || currentPosition[0] === 72 || currentPosition[0] === 84 || currentPosition[0] === 96 || currentPosition[0] === 108 || currentPosition[0] === 120 || currentPosition[0] === 132) {
+
+                    boxArrayLeft[currentPosition[currentPosition.length - chh]].style.backgroundColor = "white";
+                    boxArrayLeft[currentPosition[0] + 11 - chk].style.backgroundColor = "blue";
+                    // console.log(boxArray[currentPosition[0] + 11 - chk]);
+                    // console.log(chk);
+
+                    if (chh === currentPosition.length && chk === currentPosition.length - 1) {
+
+                        chh = 1;
+                        chk = 0;
+                    }
+
+                    else {
+
+                        chh++;
+                        chk++;
+
+
+                    }
+                }
+
+                else {
+
+                    boxArrayLeft[currentPosition[currentPosition.length - 1]].style.backgroundColor = "white";
+
+                    boxArrayLeft[currentPosition[0] - 1].style.backgroundColor = "blue";
+
+                    console.log(currentPosition);
+
+
+                }
+
+            }
+
+
+            else if (e.key === "ArrowRight") {
+
+                if (pressRight === currentPosition.length) {
+
+                    pressRight = 0;
+                }
+
+                else if (pressRight < currentPosition.length) {
+
+                    pressRight++;
+
+
+                }
+                pressLeft = 0;
+
+                if (pressUp === 1) {
+
+
+
+                    //update position
+                    let c = 0;
+                    for (let i = 0; i < boxArray.length; i++) {
+
+                        if (boxArray[i].style.backgroundColor === "blue") {
+
+                            currentPosition[c] = i;
+                            // console.log(i);
+                            c++;
+                        }
+                    }
+
+                    //give elements to array
+                    let j = board.children.length - 1;
+                    for (let i of board.children) {
+
+                        boxArrayLeft[j] = i;
+                        j--;
+                    }
+
+
+                    if (currentPosition[currentPosition.length - 1] === 11 || currentPosition[currentPosition.length - 1] === 23 || currentPosition[currentPosition.length - 1] === 35 || currentPosition[currentPosition.length - 1] === 47 || currentPosition[currentPosition.length - 1] === 59 || currentPosition[currentPosition.length - 1] === 71 || currentPosition[currentPosition.length - 1] === 83 || currentPosition[currentPosition.length - 1] === 95 || currentPosition[currentPosition.length - 1] === 107 || currentPosition[currentPosition.length - 1] === 119 || currentPosition[currentPosition.length - 1] === 131 || currentPosition[currentPosition.length - 1] === 143) {
+
+                        boxArrayLeft[143 - currentPosition[chk]].style.backgroundColor = "white";
+                        boxArrayLeft[(143 - currentPosition[currentPosition.length - 1]) + 11 - chk].style.backgroundColor = "blue";
+
+                        if (chh === currentPosition.length && chk === currentPosition.length - 1) {
+
+                            chh = 1;
+                            chk = 0;
+                        }
+
+                        else {
+
+                            chh++;
+                            chk++;
+
+
+                        }
+                    }
+
+                    else {
+
+                        boxArrayLeft[143 - currentPosition[currentPosition.length - 1]].style.backgroundColor = "white";
+
+                        boxArrayLeft[143 - currentPosition[chk] - 1].style.backgroundColor = "blue";
+
+
+                        if (chk === currentPosition.length - 2) {
+
+                            chk = 0;
+                            pressUp = 0;
+                        }
+
+                        else {
+
+                            chk++;
+                        }
+
+
+                        // console.log(boxArrayLeft);
+                        console.log(currentPosition);
+
+
+                    }
+
+
+
+
+
+
+                }
+
+                else {
+
+
+                    //update position
+                    let c = 0;
+                    for (let i = 0; i < boxArray.length; i++) {
+
+                        if (boxArray[i].style.backgroundColor === "blue") {
+
+                            currentPosition[c] = i;
+                            // console.log(i);
+                            c++;
+                        }
+                    }
+
+                    //give elements to array
+                    let j = board.children.length - 1;
+                    for (let i of board.children) {
+
+                        boxArrayLeft[j] = i;
+                        j--;
+                    }
+
+
+
+                    console.log(e.key);
+
+                    if (currentPosition[currentPosition.length - 1] === 11 || currentPosition[currentPosition.length - 1] === 23 || currentPosition[currentPosition.length - 1] === 35 || currentPosition[currentPosition.length - 1] === 47 || currentPosition[currentPosition.length - 1] === 59 || currentPosition[currentPosition.length - 1] === 71 || currentPosition[currentPosition.length - 1] === 83 || currentPosition[currentPosition.length - 1] === 95 || currentPosition[currentPosition.length - 1] === 107 || currentPosition[currentPosition.length - 1] === 119 || currentPosition[currentPosition.length - 1] === 131 || currentPosition[currentPosition.length - 1] === 143) {
+
+                        boxArrayLeft[143 - currentPosition[chk]].style.backgroundColor = "white";
+                        boxArrayLeft[(143 - currentPosition[currentPosition.length - 1]) + 11 - chk].style.backgroundColor = "blue";
+
+                        if (chh === currentPosition.length && chk === currentPosition.length - 1) {
+
+                            chh = 1;
+                            chk = 0;
+                        }
+
+                        else {
+
+                            chh++;
+                            chk++;
+
+
+                        }
+                    }
+
+                    else {
+
+                        boxArrayLeft[143 - currentPosition[0]].style.backgroundColor = "white";
+
+                        boxArrayLeft[143 - currentPosition[currentPosition.length - 1] - 1].style.backgroundColor = "blue";
+
+                        // console.log(boxArrayLeft);
+                        console.log(currentPosition);
+
+
+                    }
+
+
+                }
+
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+            else if (e.key === "ArrowUp") {
+
+                pressUp = 1;
+
+                // if (pressLeft === 1) {
+
+
+
+
+                //     //update position
+                //     let c = 0;
+                //     for (let i = 0; i < boxArray.length; i++) {
+
+                //         if (boxArray[i].style.backgroundColor === "blue") {
+
+                //             currentPosition[c] = i;
+                //             // console.log(i);
+                //             c++;
+                //         }
+                //     }
+
+                //     // //give elements to array
+                //     // let j = 0;
+                //     // let m = 1;
+                //     // for (let i of board.children) {
+
+                //     //     boxArrayLeft[j] = i;
+                //     //     j += 12;
+
+                //     //     if (j === 132 + numberTwelve || j === 133 + numberTwelve || j === 134 + numberTwelve || j === 135 + numberTwelve || j === 136 + numberTwelve || j === 137 + numberTwelve || j === 138 + numberTwelve || j === 139 + numberTwelve || j === 140 + numberTwelve || j === 141 + numberTwelve || j === 142 + numberTwelve || j === 143 + numberTwelve) {
+
+                //     //         j = m;
+                //     //         m++;
+                //     //     }
+                //     // }
+
+                //     //give elements to array
+                //     let j = 0;
+                //     for (let i of board.children) {
+
+                //         boxArrayLeft[j] = i;
+                //         j++;
+                //     }
+
+
+                //     // console.log(boxArrayLeft);
+
+
+
+                //     console.log(e.key);
+
+                //     if (currentPosition[0] === 0 || currentPosition[0] === 12 || currentPosition[0] === 24 || currentPosition[0] === 36 || currentPosition[0] === 48 || currentPosition[0] === 60 || currentPosition[0] === 72 || currentPosition[0] === 84 || currentPosition[0] === 96 || currentPosition[0] === 108 || currentPosition[0] === 120 || currentPosition[0] === 132) {
+
+                //         boxArrayLeft[currentPosition[currentPosition.length - chh]].style.backgroundColor = "white";
+                //         boxArrayLeft[currentPosition[0] + 11 - chk].style.backgroundColor = "blue";
+                //         // console.log(boxArray[currentPosition[0] + 11 - chk]);
+                //         // console.log(chk);
+
+                //         if (chh === currentPosition.length && chk === currentPosition.length - 1) {
+
+                //             chh = 1;
+                //             chk = 0;
+                //         }
+
+                //         else {
+
+                //             chh++;
+                //             chk++;
+
+
+                //         }
+                //     }
+
+                //     else {
+
+                //         boxArrayLeft[currentPosition[chk]].style.backgroundColor = "white";
+
+                //         boxArrayLeft[currentPosition[currentPosition.length - 1] - 12].style.backgroundColor = "blue";
+
+                //         console.log(currentPosition);
+
+
+                //     }
+
+                // }
+
+                if (pressRight >= 1) {
+
+
+                    if (pressRight === currentPosition.length - 1) {
+
+                        //update position
+                        let c = 0;
+                        for (let i = 0; i < boxArray.length; i++) {
+
+                            if (boxArray[i].style.backgroundColor === "blue") {
+
+                                currentPosition[c] = i;
+                                // console.log(i);
+                                c++;
+                            }
+                        }
+
+
+                        //give elements to array
+                        let j = 0;
+                        for (let i of board.children) {
+
+                            boxArrayLeft[j] = i;
+                            j++;
+                        }
+
+                        console.log(e.key);
+
+                        if (currentPosition[0] === 0 || currentPosition[0] === 1 || currentPosition[0] === 2 || currentPosition[0] === 3 || currentPosition[0] === 4 || currentPosition[0] === 5 || currentPosition[0] === 6 || currentPosition[0] === 7 || currentPosition[0] === 8 || currentPosition[0] === 9 || currentPosition[0] === 10 || currentPosition[0] === 11) {
+
+                            boxArrayLeft[currentPosition[currentPosition.length - chh]].style.backgroundColor = "white";
+                            boxArrayLeft[currentPosition[0] + 132 - twelve].style.backgroundColor = "blue";
+                            // console.log(boxArray[currentPosition[0] + 11 - chk]);
+                            // console.log(chk);
+
+                            if (chh === currentPosition.length && chk === currentPosition.length - 1) {
+
+                                chh = 1;
+                                chk = 0;
+                                twelve = 0;
+                            }
+
+                            else {
+
+                                chh++;
+                                chk++;
+                                twelve += 12;
+
+
+                            }
+                        }
+
+                        else {
+
+
+
+                            boxArrayLeft[currentPosition[chk]].style.backgroundColor = "white";
+
+
+                            if (chk === 1) {
+
+                                boxArrayLeft[currentPosition[0] - 12].style.backgroundColor = "blue";
+                                chk++;
+
+                            }
+
+                            else if (chk === currentPosition.length - 1) {
+
+                                chk = 0;
+                                pressRight = 0;
+                                boxArrayLeft[currentPosition[0] - 12].style.backgroundColor = "blue";
+
+
+                            }
+
+                            else {
+                                boxArrayLeft[currentPosition[currentPosition.length - 1] - 12].style.backgroundColor = "blue";
+                                chk++;
+                            }
+                            console.log(currentPosition);
+
+
+                        }
+
+
+
+
+                    }
+
+                    else {
+
+                        //update position
+                        let c = 0;
+                        for (let i = 0; i < boxArray.length; i++) {
+
+                            if (boxArray[i].style.backgroundColor === "blue") {
+
+                                currentPosition[c] = i;
+                                // console.log(i);
+                                c++;
+                            }
+                        }
+
+
+                        //give elements to array
+                        let j = 0;
+                        for (let i of board.children) {
+
+                            boxArrayLeft[j] = i;
+                            j++;
+                        }
+
+                        console.log(e.key);
+
+                        if (currentPosition[0] === 0 || currentPosition[0] === 1 || currentPosition[0] === 2 || currentPosition[0] === 3 || currentPosition[0] === 4 || currentPosition[0] === 5 || currentPosition[0] === 6 || currentPosition[0] === 7 || currentPosition[0] === 8 || currentPosition[0] === 9 || currentPosition[0] === 10 || currentPosition[0] === 11) {
+
+                            boxArrayLeft[currentPosition[currentPosition.length - chh]].style.backgroundColor = "white";
+                            boxArrayLeft[currentPosition[0] + 132 - twelve].style.backgroundColor = "blue";
+                            // console.log(boxArray[currentPosition[0] + 11 - chk]);
+                            // console.log(chk);
+
+                            if (chh === currentPosition.length && chk === currentPosition.length - 1) {
+
+                                chh = 1;
+                                chk = 0;
+                                twelve = 0;
+                            }
+
+                            else {
+
+                                chh++;
+                                chk++;
+                                twelve += 12;
+
+
+                            }
+                        }
+
+                        else {
+
+
+
+                            boxArrayLeft[currentPosition[currentPosition.length - 1]].style.backgroundColor = "white";
+
+                            boxArrayLeft[currentPosition[1] - 12].style.backgroundColor = "blue";
+
+                            console.log(currentPosition);
+
+
+                        }
+
+
+                    }
+
+
+
+                }
+
+                else if (pressLeft === 1) {
+
+                    //update position
+                    let c = 0;
+                    for (let i = 0; i < boxArray.length; i++) {
+
+                        if (boxArray[i].style.backgroundColor === "blue") {
+
+                            currentPosition[c] = i;
+                            // console.log(i);
+                            c++;
+                        }
+                    }
+
+
+                    //give elements to array
+                    let j = 0;
+                    for (let i of board.children) {
+
+                        boxArrayLeft[j] = i;
+                        j++;
+                    }
+
+                    console.log(e.key);
+
+                    if (currentPosition[0] === 0 || currentPosition[0] === 1 || currentPosition[0] === 2 || currentPosition[0] === 3 || currentPosition[0] === 4 || currentPosition[0] === 5 || currentPosition[0] === 6 || currentPosition[0] === 7 || currentPosition[0] === 8 || currentPosition[0] === 9 || currentPosition[0] === 10 || currentPosition[0] === 11) {
+
+                        boxArrayLeft[currentPosition[currentPosition.length - chh]].style.backgroundColor = "white";
+                        boxArrayLeft[currentPosition[0] + 132 - twelve].style.backgroundColor = "blue";
+                        // console.log(boxArray[currentPosition[0] + 11 - chk]);
+                        // console.log(chk);
+
+                        if (chh === currentPosition.length && chk === currentPosition.length - 1) {
+
+                            chh = 1;
+                            chk = 0;
+                            twelve = 0;
+                        }
+
+                        else {
+
+                            chh++;
+                            chk++;
+                            twelve += 12;
+
+
+                        }
+                    }
+
+                    else {
+
+
+
+                        boxArrayLeft[currentPosition[currentPosition.length - 1]].style.backgroundColor = "white";
+
+                        boxArrayLeft[currentPosition[0] - 12].style.backgroundColor = "blue";
+
+                        console.log(currentPosition);
+
+
+                    }
+
+                }
+
+                else {
+
+
+                    //update position
+                    let c = 0;
+                    for (let i = 0; i < boxArray.length; i++) {
+
+                        if (boxArray[i].style.backgroundColor === "blue") {
+
+                            currentPosition[c] = i;
+                            // console.log(i);
+                            c++;
+                        }
+                    }
+
+
+                    //give elements to array
+                    let j = 0;
+                    for (let i of board.children) {
+
+                        boxArrayLeft[j] = i;
+                        j++;
+                    }
+
+
+
+                    if (currentPosition[0] === 0 || currentPosition[0] === 1 || currentPosition[0] === 2 || currentPosition[0] === 3 || currentPosition[0] === 4 || currentPosition[0] === 5 || currentPosition[0] === 6 || currentPosition[0] === 7 || currentPosition[0] === 8 || currentPosition[0] === 9 || currentPosition[0] === 10 || currentPosition[0] === 11) {
+
+                        boxArrayLeft[currentPosition[currentPosition.length - chh]].style.backgroundColor = "white";
+                        boxArrayLeft[currentPosition[0] + 132 - twelve].style.backgroundColor = "blue";
+                        // console.log(boxArray[currentPosition[0] + 11 - chk]);
+                        // console.log(chk);
+
+                        if (chh === currentPosition.length && chk === currentPosition.length - 1) {
+
+                            chh = 1;
+                            chk = 0;
+                            twelve = 0;
+                        }
+
+                        else {
+
+                            chh++;
+                            chk++;
+                            twelve += 12;
+
+
+                        }
+                    }
+
+                    else {
+
+
+                        boxArrayLeft[currentPosition[currentPosition.length - 1]].style.backgroundColor = "white";
+
+                        boxArrayLeft[currentPosition[0] - 12].style.backgroundColor = "blue";
+
+                        console.log(currentPosition);
+
+                    }
+
+
+
+
+
+                }
+            }
+
+
+            else if (e.key === "ArrowDown") {
+
+
+
+
+                if (pressRight === 1) {
+
+                    //update position
+                    let c = 0;
+                    for (let i = 0; i < boxArray.length; i++) {
+
+                        if (boxArray[i].style.backgroundColor === "blue") {
+
+                            currentPosition[c] = i;
+                            // console.log(i);
+                            c++;
+                        }
+                    }
+
+
+                    //give elements to array
+                    let j = 0;
+                    for (let i of board.children) {
+
+                        boxArrayLeft[j] = i;
+                        j++;
+                    }
+
+                    console.log(e.key);
+
+                    if (currentPosition[currentPosition.length - 1] === 132 || currentPosition[currentPosition.length - 1] === 133 || currentPosition[currentPosition.length - 1] === 134 || currentPosition[currentPosition.length - 1] === 135 || currentPosition[currentPosition.length - 1] === 136 || currentPosition[currentPosition.length - 1] === 137 || currentPosition[currentPosition.length - 1] === 138 || currentPosition[currentPosition.length - 1] === 139 || currentPosition[currentPosition.length - 1] === 140 || currentPosition[currentPosition.length - 1] === 141 || currentPosition[currentPosition.length - 1] === 142 || currentPosition[currentPosition.length - 1] === 143) {
+
+                        boxArrayLeft[currentPosition[chk]].style.backgroundColor = "white";
+                        boxArrayLeft[currentPosition[currentPosition.length - 1] - 132 + twelve].style.backgroundColor = "blue";
+
+
+                        if (chh === currentPosition.length && chk === currentPosition.length - 1) {
+
+                            chh = 1;
+                            chk = 0;
+                            twelve = 0;
+                        }
+
+                        else {
+
+                            chh++;
+                            chk++;
+                            twelve += 12;
+
+
+                        }
+                    }
+
+                    else {
+
+
+
+                        boxArrayLeft[currentPosition[0]].style.backgroundColor = "white";
+
+                        boxArrayLeft[currentPosition[currentPosition.length - 1] + 12].style.backgroundColor = "blue";
+
+                        console.log(currentPosition);
+
+
+                    }
+
+                }
+
+
+
+                else if (pressLeft === 1) {
+
+                    //update position
+                    let c = 0;
+                    for (let i = 0; i < boxArray.length; i++) {
+
+                        if (boxArray[i].style.backgroundColor === "blue") {
+
+                            currentPosition[c] = i;
+                            // console.log(i);
+                            c++;
+                        }
+                    }
+
+
+                    //give elements to array
+                    let j = 0;
+                    for (let i of board.children) {
+
+                        boxArrayLeft[j] = i;
+                        j++;
+                    }
+
+                    console.log(e.key);
+
+                    if (currentPosition[currentPosition.length - 1] === 132 || currentPosition[currentPosition.length - 1] === 133 || currentPosition[currentPosition.length - 1] === 134 || currentPosition[currentPosition.length - 1] === 135 || currentPosition[currentPosition.length - 1] === 136 || currentPosition[currentPosition.length - 1] === 137 || currentPosition[currentPosition.length - 1] === 138 || currentPosition[currentPosition.length - 1] === 139 || currentPosition[currentPosition.length - 1] === 140 || currentPosition[currentPosition.length - 1] === 141 || currentPosition[currentPosition.length - 1] === 142 || currentPosition[currentPosition.length - 1] === 143) {
+
+                        boxArrayLeft[currentPosition[chk]].style.backgroundColor = "white";
+                        boxArrayLeft[currentPosition[currentPosition.length - 1] - 132 + twelve].style.backgroundColor = "blue";
+
+
+                        if (chh === currentPosition.length && chk === currentPosition.length - 1) {
+
+                            chh = 1;
+                            chk = 0;
+                            twelve = 0;
+                        }
+
+                        else {
+
+                            chh++;
+                            chk++;
+                            twelve += 12;
+
+
+                        }
+                    }
+
+                    else {
+
+
+
+                        boxArrayLeft[currentPosition[0]].style.backgroundColor = "white";
+
+                        boxArrayLeft[currentPosition[currentPosition.length - 1] + 12].style.backgroundColor = "blue";
+
+                        console.log(currentPosition);
+
+
+                    }
+
+                }
+
+            }
+
+        }
+
+
+
+
+
+
+

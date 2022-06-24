@@ -1,0 +1,94 @@
+body{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #1E9140;
+}
+
+.container-container{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px black solid;
+    width: 600px;
+    height: 600px;
+    margin: 70px 0 20px 0;
+    border-radius: 100px;
+    background-color: #D21E22;
+}
+
+.clock-container{
+
+    display: flex;
+    border: 20px #1E9140 solid;
+    align-self: center;
+    height: 550px;
+    width: 550px;
+    border-radius: 50%;
+    /* margin-top: 70px; */
+    background-image: url('../images/clock.jpeg');
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.clock-container .second{
+
+    
+    transform: scale(1.4);
+    margin-top: 640px;
+    margin-bottom: 0;
+    z-index: 3;
+    transform: rotate(0deg);
+    
+    
+
+}
+
+.clock-container .minute{
+
+
+    margin-bottom: 360px;
+    margin-top: -377px;
+    z-index: 2;
+    transform: rotate(0deg);
+
+
+}
+
+.clock-container .hour{
+
+    margin-bottom: 760px;
+    margin-top: -640px;
+    z-index: 1;
+    transform: rotate(0deg);
+
+
+}
+
+
+.start{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 65px;
+    font-size: 60px;
+    border-radius: 100px;
+    border: 3px white solid;
+    background-color: #D21E22;
+    color:#1E9140 ;
+    
+}
+
+.start:hover{
+
+    cursor: pointer;
+    background-color: #f7070b;
+    color: #17c74c;
+}

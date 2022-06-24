@@ -1,0 +1,682 @@
+Css introduction
+
+  What is CSS?
+
+   - Cascading Style Sheet 
+   - Used to style web-sites
+   - works hand in hand with Html
+
+ How is Css used?
+
+   - used in .css format and linked to using an Html tag
+
+
+Selectors & Properties
+
+    Selectors
+      
+      - are ways of grabbing and manipulating HTML 
+      - various ways to select but same outcome
+      - Different selectors have different applications
+
+      A) Element selector (ranks bottom of the specificity scale)
+
+          Name of tag like h1 or p 
+     
+      B) Class selector 
+
+           .className 
+
+      C) ID selector 
+
+         #idname
+
+    
+      D) PseudoSelectors 
+
+           selector: pseudo selector {}
+           example - h2:hover {}
+                   - li:first-child or last or nth-child(n)
+                   - li:only-child
+                   - a:link{}   - unvisited link
+                   - a:visited{}  - visited link
+
+
+      E) Advanced Selectors 
+
+           Basic Selectors 
+             
+             adjacent Sibling selector 
+                 example - apply style to every a tag that comes after h2
+                    
+                    h2 + a {} // every anchor tag that follows h2
+
+             General sibling selector 
+                same as adjacent but both must have same parent
+
+                textarea ~ button {} // every button after textarea but have same parent
+
+             Child selector 
+                 example ul > li {}// every single li in ul
+           
+             Descendant selector 
+                example ul li 
+           
+           Attribute Selectors 
+               selects a tags attribute 
+               example h2[attr = value]{}
+                       h2[class = subtitle]{}
+                       h2[src = "value"]{}
+
+             A) multiple selection 
+               example img[src^ = "../img/"]
+                        //this example refers to every file that
+                          begins with the above url is selected, it is denoted by ^ or carrot.
+                        other examples *, $
+
+             B) Whitespace attribute selector 
+                  example <h2 class = "name1 name2">something </h2>
+
+                  h2[class ~=name2]{} 
+
+             C) OREQUALITY 
+
+                  h2[class|=article-subtitle]{}
+                  means find class starting with article-subtitle
+                  or article-subtitle-
+            
+  
+      When to use Class or ID (Specificity)
+
+      Class overwrites elements selector
+      Id overwrites class 
+      inline styling (styling between html files ) overrides all of them 
+
+      Classes are meant to be used for many 
+      id are meant to be used for one but both work too
+
+
+    Properties
+
+       What are properties ?
+          
+          - contained in selectors
+          - define the way css is used 
+          - : is always used 
+
+          property : value;
+
+       
+   CSS GENERAL RULE 
+
+    selector{
+
+       property: value;
+    }
+          
+
+Coloring & Formatting
+
+  Types of Colors 
+     
+     A) Css color codes (Names) 
+
+          color : blue;
+
+     B) Css color codes (Hex)
+
+         color : #fdfdfd;
+
+     C) Css color codes (RGB)
+
+        color : rgb(0,0,0);
+
+
+  Background
+     
+     - can make Background image 
+        
+        Background: url ("address ");
+        or Background- image
+
+     properties 
+     Background-repeat: no-repeat;// doesn't repeat image to fill the container 
+     Background-repeat : repeat ; //repeats until container is filled 
+     Background-size: cover; //fills the full width
+     Background-size: contain; // tries to fill without damaging the quality and so repeats if the full with is not covered
+
+
+  Opacity and Transparency 
+
+   Background: rgba(value, value, value, opacity/transparency( 0 is completely transparent ));
+
+
+  Gradients  
+     
+     -Transition between range of colors
+
+   A) Radial gradients 
+
+         - circular , start from center 
+
+          example 
+          Background: radial - gradient(red, blue);
+                                       (red 20%, 40%, green 55%); //to specify area coverage
+                                       (circle,....); //specify shape of colors
+
+
+   B) Linear grdients
+
+       - smooth transition from a specified direction
+
+        examples Background : Linear-gradient(to right,red, blue);
+                                       (to right, rgb(value, value, value), rgba(value,value,value, opacity));// to fade a color
+                                       (to bottom right....);// for direction 
+                                       (-130deg, ....); // using specific directions degree instead of words
+                                // can add as much color as needed
+
+
+Units in Css (px, %,....)
+
+  A) absolute units - not dependant on anything 1 inch in phone same as 1 inch on tv 
+      
+      example - cm mm - centimeter and millimeter 
+              - pt - points are a little bigger than pixels 
+              - pc - much bigger than px and pt 1 pc = 12 pt 
+
+  B) relative units - relative to parent 
+                    - % 
+                    - em - used for fonts, relative to standard font size 
+                    - view ports (relative to the view port) view port is the container outside of the body 
+                    - vh and vw - view height and view port 
+  
+
+Fonts & Text Manipulation 
+
+    A) Text Manipulation 
+         
+         Text Decoration - changes lining of a text 
+                         - default is underline 
+               
+               text-decoration : none ;
+                               : underline;
+                               : line-through;
+                               : overline;
+
+
+         Text Transform - changes the form of a text 
+
+            text-transform : capitalize; // capitalize first letter
+                           : lowercase;
+                           : uppercase;
+
+          
+         Text Align - postition of text  
+             
+             text-align: center;
+                       : justify;
+                       : left;
+                       : right;
+
+
+    B) Font manipulation 
+
+       Font size - size of text 
+          
+          font-size : 2em;
+
+       Font weight - decides the bolding of a text 
+                   - ranges from 0 to any large values
+
+          font-weight : 0; 
+                      : 100; // up to 800 is best 
+
+       Font style - for italisizing 
+
+           font-style: normal;
+                     : italic;
+                     : oblique; //more italic
+
+       Font Families 
+           
+           serif - common on papers, essays.....
+
+           sans serif  - news websites, wordpress , google, facebook easier to read
+
+           mono space - same width characters 
+
+
+           font-family : sans-serif; //just write family
+           font-family : "Times New Roman" , serif; //specify font from family , after the comma is if the browser fails to load times new roman it will load serif by default
+           font-family : "Arial", sans-serif;
+
+       Including external fonts 
+          
+          sources - google fonts 
+
+          get the href link of the font and paste it above the css link in 
+          your html file
+
+          then manipulate font family based on the font 
+
+
+Layout
+
+   Box Model 
+
+      - a series of positioning properties designed to help with
+         layout 
+
+      - Each property works in a different way, and positions the item
+         with different spacing 
+
+      - The Box Model is the most commonly used way to position items.
+
+      - Center - content 
+         padding - space between content and padding 
+         margin - space between outside box and box 
+
+
+      content 
+            
+            units - use px for height
+                  - use relative for width like % or vw
+      
+      Boders 
+
+         short hand method 
+         
+         border : size style color ;
+                  : 1px solid  blue ;
+                  : 1px dotted red ;
+                  : 1px dashed green;
+                  : 1px double green;
+                  : 1px groove green;
+                  : 1px inset  green;
+                  : 1px outset green;
+                  : 1px ridge green;
+
+      Padding 
+      
+         padding : oneValue; //same value all sides
+         padding : top right bottom left ;
+         padding : top and bottom left and right ;
+         padding - sideName: value px;
+
+      Margin 
+
+         margin : one value; // same vale all sides 
+         margin : top right bottom left ;
+         margin : top and bottom left and right ;
+         margin - sideName: value px;
+
+      Float - changes orientation of element 
+
+         float : right;
+         float : left;
+         float : inherit; //takes float property of parent 
+         float : none; //none is default 
+
+
+      Display - defines behavior of elements 
+
+         Block - has it's own section
+               - not next to element 
+
+         inline - not own selection
+               - comes directly after an element 
+
+         none - element won't be displayed 
+
+         inline - block - combination of both
+                        - makes element inline with the spacing of block property 
+
+
+   1) Flexbox
+
+      What is flex box? 
+         
+         - flexible box 
+         - comes with range of properties allowing for arranging items easily
+         - alternative to using displays, floats and other layout properites 
+     
+       - split into two main parts - container and items 
+          
+         A) Container - parent element 
+                  - container for all elements 
+
+
+         B) Flex items - childs like images...
+
+       creating flex - display : flex;
+
+
+      flex direction & wrap 
+           
+           flex direction - sets direction of the content order
+
+            flex-direction : row; // or column , or row-reverse or column-reverse
+
+
+           flex wrap - makes content on new line if overflown
+             
+             flex-wrap : wrap ; // or no-wrap or wrap-reverse
+
+
+      Content Alignment
+
+          horizontal alignment 
+
+            justify-content: center; // centers flex content
+            justify-content : flex-end // makes content at end
+            justify-content : flex-start // default  at start 
+            justify-content : space-between; // equally spaces items between eachother
+            justify-content : space around; // equally spaces items between and around 
+
+          vertical alignment 
+
+            align-items : flex-start; // same as above but vertical
+            align-items : center; // same as above but vertical
+            align-items : flex-end; // same as above but vertical
+            align-items : stretch;  // aligns it top to bottom
+            align-items : baseline; // aligns on the same line regardless of height of content  
+
+          Center contents 
+
+              justify-content : center;
+              align-items : center ;
+
+
+      Flex item order 
+            
+            manipulating flex items ordering
+
+            order: number; 
+            order: 1; // this item comes first
+            order: 2; // then this item 
+
+
+      Shrink, Grow and Basis 
+
+         Shrink 
+
+            flex-shrink: value; // defines rate of shrinkage relative to container 
+                              // 0 means don't shrink even if window is resized 
+                              // 1 which is default 
+
+         Grow 
+
+            flex-grow: value;// from 0 which is default not growable
+
+         Basis 
+
+            flex-basis: value; // like 100px ;
+
+         The Flex property - short hand to use shrink grow and basis 
+
+           flex: grow shrink basis;
+           flex : 1 1 100px;
+
+     
+      Item Alignment 
+
+         Align Self - align items but it will override align items property 
+               align-self: flex-start; // to align start of flex container 
+               align-self: flex-end;
+               align-self: center;
+
+
+   2) Grid 
+
+       - similar to flex box, grid is a display type that cn be used 
+         to activate certain layout features on a container element.
+
+       - They are both alterntives to other layout features available 
+         in css.
+
+       - Difference with flex 
+
+          - Grid system is more manual more tools
+          -grid is also very focused on providing tools for both dimensions
+           (width + height), whereas flexbox is focused on width alone.
+
+       - Creating Grid 
+             
+             display : grid ;
+
+       - Two properties (template rows and columns )
+
+          grid-template-columns : column 1 column 2 column n;
+          grid-template-rows : row 1 row 2 row n;
+
+          grid-template-columns : auto auto auto; //divides the space evenly
+          grid-template-rows : auto auto auto ; // divides the space evenly
+
+       - Justify & Align content 
+
+           Justify
+
+             justify-content: center;
+             justify-content: end;
+             justify-content: start;
+             justify-content: space-evenly; // same as space between for flex
+             justify-content: space-around;
+
+           Align grid  
+
+             align-content: space-between;
+             align-content: space-evenly;
+             align-content: end;
+             align-content: start;
+             align-content: center;
+
+       - Row & Column gaps 
+
+           grid-column-gap: value in px;
+           grid-row-gap: value in px;
+
+         short hand 
+           grid-gap: rowGapValue columnGapValue ;
+
+       - Column & Row Lines 
+
+          // these properties are not on the container 
+          // they are on the items or contents 
+
+          grid-column : startingLine / endingLine ;
+          grid-row : startingLine / endingLine ;
+
+          //can also use span 
+
+          grid-column :  1 / span 2 ;
+          grid-row : 1  / span 1 ;
+
+          example if we have a 2 row by 3 column grid 
+
+             grid-column : 1 / 3 ;
+             grid-row : 1 / 2 ;
+
+             // similar to above 
+             grid-column :  1 / span 2 ;
+             grid-row : 1  / span 1 ;
+ 
+       - Grid Area 
+            
+            - makes column and row lines in one line 
+
+            grid-area: rowStarting point / colStarting point / rowEnding point / colEnding point 
+
+            above example
+            
+            grid-area : 1 / 1 / span 1 / span 2;
+
+                             
+Animations, Transformations & Transitions 
+   
+    A) Transitions 
+
+        - Are added in the base class 
+        - to select all property 
+             
+             transition: all;
+         
+        - to select a specific property
+
+             transition: Background;
+
+             format : property - refers to the kind of style you want the transition to apply to 
+                      duration - refers to the time the animation lasts 
+                      type of change - the type of transition you want to use
+                      delay - refers to the time it has to wait before the transition occurs 
+                      
+                  
+               transition: property   duration  type of change  delay 
+                         : Background 2s  ease  1s
+                         : Background 2s  linear  1s
+                         : Background 2s  ease-in-out  1s
+                         : Background 2s  ease-in 1s
+                         : Background 2s  ease-out  1s
+               
+               we can add properies or use all 
+                 
+                       transition : Background, padding 2s ease 1s;
+                                  : all , padding 2s ease 1s;
+
+                  
+                  Most old browsers don't use transitions
+
+                       so use browser support pre-fix 
+                            
+                            for Chrome and safari 
+                             
+                             -webkit-transition: ....
+
+                            for firefox 
+
+                             -moz-transition: ....
+                           
+                            for oprah 
+
+                             -o-transition:....
+
+
+    B) Transformations
+
+         transformation takes in functions which take input 
+
+         transform is written on base class
+
+         I) Translate - position
+
+               transform: translate(x-value, y-value); 
+               //just like graphs positive is right for x and up for y 
+
+               transform: translate(20px, 10px);
+
+         II) Scale  - size 
+
+               transform: scale(value);
+               transform: scale(2.5);
+
+         III) Rotate 
+
+                transform: rotate(degree);
+                transform: rotate(-45deg);
+
+         IV) Skew 
+                 
+                transform: skewX(degree);
+                transform: skewY(degree);
+                transform: skew(Xdegree, Ydegree);
+
+         V) Short Hand - takes 6 arguments 
+                         works with skew 
+
+            transform: matrix(1 , skewX, skewY, scaleX, scaleY, translate x, translate y )
+
+                1 - make the size same 
+                skewX - in decimal, like 0.45 is 45 degree
+                skewY - in decimal, like 0.45 is 45 degree
+                scaleX - size in X can use a single value for both
+                scaleY - size in Y
+                translate x - moves in x
+                translate y - moves in y
+
+
+    C) Animations  
+          
+          - define the style once and apply to all of them  unlike transition 
+            which has to be declared in it's own 
+
+            Each Animation has key frames 
+             they contain starting point and ending point 
+                from{} and to{}
+
+        I) Creating Animations 
+
+          format1 : @keyframe anyName { //but this is not efficient 
+                
+                from{property1 : value1;}
+                to{ property1: value2;}
+
+           }
+
+          format2 : @keyframe anyName{ // this is better because we can add more properties 
+
+               0% {property: value1;}
+               50% {property: value2;}
+               100% {property: value3;}
+
+           }
+
+          
+          format3 : @keyframe anyName{ // with more properties 
+
+               0% {property: value1; transform: translate(0px, 0px);}
+               50% {property: value2;transform: translate(10px, 10px);}
+               100% {property: value3;transform: translate(20px, 20px);}
+
+          }
+
+
+        II) Adding animation 
+
+              we add them to base class or any elements 
+
+              keep animations at bottom for clarity 
+
+                Animation properties 
+
+                  - animation-duration :2s; // 0 is default
+                  - animation-timing-function: ease;
+                                             : linear;
+                                             : ease-in-out; 
+                  - animation-delay: 2s;
+                  - animation-iteration-count:2;
+                                             :infinite;
+                  - animation-direction: normal;
+                                       : reverse;
+                                       : alternate; // forward then back
+                                       : alternate-reverse;
+
+                short-hand of all : takes in 5 values 
+
+                animation: anyName duration timing-function(speed) delay iteration count direction ;
+
+              id or class of element {
+
+                 animation-name: anyName;
+                 animation-duration : value s;
+                 animation-timing-function: value;
+                 animation-delay 
+                }
+
+              id or class of element {
+
+                 animation: anyName duration timing-function(speed) delay iteration count direction ;
+
+                }
+              
+              don't forget to apply property (web-kit) for older browsers 
+
+Challenge

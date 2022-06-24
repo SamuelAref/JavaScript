@@ -1,0 +1,219 @@
+body{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.head{
+
+    border: 1px #707070 solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #707070;
+    height: 60px;
+    width: 350px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    color: white;
+
+}
+
+.book-img{
+    
+    /* border: 1px white solid; */
+    height :45px;
+    width: 45px;
+    object-fit: none;
+    transform: rotate(47deg);
+    margin:0 0px 7px -8px;
+}
+
+
+
+
+.form{
+
+    border: 4px #707070 solid;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    width:620px;
+    height: 80px;
+    flex-wrap: wrap;
+    border-radius: 20px;
+
+}
+
+.author-container{
+
+    /* border: 1px black solid; */
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 0 5px ;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 30px;
+    width: 300px;
+    color: #707070;
+}
+
+.title-container{
+
+    /* border: 1px black solid; */
+    display: flex;
+    flex-direction: row;
+    margin: 0 10px 0 5px ;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 30px;
+    width: 270px;
+    color: #707070;
+
+
+}
+
+.isbn-container{
+
+    /* border: 1px black solid; */
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 0 -39px ;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 30px;
+    width: 300px;
+    color: #707070;
+
+}
+
+
+.author{
+
+    border: 1px rgb(112, 112, 112,0.4) solid;
+    height: 20px;
+    border-radius: 20px;
+
+}
+
+.title{
+
+
+    border: 1px rgb(112, 112, 112,0.4) solid;
+    height: 20px;
+    border-radius: 20px;
+
+}
+
+
+.isbn{
+
+    border: 1px rgb(112, 112, 112,0.4) solid;
+    height: 20px;
+    border-radius: 20px;
+
+
+
+}
+
+.submit{
+    /* border: 1px black solid; */
+    margin-right: 100px ;
+    height: 25px;
+    width: 100px;
+    border-radius: 20px;
+    border: none;
+    background-color: #707070;
+    color: white;
+
+}
+
+.submit:hover{
+
+    cursor: pointer;
+}
+
+
+
+
+
+.output-container{
+
+    border: 4px #707070 solid;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px ;
+    padding-bottom: 10px;
+    width: 620px;
+    border-radius: 20px;
+
+}
+
+.table-title{
+
+    border-bottom: 2px #707070 solid;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    /* margin:auto ; */
+    width: 580px;
+    height: auto;
+    margin: 1px 10px 0 10px;
+    color: #707070;
+
+}
+
+.pos{
+
+    margin-bottom: 0;
+}
+
+.adjust{
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px black solid; */
+    width: 150px;
+    flex-wrap: wrap;
+    word-break:normal;
+
+}
+
+
+.image-check{
+
+    margin-left: -30px;
+    width: 30px;
+    height: 30px;
+}
+
+.table-t1{
+
+    display: flex;
+    justify-content: flex-start;
+    /* border: 1px black solid; */
+    width: 120px;
+}
+
+.table-t2{
+
+    display: flex;
+    /* border: 1px black solid; */
+    width: 120px;
+}
+
+.table-t3{
+
+    display: flex;
+    /* border: 1px black solid; */
+    width: 120px;
+}
+
